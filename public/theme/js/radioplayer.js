@@ -11,6 +11,8 @@ function playPause(){
     }
 }
 
+
+
 //radio player volume
 $(function() {
     audioPlayer.volume = 37 / 100;
@@ -55,5 +57,19 @@ function tuneIcons(val){
         $("#sound_icon span").addClass('tune2');
         $("#sound_icon span").removeClass('tune3');
         $("#sound_icon span").removeClass('mute');
+    }
+}
+
+
+function setRadio(stream,id){
+    var radioID = document.getElementById(id);
+    radioID.getElementsByTagName('source')[0].setAttribute('src',stream);
+    radioID.load();
+    if(radioID.paused){
+        radioID.play();
+        $('.player-buttons .play-pause .play').removeClass('play').addClass('pause');
+    }else{
+        radioID.pause();
+        $('.player-buttons .play-pause .pause').removeClass('pause').addClass('play');
     }
 }

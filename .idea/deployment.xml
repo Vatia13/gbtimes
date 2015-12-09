@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="gbtimess_test">
+  <component name="PublishConfigData" autoUpload="Always" serverName="gbtimess_test" promptOnLocalOverwrite="false" autoUploadExternalChanges="true">
     <serverData>
       <paths name="gbtimess_test">
         <serverdata>
@@ -9,6 +9,12 @@
           </mappings>
           <excludedPaths>
             <excludedPath path="/.env" />
+            <excludedPath path="/storage" />
+            <excludedPath path="/public/js/tinymce" />
+            <excludedPath path="/public/js/bootstrap" />
+            <excludedPath path="/public/js/events" />
+            <excludedPath path="/bootstrap/cache" />
+            <excludedPath path="/config/database.php" />
           </excludedPaths>
         </serverdata>
       </paths>

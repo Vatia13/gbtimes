@@ -1,5 +1,8 @@
 <?php
 $config = include 'config/config.php';
+
+
+
 //TODO switch to array
 extract($config, EXTR_OVERWRITE);
 
@@ -15,6 +18,7 @@ if (USE_ACCESS_KEYS == TRUE){
 	}
 }
 
+
 $_SESSION['RF']["verify"] = "RESPONSIVEfilemanager";
 
 if(isset($_POST['submit'])){
@@ -23,7 +27,13 @@ if(isset($_POST['submit'])){
 
 }
 else {
+
 include 'include/utils.php';
+if(isset($_GET['lang'])){
+	$lang = $_GET['lang'];
+}else{
+	$lang = '';
+}
 
 if (isset($_GET['fldr'])
     && !empty($_GET['fldr'])
@@ -190,8 +200,8 @@ if (isset($_GET["descending"]))
 	$descending = $_SESSION['RF']['descending'] = fix_get_params($_GET["descending"])==1;
 }
 else{
-	$descending = $_SESSION['RF']['descending'];	
-} 
+	$descending = $_SESSION['RF']['descending'];
+}
 
 $boolarray = Array(false => 'false', true => 'true');
 
@@ -225,13 +235,14 @@ else $apply = 'apply';
 $get_params = array(
     'editor'    => $editor,
     'type'      => $type_param,
-    'lang'      => $lang,
+    'lang'      => (isset($lang)) ? $lang : '',
     'popup'     => $popup,
     'crossdomain' => $crossdomain,
     'field_id'  => $field_id,
     'relative_url' => $return_relative_url,
     'akey' 		=> (isset($_GET['akey']) && $_GET['akey'] != '' ? $_GET['akey'] : 'key')
 );
+
 if(isset($_GET['CKEditorFuncNum'])){
     $get_params['CKEditorFuncNum'] = $_GET['CKEditorFuncNum'];
     $get_params['CKEditor'] = (isset($_GET['CKEditor'])? $_GET['CKEditor'] : '');
@@ -288,7 +299,7 @@ $get_params = http_build_query($get_params);
 		    url: "upload.php<?php echo $watermark;?>",
 		    <?php if($apply!="apply_none"){ ?>
 		    init: function() {
-			    this.on("success", function(file,res) { 
+			    this.on("success", function(file,res) {
 			    	file.previewElement.addEventListener("click", function() {
 						<?php echo $apply; ?>(res,'<?php echo $field_id; ?>');
 					});

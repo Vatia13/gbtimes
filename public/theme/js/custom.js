@@ -77,3 +77,9 @@ $('ul.outside > li').hover(function(){
         $(this).addClass('active');
     }
 });
+
+
+$('.frequencies .button').click(function(){
+    $('.online-radios').toggle('slide',{direction:'down'},300);
+});
+

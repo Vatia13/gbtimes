@@ -992,11 +992,12 @@ ul.inside .inside-desc{
 .radio-player{
   position:fixed;
   bottom:0;
-  background-color:#f3f3f3;
+  background:#FFF;
   height:65px;
   width:100%;
   opacity:1;
   z-index:999;
+  border-top:1px solid #ee3c23;
 }
 .radio-player .radio-player-space{
   position:relative;
@@ -1052,11 +1053,11 @@ ul.inside .inside-desc{
 
 .radio-player-playlist ul li.frequencies{
   position:absolute;
-  right:0;
+  right:20px;
 }
 
 .radio-player-playlist ul li.frequencies .button a:hover{
-  background-color:#a52125;
+  background-color:#ee3c23;
   color:#FFF;
 }
 
@@ -1072,30 +1073,37 @@ ul.inside .inside-desc{
   overflow:hidden;
   height:64px;
 }
+
+.radio-player-playlist ul li:last-child{
+  overflow:initial;
+}
+
 .radio-player-playlist ul li .play-content{
   width:750px;
 }
 .radio-player-playlist ul li .desc{
   color:#4f4d4d;
   padding:15px 5px;
-  border-right:2px solid #a52125;
+  border-right:2px solid #ee3c23;
   text-align:center;
   display:block;
-  overflow:hidden;
   position:relative;
   top:0;
   left:0;
 }
 
 
+
+
 .radio-player-playlist ul li .button a{
   text-decoration:none;
-  color:#a52125;
+  color:#ee3c23;
   height:65px;
   display:block;
   cursor:pointer;
   width:120px;
   text-align:center;
+  padding:0 10px;
 }
 
 
@@ -1103,7 +1111,7 @@ ul.inside .inside-desc{
 .radio-player-playlist ul li.active .button a{
   text-decoration:none;
   color:#FFF;
-  background-color:#a52125;
+  background-color:#ee3c23;
   height:65px;
   display:block;
   cursor:pointer;
@@ -1118,7 +1126,7 @@ ul.inside .inside-desc{
 .radio-stations{
   position:fixed;
   display:none;
-  background-color:#a52125;
+  background-color:#ee3c23;
   right:0;
   bottom:65px;
   width:100%;
@@ -1163,7 +1171,7 @@ ul.inside .inside-desc{
   z-index:1;
 }
 #volume div{
-  background-color:#a52125;
+  background-color:#ee3c23;
   height:2px;
   width:100%;
   display:block;
@@ -1223,4 +1231,46 @@ ul.inside .inside-desc{
   background-image:url('../images/mute.png');
   background-size:25px 28px;
   transition:all 0.4s ease;
+}
+
+.online-radios{
+  position:absolute;
+  left:0;
+  top:-66px;
+  width:100%;
+  display:none;
+  text-align:center;
+}
+
+.online-radios ul{
+  width:100%;
+  margin:0 auto;
+  padding:0;
+  list-style:none;
+  text-align:center;
+  position:relative;
+  background:#FFF;
+  height:65px;
+  border-top:3px solid red;
+}
+
+.online-radios ul li{
+  display:inline-block;
+  width:200px;
+}
+
+.online-radios ul li a{
+  padding:10px 25px;
+  text-decoration:none;
+  display:block;
+  color:#263238;
+}
+
+.online-radios ul li a:hover{
+  background-color:#ee3c23;
+  color:#FFF;
+}
+.online-radios ul li a strong{
+  display:block;
+  margin-bottom:5px;
 }

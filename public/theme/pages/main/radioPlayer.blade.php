@@ -65,55 +65,33 @@
                     </div>
                 </li>
             </ul>
+
+            <div class="online-radios">
+                <ul>
+                    <li>
+                        <a onClick="setRadio('http://stream.radioclassic.fi:8080/classic','audio_player')">
+                            <strong>Radio Classic</strong>
+                            <span>Finland</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onClick="setRadio('http://tx.sharp-stream.com/icecast.php?i=spectrum2.mp3','audio_player')">
+                            <strong>Radio Sino</strong>
+                            <span>United Kingdom</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onClick="setRadio('http://80.241.252.132:8000/jako.fm','audio_player')">
+                            <strong>Radio Jako</strong>
+                            <span>Georgia</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="radio-stations">
-    <div class="stations-content">
-        <div class="block first">
-            <h3>Radio Classic antenna frequencies:</h3>
-            <ul>
-                <li>Helsinki 92.9 MHz,</li>
-                <li>Hyvinkää 103.4 MHz</li>
-                <li>Hämeenlinna 88.1 MHz</li>
-                <li>Jyväskylä 96.2 MHz</li>
-                <li>Kuopio 94.8 MHz</li>
-                <li>Gulf of 107.4 MHz</li>
-                <li>Oulu 99.6 MHz</li>
-                <li>Porvoo 90.8 MHz</li>
-                <li>Raasepori 104.3 MHz</li>
-                <li>Savonlinna 100.0 MHz</li>
-                <li>Tampere 92.2 MHz</li>
-                <li>Turku 106.8 MHz</li>
-                <li>Valkeakoski 90.3 MHz</li>
-            </ul>
-        </div>
-        <div class="block">
-            <h3>Radio Classic cable frequencies:</h3>
-            <ul>
-                <li>Helsinki, Welho 106.7 MHz</li>
-                <li>Hyvinkää, Mäntsälä, Jokela, Sonera 102.6 MHz</li>
-                <li>Jyväskylä, Elisa 90.3 MHz</li>
-                <li>Jyväskylä, Sonera 96.2 MHz</li>
-                <li>Kuopio, DNA KTV 104.5 MHz</li>
-                <li>Lahti, DNA KTV 94.2 MHz</li>
-                <li>Lohja, DNA KTV 99.4 MHz</li>
-                <li>Oulu, DNA KTV 98.8 MHz</li>
-                <li>Oulu, Sonera 99.6 MHz</li>
-                <li>Porvoo, Sonera 105.5 MHz</li>
-                <li>Raisio, DNA KTV 104.3 MHz</li>
-                <li>Riihimäki, Elisa 93.6 MHz</li>
-                <li>Tampere, Sonera 92.2 MHz</li>
-                <li>Tampere, Tampere Tietoverkko 94.1 MHz</li>
-                <li>Turku, Sonera 101.9 MHz</li>
-                <li>Valkeakoski, Toijala, Pälkäne, Sonera 92.8 MHz</li>
-                <li>Varkaus Pieksämäki, Sonera 96.0 MHz</li>
-                <li>Äänekoski, Sonera 104.5 MHz</li>
-            </ul>
-        </div>
-    </div>
-</div>
 <audio id="audio_player" style="display:none;">
     <source src="http://stream.radioclassic.fi:8080/classic">
 </audio>
