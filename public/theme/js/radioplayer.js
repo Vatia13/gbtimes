@@ -61,8 +61,10 @@ function tuneIcons(val){
 }
 
 
-function setRadio(stream,id){
+function setRadio(stream,id,e){
     var radioID = document.getElementById(id);
+    $('.active').removeClass('active');
+    $(e).addClass('active');
     radioID.getElementsByTagName('source')[0].setAttribute('src',stream);
     radioID.load();
     if(radioID.paused){

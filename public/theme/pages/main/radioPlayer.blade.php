@@ -69,19 +69,19 @@
             <div class="online-radios">
                 <ul>
                     <li>
-                        <a onClick="setRadio('http://stream.radioclassic.fi:8080/classic','audio_player')">
+                        <a onClick="setRadio('http://stream.radioclassic.fi:8080/classic','audio_player',this)" class="active">
                             <strong>Radio Classic</strong>
                             <span>Finland</span>
                         </a>
                     </li>
                     <li>
-                        <a onClick="setRadio('http://tx.sharp-stream.com/icecast.php?i=spectrum2.mp3','audio_player')">
+                        <a onClick="setRadio('http://tx.sharp-stream.com/icecast.php?i=spectrum2.mp3','audio_player',this)">
                             <strong>Radio Sino</strong>
                             <span>United Kingdom</span>
                         </a>
                     </li>
                     <li>
-                        <a onClick="setRadio('http://80.241.252.132:8000/jako.fm','audio_player')">
+                        <a onClick="setRadio('http://80.241.252.132:8000/jako.fm','audio_player',this)">
                             <strong>Radio Jako</strong>
                             <span>Georgia</span>
                         </a>
