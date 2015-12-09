@@ -174,7 +174,9 @@ class WelcomeController extends Controller {
 
 
 
-
+   function loadArticles(Request $request,Article $articles){
+	   return $articles->loadArticles($request->input('cat'),$request->input('type'),$request->input('tag'),$request->input('start'),$request->input('num'));
+   }
 
 }
 

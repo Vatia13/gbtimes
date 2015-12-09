@@ -152,6 +152,10 @@ Route::get('/','WelcomeController@index');
 Route::post('/','WelcomeController@index');
 Route::get('language/get','WelcomeController@language');
 
+/*
+ * AJAX
+ */
+Route::post('ajax/loadArticles','WelcomeController@loadArticles');
 
 /*
  * Articles

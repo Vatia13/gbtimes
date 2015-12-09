@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
-
 class Article extends Model {
 
 	protected $fillable = [
@@ -33,7 +32,7 @@ class Article extends Model {
     protected  $dates = ['published_at'];
 
 
-    protected $request,$from,$to,$data,$slug,$prefix,$cat,$type,$num,$tag;
+    protected $request,$from,$to,$data,$slug,$prefix,$cat,$type,$num,$tag,$start;
     /**
      * @param $query
      */
@@ -384,8 +383,10 @@ class Article extends Model {
 
 
     /**
+     * @param bool|false $cat
      * @param bool|false $type
      * @param int $num
+     * @param bool|false $tag
      * @return mixed
      */
     public function getArticles($cat=false, $type=false, $num=6, $tag = false){
@@ -393,6 +394,21 @@ class Article extends Model {
         return \Cache::rememberForever(App::getLocale().'_article_'.$cat.'_'.$type.'_'.$num.'_'.$tag,function(){
             return Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','img','extra_fields')->published()->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->take($this->num)->get();
         });
+    }
+
+
+    /**
+     * @param bool|false $cat
+     * @param bool|false $type
+     * @param bool|false $tag
+     * @param int $start
+     * @param int $num
+     * @return mixed
+     */
+    public function loadArticles($cat=false, $type=false, $tag = false, $start=0, $num=6){
+        $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag; $this->start=$start;
+        $items = Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','img','extra_fields')->published()->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->skip($this->start)->take($this->num)->get();
+        return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : false;
     }
 
     /**

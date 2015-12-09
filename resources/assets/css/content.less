@@ -217,9 +217,9 @@
   padding:0 !important;
   display:inline-block;
   vertical-align:top;
-  overflow:hidden;
   text-align:left;
   position:relative;
+
 }
 
 .shortcode ul li a{
@@ -243,6 +243,8 @@
 
 .shortcode ul .image{
   width:46%;
+  max-height:150px;
+  overflow:hidden;
 }
 
 .shortcode ul .image img{
@@ -297,4 +299,25 @@
 
 .time-author span{
   margin-right:20px;
+}
+
+#gbtimes_news{
+  position:relative;
+  width:100%;
+}
+
+#gbtimes_news .show_more{
+  margin:30px auto;
+  width:20%;
+  text-align:center;
+}
+
+#gbtimes_news .show_more button{
+  padding:6px 15px;
+  background-color:#e22219;
+  color:#FFF;
+  border:none;
+  outline:none;
+  font-size:16px;
+  cursor:pointer;
 }
