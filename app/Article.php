@@ -226,6 +226,12 @@ class Article extends Model {
             $query->where('type','=',filter_request($this->request,$this->prefix.'type'));
         }
 
+        //filter by status
+        if(!empty(filter_request($this->request,$this->prefix.'status'))){
+            $query->where('status','=',filter_request($this->request,$this->prefix.'status'));
+        }
+
+
         //filter by author
         if(filter_request($this->request,$this->prefix.'author') <> null){
             $query->where('author','like',filter_request($this->request,$this->prefix.'author').'%');
@@ -392,7 +398,7 @@ class Article extends Model {
     public function getArticles($cat=false, $type=false, $num=6, $tag = false){
         $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag;
         return \Cache::rememberForever(App::getLocale().'_article_'.$cat.'_'.$type.'_'.$num.'_'.$tag,function(){
-            return Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','img','extra_fields')->published()->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->take($this->num)->get();
+            return Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','translate_slug','img','extra_fields')->published()->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->take($this->num)->get();
         });
     }
 
@@ -407,12 +413,12 @@ class Article extends Model {
      */
     public function loadArticles($cat=false, $type=false, $tag = false, $start=0, $num=6){
         $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag; $this->start=$start;
-        $items = Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','img','extra_fields')->published()->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->skip($this->start)->take($this->num)->get();
-        return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : false;
+        $items = Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','translate_slug','img','extra_fields')->published()->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->skip($this->start)->take($this->num)->get();
+        return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : 0;
     }
 
+
     /**
-     * @param bool|false $type
      * @param int $num
      * @return mixed
      */
@@ -420,7 +426,7 @@ class Article extends Model {
         $this->num = $num;
 
         return \Cache::rememberForever(App::getLocale().'_partners',function(){
-            return Article::select('id','frontpage_title','head','title','published_at','meta_desc','slug','img')->published()->getone(83)->where('lang','en')->latest()->take($this->num)->get();
+            return Article::select('id','frontpage_title','head','title','published_at','meta_desc','slug','translate_slug','img')->published()->getone(83)->where('lang','en')->latest()->take($this->num)->get();
         });
     }
 
@@ -433,10 +439,35 @@ class Article extends Model {
     public function getPickOfDay($cat=false, $type=false, $num=1, $tag = false){
         $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag;
         return \Cache::rememberForever(App::getLocale().'_article_'.$cat.'_'.$type.'_'.$num.'_'.$tag,function(){
-            return Article::select('id','frontpage_title','head','title','body','published_at','author','meta_desc','slug','img')->published()->where('extra_fields','LIKE','%s:15:"pick_of_the_day";s:1:"1"%')->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->first();
+            return Article::select('id','frontpage_title','head','title','body','published_at','author','meta_desc','slug','translate_slug','img')->published()->where('extra_fields','LIKE','%s:15:"pick_of_the_day";s:1:"1"%')->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->first();
         });
     }
 
+    /**
+     * @param bool|false $type
+     * @param int $num
+     * @return mixed
+     */
+    public function getNewsFromPartners($cat=false, $type=false, $num=1, $tag = false){
+        $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag;
+        return \Cache::rememberForever(App::getLocale().'_article_'.$cat.'_'.$type.'_'.$num.'_'.$tag,function(){
+            return Article::select('id','frontpage_title','head','title','body','published_at','author','meta_desc','slug','translate_slug','img')->published()->where('extra_fields','LIKE','%s:22:"news_from_our_partners";a:1:{s:3:"Yes";s:1:"1";}%')->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->take($this->num)->get();
+        });
+    }
+
+    /**
+     * @param bool|false $cat
+     * @param bool|false $type
+     * @param bool|false $tag
+     * @param int $start
+     * @param int $num
+     * @return mixed
+     */
+    public function loadPartnerArticles($cat=false, $type=false, $tag = false, $start=0, $num=6){
+        $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag; $this->start=$start;
+        $items = Article::select('id','frontpage_title','head','title','body','published_at','author','meta_desc','slug','translate_slug','img')->published()->where('extra_fields','LIKE','%s:22:"news_from_our_partners";a:1:{s:3:"Yes";s:1:"1";}%')->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->skip($this->start)->take($this->num)->get();
+        return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : 0;
+    }
 
 
 }

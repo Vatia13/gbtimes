@@ -11,10 +11,16 @@
             <excludedPath path="/.env" />
             <excludedPath path="/storage" />
             <excludedPath path="/public/js/tinymce" />
-            <excludedPath path="/public/js/bootstrap" />
             <excludedPath path="/public/js/events" />
             <excludedPath path="/bootstrap/cache" />
             <excludedPath path="/config/database.php" />
+            <excludedPath path="/resources/views" />
+            <excludedPath path="/tests" />
+            <excludedPath path="/.bashrc" />
+            <excludedPath path="/.bash_profile" />
+            <excludedPath path="/.bash_logout" />
+            <excludedPath path="/.env.example" />
+            <excludedPath path="/public/js/bootstrap" />
           </excludedPaths>
         </serverdata>
       </paths>

@@ -899,9 +899,14 @@ ul.inside .inside-desc{
   width:100%;
 }
 
-.pick_of_the_day > div{
+.pick_of_the_day > a > div{
   display:inline-block;
   vertical-align:top;
+}
+
+.pick_of_the_day > a{
+  color:#263238;
+  text-decoration:none;
 }
 
 .pick_of_the_day .image{
@@ -922,22 +927,38 @@ ul.inside .inside-desc{
   left:0;
 }
 
+.pick_of_the_day .time-author span:first-child{
+  color:#e22219;
+}
+
 .time-author span{
   margin-right:20px;
 }
 
-#gbtimes_news{
+#gbtimes_news,#partner_news{
   position:relative;
   width:100%;
+  margin-top:20px;
 }
 
-#gbtimes_news .show_more{
+#gbtimes_news > h4,#partner_news > h4{
+  background-color:#e22219;
+  color:#FFF;
+  font-weight:100;
+  max-width:205px;
+  width:100%;
+  position:relative;
+  left:9px;
+  padding:5px 15px;
+}
+
+#gbtimes_news .show_more,#partner_news .show_more{
   margin:30px auto;
   width:20%;
   text-align:center;
 }
 
-#gbtimes_news .show_more button{
+#gbtimes_news .show_more button,#partner_news .show_more button{
   padding:6px 15px;
   background-color:#e22219;
   color:#FFF;
@@ -947,9 +968,49 @@ ul.inside .inside-desc{
   cursor:pointer;
 }
 
+.gifLoader{
+  display:none;
+}
+
+
+
+.cat_tabs div.tabs{
+  padding:10px;
+}
+
+.cat_tabs div.tabs > div{
+  display:inline-block;
+  margin-right:20px;
+  cursor:pointer;
+  padding:6px 15px;
+}
+
+.cat_tabs div.tabs > div:hover{
+  background-color:#e22219;
+  color:#FFF;
+}
+
+.cat_tabs div.tabs > div.active{
+  background-color:#e22219;
+  color:#FFF;
+}
+
+.cat_tabs .tab_content .tab{
+  display:none;
+}
+
+.cat_tabs .tab_content .active{
+  display:block;
+}
+
 .read{
-  margin:5% auto;
+  margin:2% auto;
   width:90%;
+}
+
+.read > h1{
+  color:#263238;
+  padding:10px;
 }
 .footer{
   position:relative;

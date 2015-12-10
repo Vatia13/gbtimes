@@ -84,8 +84,15 @@
 <script src="{{ asset('/js/ajax.js') }}"></script>
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker();
-        $('#datetimepicker2').datetimepicker();
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm'
+        });
+        $('#datetimepicker2').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm'
+        });
+        $('#datetimepicker3').datetimepicker({
+            format: 'DD/MM/YYYY HH:mm'
+        });
     });
 </script>
 

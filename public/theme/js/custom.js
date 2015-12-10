@@ -83,3 +83,11 @@ $('.frequencies .button').click(function(){
     $('.online-radios').toggle('slide',{direction:'down'},300);
 });
 
+/* CATEGORY TABS */
+$('.cat_tabs .tabs div').click(function(){
+    $('.cat_tabs .tabs div').removeClass('active');
+    $(this).addClass('active');
+    var tabNum = $(this).index();
+    $('.tab_content div').removeClass('active');
+    $('.tab_content > div:eq('+tabNum+')').addClass('active');
+});

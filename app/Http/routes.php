@@ -156,7 +156,7 @@ Route::get('language/get','WelcomeController@language');
  * AJAX
  */
 Route::post('ajax/loadArticles','WelcomeController@loadArticles');
-
+Route::post('ajax/loadPartnerArticles','WelcomeController@loadPartnerArticles');
 /*
  * Articles
  */

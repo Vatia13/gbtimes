@@ -178,6 +178,10 @@ class WelcomeController extends Controller {
 	   return $articles->loadArticles($request->input('cat'),$request->input('type'),$request->input('tag'),$request->input('start'),$request->input('num'));
    }
 
+	function loadPartnerArticles(Request $request,Article $articles){
+		return $articles->loadPartnerArticles($request->input('cat'),$request->input('type'),$request->input('tag'),$request->input('start'),$request->input('num'));
+	}
+
 }
 
 

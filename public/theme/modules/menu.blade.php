@@ -283,7 +283,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="{{action('WelcomeController@showPage','chinese-healthcare')}}">Chinese healthcare</a>
+                <li><a href="{{action('WelcomeController@showPage','health')}}">Chinese healthcare</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
