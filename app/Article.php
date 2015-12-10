@@ -398,7 +398,7 @@ class Article extends Model {
     public function getArticles($cat=false, $type=false, $num=6, $tag = false){
         $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag;
         return \Cache::rememberForever(App::getLocale().'_article_'.$cat.'_'.$type.'_'.$num.'_'.$tag,function(){
-            return Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','translate_slug','img','extra_fields')->published()->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->take($this->num)->get();
+            return Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','translate_slug','img','extra_fields')->published()->where('extra_fields','NOT LIKE','%s:22:"news_from_our_partners";a:1:{s:3:"Yes";s:1:"1";}%')->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->take($this->num)->get();
         });
     }
 
@@ -413,7 +413,7 @@ class Article extends Model {
      */
     public function loadArticles($cat=false, $type=false, $tag = false, $start=0, $num=6){
         $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag; $this->start=$start;
-        $items = Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','translate_slug','img','extra_fields')->published()->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->skip($this->start)->take($this->num)->get();
+        $items = Article::select('id','frontpage_title','head','title','published_at','author','meta_desc','slug','translate_slug','img','extra_fields')->published()->where('extra_fields','NOT LIKE','%s:22:"news_from_our_partners";a:1:{s:3:"Yes";s:1:"1";}%')->getcat(55)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->skip($this->start)->take($this->num)->get();
         return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : 0;
     }
 
