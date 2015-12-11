@@ -147,7 +147,7 @@ Route::get('/error/{id}','ErrorsController@show');
 //Route::get('rss/feed','WelcomeController@rss');
 //Route::get('currency/generator','WelcomeController@currency');
 
-//Route::get('search/news','WelcomeController@search');
+Route::get('search/news','WelcomeController@search');
 Route::get('/','WelcomeController@index');
 Route::post('/','WelcomeController@index');
 Route::get('language/get','WelcomeController@language');
@@ -157,6 +157,7 @@ Route::get('language/get','WelcomeController@language');
  */
 Route::post('ajax/loadArticles','WelcomeController@loadArticles');
 Route::post('ajax/loadPartnerArticles','WelcomeController@loadPartnerArticles');
+Route::post('ajax/loadSearchArticles','WelcomeController@loadSearchArticles');
 /*
  * Articles
  */

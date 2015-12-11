@@ -470,4 +470,11 @@ class Article extends Model {
     }
 
 
+    public function loadSearchArticles($tag = false, $start=0, $num=6){
+        $this->num = $num; $this->tag = $tag; $this->start=$start;
+        $items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->published()->getcat(55)->language()->where('title','LIKE','%'.$this->tag.'%')->orWhere('body','LIKE','%'.$this->tag.'%')->latest()->skip($this->start)->take($this->num)->get();
+        return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : 0;
+    }
+
+
 }

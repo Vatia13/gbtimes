@@ -1,6 +1,5 @@
 @if(count($items) > 0)
     @foreach($items as $key=>$item)
-        @if($key < 4)
             <li>
                 <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                     <div class="image">
@@ -18,6 +17,5 @@
                     </div>
                 </a>
             </li>
-        @endif
     @endforeach
 @endif

@@ -182,6 +182,18 @@ class WelcomeController extends Controller {
 		return $articles->loadPartnerArticles($request->input('cat'),$request->input('type'),$request->input('tag'),$request->input('start'),$request->input('num'));
 	}
 
+
+	function search(Request $request){
+		$article = new Article();
+		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->published()->getcat(55)->language()->where('title','LIKE','%'.$request->input('s').'%')->orWhere('body','LIKE','%'.$request->input('s').'%')->latest()->take(get_setting('pagination_num'))->get();
+		$count = Article::where('title','LIKE','%'.$request->input('s').'%')->orWhere('body','LIKE','%'.$request->input('s').'%')->published()->getcat(55)->language()->count();
+		return view('theme.pages.view.search',compact('items','article','count'));
+	}
+
+	function loadSearchArticles(Request $request,Article $articles){
+		return $articles->loadSearchArticles($request->input('tag'),$request->input('start'),$request->input('num'));
+	}
+
 }
 
 

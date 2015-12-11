@@ -10,11 +10,11 @@
                 <div class="logo"><a href="/"></a></div>
                 <div class="search-lang-login">
                     <div class="search">
-                        <form method="post" name="search" action="">
-                            <input type="text" name="s" value="Search..." onClick="inputPlaceholder(this,'Search...')"/>
-                            <input type="submit" name="submit" class="hidden" id="search"/>
+                        {!! Form::open(['method'=>'GET','action'=>'WelcomeController@search']) !!}
+                            {!! Form::text('s','Search...',['onClick'=>'inputPlaceholder(this,"Search...")']) !!}
+                            {!! Form::submit('submit',['class'=>'hidden','id'=>'search']) !!}
                             <a href="javascript:void('')" onClick="clickSubmit('search')"></a>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                     <div class="lang">
                         <form method="post" name="language" action="{{action('LanguageController@cookie')}}" >
