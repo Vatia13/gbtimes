@@ -12,15 +12,15 @@ if ($_SESSION['RF']["verify"] != "RESPONSIVEfilemanager")
 	exit;
 }
 
-if (isset($_SESSION['RF']['language_file']) && file_exists($_SESSION['RF']['language_file']))
-{
-	include $_SESSION['RF']['language_file'];
-}
-else
-{
-	response('Language file is missing!', 500)->send();
-	exit;
-}
+//if (isset($_SESSION['RF']['language_file']) && file_exists($_SESSION['RF']['language_file']))
+//{
+//	include $_SESSION['RF']['language_file'];
+//}
+//else
+//{
+//	response('Language file is missing!', 500)->send();
+//	exit;
+//}
 
 if(isset($_GET['action']))
 {

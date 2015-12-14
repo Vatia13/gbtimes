@@ -77,7 +77,7 @@ class WelcomeController extends Controller {
 		$article = new Article();
 		$this->cat = $cat;
 		$this->sid = $sid;
-		$item = Article::select('title','body','lang','img','meta_key','meta_desc','author')->published()->language()->where(function($query){
+		$item = Article::select('*')->published()->language()->where(function($query){
 			$query->where('slug',$this->cat.'/'.$this->sid)->orWhere('slug',$this->sid)->orWhere('translate_slug',$this->sid)->orWhere('id','=',$this->sid);
 		})->getarticlecat()->first();
 
@@ -92,7 +92,7 @@ class WelcomeController extends Controller {
 	public function showPage($slug){
 		$article = new Article();
 		$this->slug = $slug;
-		$item = Article::select('title','body','lang','img','meta_key','meta_desc','author','slug','translate_slug')->language()->where(function($query){
+		$item = Article::select('*')->language()->where(function($query){
 			$query->where('slug',$this->slug)->orWhere('translate_slug',$this->slug);
 		})->first();
 
