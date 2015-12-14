@@ -89,17 +89,23 @@
   display:inline-block;
   position:relative;
   margin:0 16px;
+  height:260px;
+  vertical-align:top;
 }
 
-
+.horizontal-items-4-image{
+  position:relative;
+  overflow:hidden;
+  height:260px;
+}
 .horizontal-items-4-image img{
-  width:100%;
+  height:100%;
 }
 
 .horizontal-items-4-title{
   position:absolute;
   left:0;
-  bottom:2px;
+  bottom:0;
   z-index:1;
   padding:10px;
   background-color:#FFF;
@@ -121,6 +127,7 @@
 .horizontal-items-4 ul li h4 a{
   font-weight:100;
   background-color:#e22219;
+  z-index:1;
   text-decoration:none;
   color:#FFF;
   text-align:center;

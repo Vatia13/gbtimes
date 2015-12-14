@@ -41,7 +41,7 @@ dropDownOnHover($('.active-language'),$('.lang ul'),200);
 
 slideUpOnHover($('.horizontal-items-3-place ul li'),'horizontal-items-3-title',400);
 slideUpOnHover($('.horizontal-items-4-place ul li'),'horizontal-items-4-title',400);
-
+slideUpOnHover($('.read .news_side .main_image'),'image_title',200);
 /*
 var partners = $('.partners .partners-place div ul li').length;
 if(partners > 0){

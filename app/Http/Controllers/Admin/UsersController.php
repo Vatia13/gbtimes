@@ -109,7 +109,7 @@ class UsersController extends Controller
     public function edit(Role $role,$id)
     {
         $roles = array();
-        $role = (Auth::user()->hasRole(['Super Admin','Admin'])) ? $role->nouser(['Super Admin','Guest'])->select('id','name')->get() : '';
+        $role = (Auth::user()->hasRole(['Super Admin','Administrator'])) ? $role->nouser(['Super Admin','Guest'])->select('id','name')->get() : '';
         foreach($role as $r){
             $roles[$r['id']] = $r['name'];
         }

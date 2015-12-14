@@ -1,5 +1,4 @@
 @if (Auth::guest() ||  Auth::user()->hasRole('User'))
-
 @else
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -18,7 +17,9 @@
                     <li><a href="{{ url('/') }}">{{trans('all.visit_website')}}</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/is-admin/home') }}">{{trans('all.administration')}}</a></li>
+                    <li>
+                        <a href="{{ action('Admin\ArticlesController@index') }}">{{trans('all.administration')}}</a>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
