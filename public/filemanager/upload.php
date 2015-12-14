@@ -5,7 +5,6 @@ $wMark = new Watermark;
 //TODO switch to array
 extract($config, EXTR_OVERWRITE);
 
-
 include 'include/utils.php';
 
 if ($_SESSION['RF']["verify"] != "RESPONSIVEfilemanager")
@@ -86,8 +85,6 @@ if ( ! empty($_FILES))
 		else $is_img=FALSE;
 
 		// upload
-		print_r($tempFile);
-		die();
 		move_uploaded_file($tempFile,$targetFile);
 		chmod($targetFile, 0755);
 
@@ -158,7 +155,7 @@ if ( ! empty($_FILES))
 				}
 			}
            // watermark_image($targetFile,'new_image');
-            if($_GET['wm'] == true){
+            if(isset($_GET['wm']) == true){
                 $wMark->create($targetFile,$config['wm']);
                 $wMark->font = $config['wm_font_url'];
                 $wMark->font_size = 15;

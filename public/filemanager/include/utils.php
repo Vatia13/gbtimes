@@ -25,68 +25,68 @@ if ( ! function_exists('response'))
 		return new $responseClass($content, $statusCode, $headers);
 	}
 }
-
-if ( ! function_exists('trans'))
-{
-	// language
-	if ( ! isset($_SESSION['RF']['language'])
-		|| file_exists($_SESSION['RF']['language_file']) === false
-		|| ! is_readable($_SESSION['RF']['language_file'])
-	)
-	{
-		$lang = $default_language;
-
-		if (isset($_GET['lang']) && $_GET['lang'] != 'undefined' && $_GET['lang'] != '')
-		{
-			$lang = fix_get_params($_GET['lang']);
-			$lang = trim($lang);
-		}
-
-		$language_file = dirname(dirname(__FILE__)) . '/lang/' . $default_language . '.php';
-		if ($lang != $default_language)
-		{
-			$path_parts = pathinfo($lang);
-
-			if (is_readable(dirname(dirname(__FILE__)) . '/lang/' . $path_parts['basename'] . '.php'))
-			{
-				$language_file = dirname(dirname(__FILE__)) . '/lang/' . $path_parts['basename'] . '.php';
-			}
-			else
-			{
-				echo "<script>console.log('The " . $lang . " language file is not readable! Falling back...');</script>";
-			}
-		}
-
-		// add lang file to session for easy include
-		$_SESSION['RF']['language'] = $lang;
-		$_SESSION['RF']['language_file'] = $language_file;
-	}
-	else
-	{
-		$lang = $_SESSION['RF']['language'];
-		$language_file = $_SESSION['RF']['language_file'];
-	}
-
-	$lang_vars = include $language_file;
-
-	if ( ! is_array($lang_vars))
-	{
-		$lang_vars = array();
-	}
-	/**
-	 * Translate language variable
-	 *
-	 * @param $var string name
-	 *
-	 * @return string translated variable
-	 */
-	function trans($var)
-	{
-		global $lang_vars;
-
-		return (array_key_exists($var, $lang_vars)) ? $lang_vars[ $var ] : $var;
-	}
-}
+//
+//if ( ! function_exists('trans'))
+//{
+//	// language
+//	if ( ! isset($_SESSION['RF']['language'])
+//		|| file_exists($_SESSION['RF']['language_file']) === false
+//		|| ! is_readable($_SESSION['RF']['language_file'])
+//	)
+//	{
+//		$lang = $default_language;
+//
+//		if (isset($_GET['lang']) && $_GET['lang'] != 'undefined' && $_GET['lang'] != '')
+//		{
+//			$lang = fix_get_params($_GET['lang']);
+//			$lang = trim($lang);
+//		}
+//
+//		$language_file = dirname(dirname(__FILE__)) . '/lang/' . $default_language . '.php';
+//		if ($lang != $default_language)
+//		{
+//			$path_parts = pathinfo($lang);
+//
+//			if (is_readable(dirname(dirname(__FILE__)) . '/lang/' . $path_parts['basename'] . '.php'))
+//			{
+//				$language_file = dirname(dirname(__FILE__)) . '/lang/' . $path_parts['basename'] . '.php';
+//			}
+//			else
+//			{
+//				echo "<script>console.log('The " . $lang . " language file is not readable! Falling back...');</script>";
+//			}
+//		}
+//
+//		// add lang file to session for easy include
+//		$_SESSION['RF']['language'] = $lang;
+//		$_SESSION['RF']['language_file'] = $language_file;
+//	}
+//	else
+//	{
+//		$lang = $_SESSION['RF']['language'];
+//		$language_file = $_SESSION['RF']['language_file'];
+//	}
+//
+//	$lang_vars = include $language_file;
+//
+//	if ( ! is_array($lang_vars))
+//	{
+//		$lang_vars = array();
+//	}
+//	/**
+//	 * Translate language variable
+//	 *
+//	 * @param $var string name
+//	 *
+//	 * @return string translated variable
+//	 */
+//	function trans($var)
+//	{
+//		global $lang_vars;
+//
+//		return (array_key_exists($var, $lang_vars)) ? $lang_vars[ $var ] : $var;
+//	}
+//}
 
 /**
  * Delete directory

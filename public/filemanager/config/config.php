@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -52,17 +51,17 @@ $kernel = $app->make('Illuminate\Contracts\Http\Kernel');
 $response = $kernel->handle(
 	$request = Illuminate\Http\Request::capture()
 );
-
-if(Auth::check() == true){
-	if(Auth::user()->hasRole(['User','Guest'])){
+if(Auth::check()){
+	if(Auth::user()->hasRole('User','Guest')){
 		die('Access Denied!');
 	}
 }else{
 	die('Access Denied!');
 }
 
-
-
+session_start();
+mb_internal_encoding('UTF-8');
+date_default_timezone_set('Asia/Tbilisi');
 
 /*
 |--------------------------------------------------------------------------
@@ -188,7 +187,7 @@ $config = array(
 	| default language file name
 	|--------------------------------------------------------------------------
 	*/
-	'default_language' => "en_EN",
+	'default_language' => \App::getLocale(),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -426,4 +425,3 @@ return array_merge(
 		),
 	)
 );
-

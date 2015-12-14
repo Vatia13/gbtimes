@@ -88,7 +88,7 @@ if(isset($_GET['action']))
 			$image_data = file_get_contents($_POST['url']);
 			if ($image_data === false)
 			{
-				response(trans('Aviary_No_Save'), 400)->send();
+				response(trans('fm.Aviary_No_Save'), 400)->send();
 				exit;
 			}
 			$fp = fopen($current_path . $_POST['path'] . $_POST['name'], "w");
@@ -164,7 +164,7 @@ if(isset($_GET['action']))
 					}
 					else
 					{
-						response(trans('Zip_No_Extract'), 500)->send();
+						response(trans('fm.Zip_No_Extract'), 500)->send();
 						exit;
 					}
 
@@ -187,7 +187,7 @@ if(isset($_GET['action']))
 					break;
 
 				default:
-					response(trans('Zip_Invalid'), 400)->send();
+					response(trans('fm.Zip_Invalid'), 400)->send();
 					exit;
 			}
 			break;
@@ -318,7 +318,7 @@ if(isset($_GET['action']))
 				// can't copy/cut dirs
 				if ($copy_cut_dirs === false)
 				{
-					response(sprintf(trans('Copy_Cut_Not_Allowed'), ($_POST['sub_action'] == 'copy' ? lcfirst(trans('Copy')) : lcfirst(trans('Cut'))), trans('Folders')), 403)->send();
+					response(sprintf(trans('fm.Copy_Cut_Not_Allowed'), ($_POST['sub_action'] == 'copy' ? lcfirst(trans('fm.Copy')) : lcfirst(trans('fm.Cut'))), trans('fm.Folders')), 403)->send();
 					exit;
 				}
 
@@ -327,7 +327,7 @@ if(isset($_GET['action']))
 				{
 					if (($copy_cut_max_size * 1024 * 1024) < foldersize($path))
 					{
-						response(sprintf(trans('Copy_Cut_Size_Limit'), ($_POST['sub_action'] == 'copy' ? lcfirst(trans('Copy')) : lcfirst(trans('Cut'))), $copy_cut_max_size), 400)->send();
+						response(sprintf(trans('fm.Copy_Cut_Size_Limit'), ($_POST['sub_action'] == 'copy' ? lcfirst(trans('fm.Copy')) : lcfirst(trans('fm.Cut'))), $copy_cut_max_size), 400)->send();
 						exit;
 					}
 				}
@@ -337,7 +337,7 @@ if(isset($_GET['action']))
 				{
 					if ($copy_cut_max_count < filescount($path))
 					{
-						response(sprintf(trans('Copy_Cut_Count_Limit'), ($_POST['sub_action'] == 'copy' ? lcfirst(trans('Copy')) : lcfirst(trans('Cut'))), $copy_cut_max_count), 400)->send();
+						response(sprintf(trans('fm.Copy_Cut_Count_Limit'), ($_POST['sub_action'] == 'copy' ? lcfirst(trans('fm.Copy')) : lcfirst(trans('fm.Cut'))), $copy_cut_max_count), 400)->send();
 						exit;
 					}
 				}
@@ -347,7 +347,7 @@ if(isset($_GET['action']))
 				// can't copy/cut files
 				if ($copy_cut_files === false)
 				{
-					response(sprintf(trans('Copy_Cut_Not_Allowed'), ($_POST['sub_action'] == 'copy' ? lcfirst(trans('Copy')) : lcfirst(trans('Cut'))), trans('Files')), 403)->send();
+					response(sprintf(trans('fm.Copy_Cut_Not_Allowed'), ($_POST['sub_action'] == 'copy' ? lcfirst(trans('fm.Copy')) : lcfirst(trans('fm.Cut'))), trans('fm.Files')), 403)->send();
 					exit;
 				}
 			}
@@ -367,7 +367,7 @@ if(isset($_GET['action']))
 				|| (is_file($path) && $chmod_files === false)
 				|| (is_function_callable("chmod") === false) )
 			{
-				response(sprintf(trans('File_Permission_Not_Allowed'), (is_dir($path) ? lcfirst(trans('Folders')) : lcfirst(trans('Files'))), 403), 400)->send();
+				response(sprintf(trans('fm.File_Permission_Not_Allowed'), (is_dir($path) ? lcfirst(trans('fm.Folders')) : lcfirst(trans('fm.Files'))), 403), 400)->send();
 				exit;
 			}
 			else
@@ -390,19 +390,19 @@ if(isset($_GET['action']))
 						</thead>
 						<tbody>
 							<tr>
-								<td>'.trans('User').'</td>
+								<td>'.trans('fm.User').'</td>
 								<td><input id="u_4" type="checkbox" data-value="4" data-group="user" onChange="chmod_logic();"'.(chmod_logic_helper($perm_user, 4) ? " checked" : "").'></td>
 								<td><input id="u_2" type="checkbox" data-value="2" data-group="user" onChange="chmod_logic();"'.(chmod_logic_helper($perm_user, 2) ? " checked" : "").'></td>
 								<td><input id="u_1" type="checkbox" data-value="1" data-group="user" onChange="chmod_logic();"'.(chmod_logic_helper($perm_user, 1) ? " checked" : "").'></td>
 							</tr>
 							<tr>
-								<td>'.trans('Group').'</td>
+								<td>'.trans('fm.Group').'</td>
 								<td><input id="g_4" type="checkbox" data-value="4" data-group="group" onChange="chmod_logic();"'.(chmod_logic_helper($perm_group, 4) ? " checked" : "").'></td>
 								<td><input id="g_2" type="checkbox" data-value="2" data-group="group" onChange="chmod_logic();"'.(chmod_logic_helper($perm_group, 2) ? " checked" : "").'></td>
 								<td><input id="g_1" type="checkbox" data-value="1" data-group="group" onChange="chmod_logic();"'.(chmod_logic_helper($perm_group, 1) ? " checked" : "").'></td>
 							</tr>
 							<tr>
-								<td>'.trans('All').'</td>
+								<td>'.trans('fm.All').'</td>
 								<td><input id="a_4" type="checkbox" data-value="4" data-group="all" onChange="chmod_logic();"'.(chmod_logic_helper($perm_all, 4) ? " checked" : "").'></td>
 								<td><input id="a_2" type="checkbox" data-value="2" data-group="all" onChange="chmod_logic();"'.(chmod_logic_helper($perm_all, 2) ? " checked" : "").'></td>
 								<td><input id="a_1" type="checkbox" data-value="1" data-group="all" onChange="chmod_logic();"'.(chmod_logic_helper($perm_all, 1) ? " checked" : "").'></td>
@@ -416,12 +416,12 @@ if(isset($_GET['action']))
 
 				if (is_dir($path))
 				{
-					$ret .= '<div>'.trans('File_Permission_Recursive').'
+					$ret .= '<div>'.trans('fm.File_Permission_Recursive').'
 							<ul>
-								<li><input value="none" name="apply_recursive" type="radio" checked> '.trans('No').'</li>
-								<li><input value="files" name="apply_recursive" type="radio"> '.trans('Files').'</li>
-								<li><input value="folders" name="apply_recursive" type="radio"> '.trans('Folders').'</li>
-								<li><input value="both" name="apply_recursive" type="radio"> '.trans('Files').' & '.trans('Folders').'</li>
+								<li><input value="none" name="apply_recursive" type="radio" checked> '.trans('fm.No').'</li>
+								<li><input value="files" name="apply_recursive" type="radio"> '.trans('fm.Files').'</li>
+								<li><input value="folders" name="apply_recursive" type="radio"> '.trans('fm.Folders').'</li>
+								<li><input value="both" name="apply_recursive" type="radio"> '.trans('fm.Files').' & '.trans('fm.Folders').'</li>
 							</ul>
 							</div>';
 				}
@@ -435,14 +435,14 @@ if(isset($_GET['action']))
 		case 'get_lang':
 			if ( ! file_exists('lang/languages.php'))
 			{
-				response(trans('Lang_Not_Found'), 404)->send();
+				response(trans('fm.Lang_Not_Found'), 404)->send();
 				exit;
 			}
 
 			$languages = include 'lang/languages.php';
 			if ( ! isset($languages) || ! is_array($languages))
 			{
-				response(trans('Lang_Not_Found'), 404)->send();
+				response(trans('fm.Lang_Not_Found'), 404)->send();
 				exit;
 			}
 
@@ -464,7 +464,7 @@ if(isset($_GET['action']))
 
 			if ( ! file_exists('lang/' . $choosen_lang . '.php'))
 			{
-				response(trans('Lang_Not_Found'), 404)->send();
+				response(trans('fm.Lang_Not_Found'), 404)->send();
 				exit;
 			}
 
@@ -487,7 +487,7 @@ if(isset($_GET['action']))
 
 			if ( ! file_exists($selected_file))
 			{
-				response(trans('File_Not_Found'), 404)->send();
+				response(trans('fm.File_Not_Found'), 404)->send();
 				exit;
 			}
 
@@ -518,7 +518,7 @@ if(isset($_GET['action']))
 				|| ! is_readable($selected_file)
 			)
 			{
-				response(sprintf(trans('File_Open_Edit_Not_Allowed'), ($sub_action == 'preview' ? strtolower(trans('Open')) : strtolower(trans('Edit')))), 403)->send();
+				response(sprintf(trans('fm.File_Open_Edit_Not_Allowed'), ($sub_action == 'preview' ? strtolower(trans('fm.Open')) : strtolower(trans('fm.Edit')))), 403)->send();
 				exit;
 			}
 
