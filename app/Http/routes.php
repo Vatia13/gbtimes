@@ -151,7 +151,7 @@ Route::get('search/news','WelcomeController@search');
 Route::get('/','WelcomeController@index');
 Route::post('/','WelcomeController@index');
 Route::get('language/get','WelcomeController@language');
-
+Route::get('tags/{slug}','WelcomeController@showTags');
 /*
  * AJAX
  */
@@ -169,6 +169,7 @@ Route::post('is-admin/articles/filter','Admin\ArticlesController@filter');
 Route::get('{cat}/{sid}','WelcomeController@showArticle');
 Route::get('{slug}','WelcomeController@showPage');
 Route::get('{cat}','WelcomeController@showCat');
+
 
 Route::put('is-admin/articles/active/{id}','Admin\ArticlesController@active');
 Route::post('is-admin/articles/event','Admin\ArticlesController@event');

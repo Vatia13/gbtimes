@@ -131,6 +131,7 @@ class AuthController extends Controller {
             $user = $this->create($request->all());
             if($user->id > 0){
                 $this->addRole(['user_id'=>$user->id,'role_id'=>3,'default'=>3]);
+                $this->addRole(['user_id'=>$user->id,'role_id'=>3,'default'=>3]);
                 $this->auth->login($user);
                 $success = array('success'=>trans('all.success_login'));
                 return $success;

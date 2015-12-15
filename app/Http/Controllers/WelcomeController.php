@@ -79,7 +79,7 @@ class WelcomeController extends Controller {
 		$this->sid = $sid;
 		$item = Article::select('*')->published()->language()->where(function($query){
 			$query->where('slug',$this->cat.'/'.$this->sid)->orWhere('slug',$this->sid)->orWhere('translate_slug',$this->sid)->orWhere('id','=',$this->sid);
-		})->getarticlecat()->first();
+		})->first();
 
 		//DB::table('articles')->where('id',$sid)->orWhere('slug',$sid)->increment('view',1);
 	     return view('theme.pages.view.show',compact('item','article'));
@@ -95,7 +95,6 @@ class WelcomeController extends Controller {
 		$item = Article::select('*')->language()->where(function($query){
 			$query->where('slug',$this->slug)->orWhere('translate_slug',$this->slug);
 		})->first();
-
 
 		//DB::table('articles')->where('id',$sid)->orWhere('slug',$sid)->increment('view',1);
 		return view('theme.pages.view.show',compact('item','article'));
@@ -193,6 +192,13 @@ class WelcomeController extends Controller {
 	function loadSearchArticles(Request $request,Article $articles){
 		return $articles->loadSearchArticles($request->input('tag'),$request->input('start'),$request->input('num'));
 	}
+
+	function showTags($slug){
+		$article = new Article();
+		return view('theme.pages.view.tags',compact('slug','article'));
+	}
+
+
 
 }
 

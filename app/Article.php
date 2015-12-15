@@ -145,7 +145,7 @@ class Article extends Model {
     public function scopeArticleTag($query,$data){
         $this->data = $data;
         if($this->data == true):
-            $query->where('meta_key','LIKE','%'.$this->data.'%');
+            $query->where('meta_key','LIKE','%'.str_replace('-',' ',$this->data).'%');
         endif;
     }
 
@@ -469,12 +469,18 @@ class Article extends Model {
         return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : 0;
     }
 
-
     public function loadSearchArticles($tag = false, $start=0, $num=6){
         $this->num = $num; $this->tag = $tag; $this->start=$start;
-        $items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->published()->getcat(55)->language()->where('title','LIKE','%'.$this->tag.'%')->orWhere('body','LIKE','%'.$this->tag.'%')->latest()->skip($this->start)->take($this->num)->get();
+        $items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang','frontpage_title')->published()->getcat(55)->language()->where('title','LIKE','%'.$this->tag.'%')->orWhere('body','LIKE','%'.$this->tag.'%')->latest()->skip($this->start)->take($this->num)->get();
         return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : 0;
     }
 
+    public function getAuthorArticles($author,$num){
+        return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang')->published()->language()->where('author',$author)->take($num)->get();
+    }
+
+    public function getSimilarArticles($cat,$num,$author=''){
+        return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang')->published()->language()->orderall($cat)->where('author','<>',$author)->take($num)->get();
+    }
 
 }

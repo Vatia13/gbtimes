@@ -683,4 +683,9 @@ if(!function_exists('checkItem')){
 }
 
 
+function generateBrightcoveVideo($id){
+  $content = @file_get_contents('http://api.brightcove.com/services/library?command=find_video_by_id&video_id='.$id.'&video_fields=thumbnailURL,FLVURL&token=_FkpjudFGAdmchAxwVgh1XKZ88KPeC9itvIsTpEJHTrqAKOYA1P1Sg..');
+  return json_decode($content,true);
+}
+
 ?>

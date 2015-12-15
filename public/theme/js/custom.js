@@ -91,3 +91,6 @@ $('.cat_tabs .tabs div').click(function(){
     $('.tab_content div').removeClass('active');
     $('.tab_content > div:eq('+tabNum+')').addClass('active');
 });
+
+
+$('.video_player iframe').css({'width':'100%','height':'360px'});

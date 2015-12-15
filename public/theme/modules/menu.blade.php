@@ -99,7 +99,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{action('WelcomeController@showPage','education')}}">Education</a>
+                    <a href="{{action('WelcomeController@showTags','education')}}">Study Chinese</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
@@ -191,7 +191,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="{{action('WelcomeController@showPage','travel')}}">Travel to China</a>
+                <li><a href="{{action('WelcomeController@showTags','travel')}}">All around China</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
@@ -283,7 +283,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="{{action('WelcomeController@showPage','health')}}">Chinese healthcare</a>
+                <li><a href="{{action('WelcomeController@showTags','health')}}">Chinese healthcare</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
@@ -375,7 +375,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="{{action('WelcomeController@showPage','china-sport')}}">China sport</a>
+                <li><a href="{{action('WelcomeController@showTags','sport')}}">Easy China</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>

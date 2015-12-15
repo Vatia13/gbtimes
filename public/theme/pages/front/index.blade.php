@@ -72,7 +72,7 @@
                 @foreach($article->getarticles('china',false,6) as $key=>$item)
                     @if($key < 3)
                     <li>
-                        <a href="#">
+                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                             <div class="horizontal-items-3-image"><img src="{{checkImage($item->img)}}"/></div>
                             <div class="horizontal-items-3-title">
                                 <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
@@ -98,7 +98,7 @@
                 @foreach($article->getarticles('travel',false,6) as $key=>$item)
                     @if($key < 3)
                         <li>
-                            <a href="#">
+                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                                 <div class="horizontal-items-3-image"><img src="{{checkImage($item->img)}}"/></div>
                                 <div class="horizontal-items-3-title">
                                     <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>

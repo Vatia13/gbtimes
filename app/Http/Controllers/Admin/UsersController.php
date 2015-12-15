@@ -57,7 +57,7 @@ class UsersController extends Controller
     public function create(Role $role)
     {
         $roles = array();
-        $role = (Auth::user()->hasRole(['Super Admin','Admin'])) ? $role->nouser(['Super Admin','Guest'])->select('id','name')->get()->toArray() : '';
+        $role = (Auth::user()->hasRole(['Super Admin','Administrator'])) ? $role->nouser(['Super Admin','Guest'])->select('id','name')->get()->toArray() : '';
         foreach($role as $r){
             $roles[$r['id']] = $r['name'];
         }

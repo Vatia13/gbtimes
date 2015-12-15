@@ -15,7 +15,7 @@
                     </div>
                     <div class="info">
                         <div class="title"><h4>{{recordTitle($items->getPickOfDay(false)->frontpage_title,$items->getPickOfDay(false)->title)}}</h4></div>
-                        <div class="details">{{recordDesc($items->getPickOfDay(false)->body,$items->getPickOfDay(false)->head,150)}}</div>
+                        <div class="details">{{recordDesc($items->getPickOfDay(false)->body,$items->getPickOfDay(false)->head,100)}}</div>
                         <div class="time-author">
                             <span>{{$items->getPickOfDay(false)->author}}</span> <span>{{date('m.d.Y',strtotime($items->getPickOfDay(false)->published_at))}}</span>
                         </div>

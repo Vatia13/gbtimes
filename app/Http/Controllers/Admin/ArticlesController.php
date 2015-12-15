@@ -78,7 +78,7 @@ class ArticlesController extends Controller {
 	 */
 	public function create(User $user)
 	{
-        $users = $user->getUsers(['Author','3rd party content provider'],'name|asc');
+        $users = $user->getUsers(['Author','3rd party content provider','Administrator','Publisher','Frontpage editor','Super Admin'],'name|asc');
 
         $user_names = array();
         $i=0;foreach($users as $user){
@@ -89,7 +89,7 @@ class ArticlesController extends Controller {
         }
 
         $users = array_name($user_names);
-        $auth = (Auth::user()->hasRole('Author')) ? Auth::user()->name : null;
+        $auth = (Auth::user()->hasRole('Author','')) ? Auth::user()->name : null;
 
         $image_gallery = [['img'=>null,'title'=>null,'alt'=>null,'source'=>null,'author'=>null,'meta_desc'=>null,'meta_key'=>null]];
         if(count(Session::get('_old_input')['image']) > 0){
@@ -148,8 +148,9 @@ class ArticlesController extends Controller {
     {
         $item = Article::findOrFail($id);
 
-        $users = $users->getUsers(['Author','3rd party content provider'],'name|asc');
+        $users = $users->getUsers(['Author','3rd party content provider','Administrator','Publisher','Frontpage editor','Super Admin'],'name|asc');
         //$users = array_pluck($users,'id');
+
         $user_names = array();
         $i=0;
         foreach($users as $user){
@@ -158,6 +159,7 @@ class ArticlesController extends Controller {
             }
             $i++;
         }
+
         $users = array_name($user_names);
         $child = $item->categories()->select('cat_id')->first();
         $images = $item->images()->get();
@@ -398,6 +400,7 @@ class ArticlesController extends Controller {
         return $output;
 
     }
+
 
 
 

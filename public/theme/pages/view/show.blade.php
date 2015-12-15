@@ -3,7 +3,7 @@
 @section('content')
     <div class="content">
         @if($item)
-            <div class="read">
+            <div class="read" @if($item->categories[0]->id <> 1) style="width:98% !important" @endif>
                 <?php $string_tags = '';?>
                 @if($item->categories[0]->id == 1)
                     <h1>{{$item->title}}</h1>
@@ -18,10 +18,11 @@
                                 @foreach($item->images as $key=>$img)
                                     @if($key <= 0)
                                         <div class="main_image">
-                                            <a href="{{checkImage($img->img)}}" rel="prettyPhoto[view]"><img src="{{checkImage($img->img)}}"  title="{{checkItem($img->title,$img->alt)}}" alt="{{checkItem($img->alt,$img->title)}}"/></a>
-                                            @if(isset($img->title))
+                                            <a href="{{checkImage($img->img)}}" rel="prettyPhoto[view]" title="{{checkItem($img->title,$img->alt)}}"><span class="zoom"></span><img src="{{checkImage($img->img)}}" alt="{{checkItem($img->alt,$img->title)}}"/></a>
+                                            @if(!empty($img->title))
                                                 <div class="image_title"><span>{{$img->title}}</span></div>
                                             @endif
+
                                         </div>
                                     @endif
                                 @endforeach
@@ -29,25 +30,35 @@
                                     <div class="other_images">
                                         <ul>
                                             @foreach($item->images as $key=>$img)
-                                                <li><a href="{{checkImage($img->img)}}" rel="prettyPhoto[view]"><img src="{{checkImage($img->img)}}"  title="{{checkItem($img->title,$img->alt)}}" alt="{{checkItem($img->alt,$img->title)}}"/></a></li>
+                                                <li><a @if($key <> 0)href="{{checkImage($img->img)}}"  rel="prettyPhoto[view]"@endif  title="{{checkItem($img->title,$img->alt)}}"><img src="{{checkImage($img->img)}}" alt="{{checkItem($img->alt,$img->title)}}"/></a></li>
                                                 <?php  $string_tags .= ','.$img->meta_key; ?>
                                             @endforeach
                                         </ul>
                                         <div class="fix"></div>
                                     </div>
-
+                                @endif
                                     <link rel="Stylesheet" href="{{asset('/prettyPhoto/prettyPhoto.css')}}"/>
                                     <script src="{{asset('/prettyPhoto/jquery.prettyPhoto.js')}}"></script>
-                                        <script>
-                                            $(document).ready(function(){
-                                                $('a[rel="prettyPhoto[view]"]').prettyPhoto({
-                                                    social_tools:false
-                                                });
+                                    <script>
+                                        $(document).ready(function(){
+                                            $('a[rel="prettyPhoto[view]"]').prettyPhoto({
+                                                social_tools:false
                                             });
-                                        </script>
-                                @endif
+                                        });
+                                    </script>
                             </div>
                         @endif
+                        <div class="fix"></div>
+                        <div class="video_player">
+                        @if(validate_extra_field(get_fields($item->extra_fields),'brightcove'))
+                                <object type="application/x-shockwave-flash" data="http://c.brightcove.com/services/viewer/federated_f9?&amp;flashID=myExperience1&amp;movie=http%3A%2F%2Fc.brightcove.com%2Fservices%2Fviewer%2Ffederated_f9%3FisVid%3D1%26isUI%3D1&amp;bgcolor=%23ffffff&amp;base=http%3A%2F%2Fadmin.brightcove.com&amp;seamlesstabbing=false&amp;allowFullScreen=true&amp;swLiveConnect=true&amp;htmlFallback=true&amp;allowScriptAccess=always&amp;isVid=true&amp;isUI=true&amp;dynamicStreaming=true&amp;includeAPI=true&amp;templateLoadHandler=bcTemplateLoaded&amp;templateReadyHandler=brightcove%5B%22templateReadyHandlermyExperience1%22%5D&amp;playerID=1620668361001&amp;playerKey=AQ~~%2CAAABeSq2SWE~%2CaL3Zv53GNup7iLNCSLuWPKgk1OvfRkD0&amp;%40videoPlayer={{validate_extra_field(get_fields($item->extra_fields),'brightcove')}}&amp;autoStart=&amp;debuggerID=&amp;originalTemplateReadyHandler=bcTemplateReady&amp;startTime=1450171733744" id="myExperience1" width="100%" height="360" class="BrightcoveExperience" seamlesstabbing="undefined"><param name="allowScriptAccess" value="always"><param name="allowFullScreen" value="true"><param name="seamlessTabbing" value="false"><param name="swliveconnect" value="true"><param name="wmode" value="window"><param name="quality" value="high"><param name="bgcolor" value="#ffffff"></object>
+                        @endif
+                        <div class="fix"></div>
+                        @if(validate_extra_field(get_fields($item->extra_fields),'embed_video'))
+                            {!! validate_extra_field(get_fields($item->extra_fields),'embed_video') !!}
+                        @endif
+                        </div>
+                        <div class="fix"></div>
                         <div class="read_content">
                             {!! do_shortcode($item->body,$article,$item->slug) !!}
                         </div>
@@ -79,12 +90,69 @@
                                 </ul>
                             </div>
                         </div>
+                        <div class="comments">
+                            Comments
+                        </div>
                     </div>
                     <div class="similar_side">
-                        Hello
+                            <?php $author_articles = $article->getAuthorArticles($item->author,3); ?>
+                            <div class="news_list">
+                                @if(count($author_articles) > 0)
+                                    <a href="#">More by author</a>
+                                    <ul>
+                                        @foreach($author_articles as $key=>$it)
+                                            <li>
+                                                <a href="{{action('WelcomeController@showArticle',checkItem($it->translate_slug,$it->slug))}}">
+                                                    <div class="image">
+                                                        <img src="{{checkImage($it->img)}}"/>
+                                                    </div>
+                                                    <div class="desc">
+                                                        <h4>{{recordTitle($it->frontpage_title,$it->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($it->head,$it->body,20)}}
+                                            </span>
+                                                        <br>
+                                                    </div>
+                                                    <div class="time-author">
+                                                        <span>{{$it->author}}</span> <span>{{date('m.d.Y',strtotime($it->published_at))}}</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+
+                                <?php $cats = array_pluck($item->categories->toArray(),'id');  unset($cats[0]);?>
+                                <?php $similar_articles = $article->getSimilarArticles($cats,3,$item->author); ?>
+                                <div class="news_list">
+                                    @if(count($similar_articles) > 0)
+                                        <a href="#">Similar stories</a>
+                                        <ul>
+                                            @foreach($similar_articles as $key=>$it)
+                                                <li>
+                                                    <a href="{{action('WelcomeController@showArticle',checkItem($it->translate_slug,$it->slug))}}">
+                                                        <div class="image">
+                                                            <img src="{{checkImage($it->img)}}"/>
+                                                        </div>
+                                                        <div class="desc">
+                                                            <h4>{{recordTitle($it->frontpage_title,$it->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($it->head,$it->body,20)}}
+                                            </span>
+                                                            <br>
+                                                        </div>
+                                                        <div class="time-author">
+                                                            <span>{{$it->author}}</span> <span>{{date('m.d.Y',strtotime($it->published_at))}}</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
                     </div>
-                    <div class="comments">
-                    </div>
+
                 @endif
             </div>
         @else
