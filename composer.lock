@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1c9ed6e786a3c85e5737926122e0c0a",
-    "content-hash": "fa854491c4f065fd26b23694aef26fe7",
+    "hash": "3e6cca58b0e07ab6fe54d5ebd78ae773",
+    "content-hash": "ebd85613f6f0185281d41af6a682a591",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -270,6 +270,61 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "facebook/php-sdk-v4",
+            "version": "5.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
+                "reference": "2c42fb3002953355f12d3c6e8003a9fd5af563d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/2c42fb3002953355f12d3c6e8003a9fd5af563d9",
+                "reference": "2c42fb3002953355f12d3c6e8003a9fd5af563d9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "~5.0",
+                "mockery/mockery": "~0.8",
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Facebook\\": "src/Facebook/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Facebook Platform"
+            ],
+            "authors": [
+                {
+                    "name": "Facebook",
+                    "homepage": "https://github.com/facebook/facebook-php-sdk-v4/contributors"
+                }
+            ],
+            "description": "Facebook SDK for PHP",
+            "homepage": "https://github.com/facebook/facebook-php-sdk-v4",
+            "keywords": [
+                "facebook",
+                "sdk"
+            ],
+            "time": "2015-11-19 21:07:36"
         },
         {
             "name": "illuminate/html",
@@ -1207,51 +1262,62 @@
             "time": "2015-11-12 16:18:56"
         },
         {
-            "name": "roumen/disqus",
-            "version": "v1.2",
+            "name": "sammyk/laravel-facebook-sdk",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RoumenDamianoff/laravel-disqus.git",
-                "reference": "bb160b22f5ded911218ddcf395e8e0cb1c3ac0ba"
+                "url": "https://github.com/SammyK/LaravelFacebookSdk.git",
+                "reference": "3603a6473ef3c40048b9116cab33fc6d42fe30a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-disqus/zipball/bb160b22f5ded911218ddcf395e8e0cb1c3ac0ba",
-                "reference": "bb160b22f5ded911218ddcf395e8e0cb1c3ac0ba",
+                "url": "https://api.github.com/repos/SammyK/LaravelFacebookSdk/zipball/3603a6473ef3c40048b9116cab33fc6d42fe30a7",
+                "reference": "3603a6473ef3c40048b9116cab33fc6d42fe30a7",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~4|~5",
-                "php": ">=5.4.0"
+                "facebook/php-sdk-v4": "~5.0",
+                "illuminate/auth": "~5.1",
+                "illuminate/config": "~5.1",
+                "illuminate/database": "~5.1",
+                "illuminate/routing": "~5.1",
+                "illuminate/session": "~5.1",
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Roumen\\Disqus": "src/"
-                },
-                "files": [
-                    "src/Roumen/Disqus/disqusapi/disqusapi.php"
-                ]
+                "psr-4": {
+                    "SammyK\\LaravelFacebookSdk\\": "src/LaravelFacebookSdk"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Roumen Damianoff",
-                    "email": "roumen@dawebs.com",
-                    "homepage": "https://roumen.it",
+                    "name": "Sammy Kaye Powers",
+                    "email": "me@sammyk.me",
+                    "homepage": "http://sammyk.me",
                     "role": "Developer"
                 }
             ],
-            "description": "Disqus API package for Laravel 5.",
-            "homepage": "http://roumen.it/projects/laravel-disqus",
+            "description": "Fully unit tested Facebook SDK v5 integration for Laravel 5",
+            "homepage": "https://github.com/SammyK/LaravelFacebookSdk",
             "keywords": [
-                "disqus",
-                "laravel"
+                "facebook",
+                "facebook query builder",
+                "facebook sdk v4",
+                "laravel",
+                "sdk"
             ],
-            "time": "2015-05-16 16:31:33"
+            "time": "2015-11-12 19:37:20"
         },
         {
             "name": "swiftmailer/swiftmailer",

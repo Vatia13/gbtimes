@@ -20,6 +20,12 @@
     <meta name="keywords" content="{{get_setting('site_tags')}}" />
 </head>
 <body>
+<div
+        class="fb-like"
+        data-share="true"
+        data-width="450"
+        data-show-faces="true">
+</div>
 @include('theme.pages.main.radioPlayer')
 <div class="wrapper">
     @include('theme.pages.main.header')

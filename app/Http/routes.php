@@ -11,9 +11,97 @@
 |
 */
 
-Route::get('/test',function(){
-    return App\Dev\Facades\Foo::bar();
-});
+
+///**
+// * TEST
+// */
+//Route::get('/facebook/login', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb)
+//{
+//	// Send an array of permissions to request
+//	$login_url = $fb->getLoginUrl(['email']);
+//
+//	// Obviously you'd do this in blade :)
+//	echo '<a href="' . $login_url . '">Login with Facebook</a>';
+//});
+//
+//Route::get('/facebook/callback', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+////// Obtain an access token.
+////	try {
+////		$token = $fb->getAccessTokenFromRedirect();
+////	} catch (Facebook\Exceptions\FacebookSDKException $e) {
+////		dd($e->getMessage());
+////	}
+////
+////	// Access token will be null if the user denied the request
+////	// or if someone just hit this URL outside of the OAuth flow.
+////	if (! $token) {
+////		// Get the redirect helper
+////		$helper = $fb->getRedirectLoginHelper();
+////
+////		if (! $helper->getError()) {
+////			abort(403, 'Unauthorized action.');
+////		}
+////
+////		// User denied the request
+////		dd(
+////			$helper->getError(),
+////			$helper->getErrorCode(),
+////			$helper->getErrorReason(),
+////			$helper->getErrorDescription()
+////		);
+////	}
+////
+////	if (! $token->isLongLived()) {
+////		// OAuth 2.0 client handler
+////		$oauth_client = $fb->getOAuth2Client();
+////
+////		// Extend the access token.
+////		try {
+////			$token = $oauth_client->getLongLivedAccessToken($token);
+////		} catch (Facebook\Exceptions\FacebookSDKException $e) {
+////			dd($e->getMessage());
+////		}
+////	}
+////
+////	$fb->setDefaultAccessToken($token);
+////
+////	// Save for later
+////	Session::put('fb_user_access_token', (string) $token);
+////
+////	// Get basic info on the user from Facebook.
+////	try {
+////		$response = $fb->get('/me?fields=id,name,email');
+////	} catch (Facebook\Exceptions\FacebookSDKException $e) {
+////		dd($e->getMessage());
+////	}
+//$token = 'CAAXKcvtAVVgBAPDEKDNPU0zDzIdRwYwJAoiUF25ubYmezwHxdJZC4FDBQJGCjSUfaX1tA5IY1PIlfPJvcAmCFXxlypnlssVrfuobNxeaLtlILJJwB9SjuJbNuMDFYAytMndKOd7O5Ju4xu4dduhiW1BKr5Avact5tKtuZAHxpqwPXzZA8jzVgTopoWhBBUZD';
+//	// Convert the response to a `Facebook/GraphNodes/GraphUser` collection
+//	//$facebook_user = $response->getGraphUser();
+//	$fb->setDefaultAccessToken($token);
+//	$params = array(
+//		"message" => "Auto #php #facebook",
+//		"link" => "http://www.www.codeniters.com",
+//		"picture" => "http://www.codeniters.com/assets/images/register.jpg",
+//		"name" => "How to Auto Post on Facebook with PHP",
+//		"caption" => "www.codeniters.com",
+//		"description" => "Automatically post on Facebook with PHP using Facebook PHP SDK."
+//	);
+//		try {
+//		$response = $fb->post('/dgissimgera/feed',$params);
+//	} catch (Facebook\Exceptions\FacebookSDKException $e) {
+//		dd($e->getMessage());
+//	}
+//	// Create the user if it does not exist or update the existing entry.
+//	// This will only work if you've added the SyncableGraphNodeTrait to your User model.
+////	$user = App\User::createOrUpdateGraphNode($facebook_user);
+////
+////	// Log the user into Laravel
+////	Auth::login($user);
+//
+//	return $token;//redirect('/')->with('message', 'Successfully logged in with Facebook');
+//});
+
+
 
 
 
@@ -23,7 +111,13 @@ Route::get('/test',function(){
  */
 
 Route::get('is-admin/home', ['middleware'=>'RedirectUser','uses'=>'Admin\HomeController@index']);
-
+Route::resource('is-admin/articles','Admin\ArticlesController');
+Route::post('is-admin/articles/filter','Admin\ArticlesController@filter');
+Route::put('is-admin/articles/active/{id}','Admin\ArticlesController@active');
+Route::post('is-admin/articles/event','Admin\ArticlesController@event');
+Route::post('is-admin/articles/getEvents','Admin\ArticlesController@getEvents');
+Route::post('is-admin/articles/getCats','Admin\ArticlesController@getCats');
+Route::post('is-admin/articles/getFields','Admin\ArticlesController@getFields');
 /*
  * Settings
  */
@@ -152,7 +246,8 @@ Route::get('/','WelcomeController@index');
 Route::post('/','WelcomeController@index');
 Route::get('language/get','WelcomeController@language');
 Route::get('tags/{slug}','WelcomeController@showTags');
-Route::get('{cat}','WelcomeController@showCat');
+Route::get('{cat}/{sid}','WelcomeController@showArticle');
+Route::get('{slug}','WelcomeController@showPage');
 
 /*
  * AJAX
@@ -166,18 +261,7 @@ Route::post('ajax/loadSearchArticles','WelcomeController@loadSearchArticles');
 Route::get('rss/feed','WelcomeController@rss');
 Route::get('brightcove/videos','Admin\ArticlesController@brightCove');
 Route::post('brightcove/videos','Admin\ArticlesController@brightCove');
-Route::resource('is-admin/articles','Admin\ArticlesController');
-Route::post('is-admin/articles/filter','Admin\ArticlesController@filter');
-Route::get('{cat}/{sid}','WelcomeController@showArticle');
-Route::get('{slug}','WelcomeController@showPage');
 
-
-
-Route::put('is-admin/articles/active/{id}','Admin\ArticlesController@active');
-Route::post('is-admin/articles/event','Admin\ArticlesController@event');
-Route::post('is-admin/articles/getEvents','Admin\ArticlesController@getEvents');
-Route::post('is-admin/articles/getCats','Admin\ArticlesController@getCats');
-Route::post('is-admin/articles/getFields','Admin\ArticlesController@getFields');
 
 Route::post('ajax/tags','Admin\ArticlesController@getAjaxTags');
 

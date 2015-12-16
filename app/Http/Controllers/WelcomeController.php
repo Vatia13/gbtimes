@@ -95,6 +95,9 @@ class WelcomeController extends Controller {
 		$item = Article::select('*')->language()->where(function($query){
 			$query->where('slug',$this->slug)->orWhere('translate_slug',$this->slug);
 		})->first();
+		if(!$item){
+			return view('theme.pages.view.cats',compact('slug','article'));
+		}
 
 		//DB::table('articles')->where('id',$sid)->orWhere('slug',$sid)->increment('view',1);
 		return view('theme.pages.view.show',compact('item','article'));
@@ -198,10 +201,6 @@ class WelcomeController extends Controller {
 		return view('theme.pages.view.tags',compact('slug','article'));
 	}
 
-	function showCat($slug){
-		$article = new Article();
-		return view('theme.pages.view.cats',compact('slug','article'));
-	}
 
 
 }
