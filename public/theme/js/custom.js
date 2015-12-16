@@ -94,3 +94,16 @@ $('.cat_tabs .tabs div').click(function(){
 
 
 $('.video_player iframe').css({'width':'100%','height':'360px'});
+
+function shareWindow(name,e){
+    window.open(e.href, ''+name+'','left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
+}
+
+$('ul.menu-list > li.more').hover(
+    function(){
+        $('ul.menu-list > li.more ul').slideDown(200);
+    },
+    function(){
+        $('ul.menu-list > li.more ul').slideUp(200);
+    }
+);

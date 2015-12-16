@@ -468,6 +468,18 @@
                     </ul>
                 </li>
                 <li><a href="{{action('WelcomeController@showPage','china-sensation')}}">China sensation</a></li>
+                <li class="more">
+                    <a href="#" class="arrow_down">More</a>
+                    <ul>
+                        <li><a href="/world">World</a></li>
+                        <li><a href="/opinion">Oponion</a></li>
+                        <li><a href="/business">Business</a></li>
+                        <li><a href="/life">Life</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/chinema">Chinema</a></li>
+                        <li><a href="/horoscope">Horoscope</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="social-icons">
                 <li><a  class="facebook" href="https://www.facebook.com/gbtimes" target="_blank"></a></li>

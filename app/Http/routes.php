@@ -94,7 +94,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);*/
-Route::get('is-admin/auth',['middleware'=>['ManagerLoggedIn','language'],'uses'=>'Auth\AuthController@getLogin']);
+Route::get('is-admin/auth',['middleware'=>['ManagerLoggedIn','language'],'uses'=>'Auth\AuthController@newLogin']);
 Route::post('user/login','Auth\AuthController@postLogin');
 Route::get('user/logout','Auth\AuthController@getLogout');
 Route::post('user/check','Auth\AuthController@checkLogin');
@@ -152,6 +152,8 @@ Route::get('/','WelcomeController@index');
 Route::post('/','WelcomeController@index');
 Route::get('language/get','WelcomeController@language');
 Route::get('tags/{slug}','WelcomeController@showTags');
+Route::get('{cat}','WelcomeController@showCat');
+
 /*
  * AJAX
  */
@@ -168,7 +170,7 @@ Route::resource('is-admin/articles','Admin\ArticlesController');
 Route::post('is-admin/articles/filter','Admin\ArticlesController@filter');
 Route::get('{cat}/{sid}','WelcomeController@showArticle');
 Route::get('{slug}','WelcomeController@showPage');
-Route::get('{cat}','WelcomeController@showCat');
+
 
 
 Route::put('is-admin/articles/active/{id}','Admin\ArticlesController@active');

@@ -83,15 +83,41 @@
                             <div class="social-network">
                                 <h2>Share</h2>
                                 <ul>
-                                    <li><a href="#" class="facebook"></a></li>
-                                    <li><a href="#" class="twitter"></a></li>
-                                    <li><a href="#" class="google-plus"></a></li>
-                                    {{--<li><a href="mailto:?to=subject=&amp;body={{Route::getCurrentRoute()->getPath()}}" class="email">email</a></li>--}}
+                                    <li>
+                                        <a class="facebook" href="http://www.facebook.com/sharer.php?u={{Request::url()}}" onclick="shareWindow('Facebook',this);return false;"></a>
+                                    </li>
+                                    <li>
+                                        <a class="twitter" onclick="shareWindow('Twitter',this);return false;" href="https://twitter.com/intent/tweet?url={{Request::url()}}&amp;text={{recordTitle($item->social_media_title,$item->title)}}&amp;via=Gbtimes.com" target="_blank"></a>
+                                    </li>
+                                    <li>
+                                        <a class="google-plus" onclick="shareWindow('Google',this);return false;" href="https://plus.google.com/share?url={{Request::url()}}" target="_blank"></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="comments">
-                            Comments
+                            <div id="disqus_thread"><a></a><p></p></div>
+                            <script>
+                                /**
+                                 * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                 * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                                 */
+                                /*
+                                 var disqus_config = function () {
+                                 this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+                                 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                 };
+                                 */
+                                (function() { // DON'T EDIT BELOW THIS LINE
+                                    var d = document, s = d.createElement('script');
+
+                                    s.src = '//newgbtimes.disqus.com/embed.js';
+
+                                    s.setAttribute('data-timestamp', +new Date());
+                                    (d.head || d.body).appendChild(s);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
                         </div>
                     </div>
                     <div class="similar_side">

@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="slide-items">
-            <div><a href="{{action('WelcomeController@showPage','news-from-china')}}">News from China</a></div>
+            <div><a href="{{action('WelcomeController@showPage','news-from-china')}}">Latest news</a></div>
             @if(count($lastRecords) > 0)
                 <ul>
                     @foreach($lastRecords as $item)

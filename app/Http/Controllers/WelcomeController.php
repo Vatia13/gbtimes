@@ -198,6 +198,10 @@ class WelcomeController extends Controller {
 		return view('theme.pages.view.tags',compact('slug','article'));
 	}
 
+	function showCat($slug){
+		$article = new Article();
+		return view('theme.pages.view.cats',compact('slug','article'));
+	}
 
 
 }

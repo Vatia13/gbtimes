@@ -43,7 +43,7 @@ class AuthController extends Controller {
 	{
 		$this->auth = $auth;
 		$this->registrar = $registrar;
-		$this->middleware('guest', ['except' => ['getLogout','getLogin','checkLogin']]);
+		$this->middleware('guest', ['except' => ['getLogout','newLogin','checkLogin']]);
 	}
 
 
@@ -157,5 +157,14 @@ class AuthController extends Controller {
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
+    }
+
+    public function newLogin()
+    {
+        if (view()->exists('admin.auth.authenticate')) {
+            return view('admin.auth.authenticate');
+        }
+
+        return view('admin.auth.login');
     }
 }
