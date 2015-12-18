@@ -92,7 +92,7 @@
 <!-- 3 ITEMS HORIZONTAL -->
 <div class="horizontal-items-3">
     <div class="horizontal-items-3-place">
-        <h4><a href="{{action('WelcomeController@showPage','travel')}}">Travel to China</a></h4>
+        <h4><a href="{{action('WelcomeController@showPage','travel')}}">All around China</a></h4>
         <ul>
             @if(count($article->getarticles('travel',false,6)) > 0)
                 @foreach($article->getarticles('travel',false,6) as $key=>$item)
@@ -121,7 +121,7 @@
     <div class="horizontal-items-4-place">
         <ul>
             <li>
-                <h4><a href="{{action('WelcomeController@showPage','education')}}">Education</a></h4>
+                <h4><a href="{{action('WelcomeController@showPage','education')}}">Study Chinese</a></h4>
                 @if(count($article->getarticles(false,false,6,trans('front.education'))) > 0)
                     @foreach($article->getarticles(false,false,6,trans('front.education')) as $key=>$item)
                         @if($key < 1)
@@ -139,7 +139,7 @@
                 @endif
             </li>
             <li>
-                <h4><a href="{{action('WelcomeController@showPage','healthcare')}}">Healthcare</a></h4>
+                <h4><a href="{{action('WelcomeController@showPage','healthcare')}}">Chinese healthcare</a></h4>
                 @if(count($article->getarticles(false,false,6,trans('front.health'))) > 0)
                     @foreach($article->getarticles(false,false,6,trans('front.health')) as $key=>$item)
                         @if($key < 1)
@@ -157,7 +157,7 @@
                 @endif
             </li>
             <li>
-                <h4><a href="{{action('WelcomeController@showPage','china-sport')}}">Sport</a></h4>
+                <h4><a href="{{action('WelcomeController@showPage','china-sport')}}">Easy China</a></h4>
                 @if(count($article->getarticles(false,false,6,trans('front.sport'))) > 0)
                     @foreach($article->getarticles(false,false,6,trans('front.sport')) as $key=>$item)
                         @if($key < 1)
@@ -175,7 +175,7 @@
                 @endif
             </li>
             <li>
-                <h4><a href="{{action('WelcomeController@showPage','china-sensation')}}">Sensation</a></h4>
+                <h4><a href="{{action('WelcomeController@showPage','china-sensation')}}">China sensation</a></h4>
                 <a href="#">
                     <div class="horizontal-items-4-image"><img src="{{asset('theme/images/6.png')}}"/></div>
                     <div class="horizontal-items-4-title">
