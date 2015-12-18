@@ -15,8 +15,11 @@ $.fn.mainSlider = function(options){
     items = slider.find('.slide-image ul li').length; // count slide images
     //change image slider fade effect
     slider.fade = function(){
-        activeNum++;
+
         if(activeNum >= items) activeNum = 0; // set active image to first image if num >= images length
+        if(activeNum < 0) activeNum = items - 1;
+        //console.log(activeNum);
+        //console.log(activeNum);
         activeImage = slider.find('.slide-image ul li.active'); //active image place
         slider.find('.slide-image ul li:eq('+activeNum+')').fadeIn(settings.effectTime,function(){ //fade in next image
             $(this).addClass('active'); //add class active to next image
@@ -58,23 +61,29 @@ $.fn.mainSlider = function(options){
     // change image slider automatically
     slider.interval = function(){
         if(settings.auto == true && items > 1)
-            slideInterval = setInterval(effect,settings.changeTime);
+            slideInterval = setInterval(function(){
+                activeNum++;
+                effect();
+            },settings.changeTime);
     };
+
     slider.interval();
 
     // next
     slider.find('a.next').click(function(){
+        activeNum++;
         effect();
     });
 
     //previous
     slider.find('a.previous').click(function(){
+        activeNum--;
         effect();
     });
 
     //spots
     slider.find('div.slider-dots ul li').click(function(){
-        console.log($(this).index()+'-'+activeNum);
+        //console.log($(this).index()+'-'+activeNum);
         if(activeNum != $(this).index()){
             activeNum = $(this).index() - 1;
             effect();

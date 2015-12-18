@@ -240,7 +240,7 @@ Route::get('/error/{id}','ErrorsController@show');
 //Route::get('image/gallery','WelcomeController@images');
 //Route::get('rss/feed','WelcomeController@rss');
 //Route::get('currency/generator','WelcomeController@currency');
-
+Route::get('rss/feed','WelcomeController@rss');
 Route::get('search/news','WelcomeController@search');
 Route::get('/','WelcomeController@index');
 Route::post('/','WelcomeController@index');
@@ -258,7 +258,7 @@ Route::post('ajax/loadSearchArticles','WelcomeController@loadSearchArticles');
 /*
  * Articles
  */
-Route::get('rss/feed','WelcomeController@rss');
+
 Route::get('brightcove/videos','Admin\ArticlesController@brightCove');
 Route::post('brightcove/videos','Admin\ArticlesController@brightCove');
 
