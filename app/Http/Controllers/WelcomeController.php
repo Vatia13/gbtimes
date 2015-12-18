@@ -65,7 +65,6 @@ class WelcomeController extends Controller {
             return trans($request->input('trans'));
         else
             return false;
-
     }
 
 	/**
@@ -105,12 +104,13 @@ class WelcomeController extends Controller {
 
 
 
+
 	/**
 	 * @return mixed
      */
 	public function getSlider(){
 		$slider = Cache::rememberForever('slider_'.App::getLocale(), function() {
-			return Article::select('id','frontpage_title','title','slug','img','translate_slug')->published()->getcat(55)->language()->latest()->where('extra_fields','LIKE','%s:13:"add_to_slider";s:1:"1"%')->get();
+			return Article::select('id','frontpage_title','title','slug','img','translate_slug')->published()->getcat(55)->language()->latest()->where('extra_fields','LIKE','%s:13:"add_to_slider";s:1:"1"%')->take(10)->get();
 		});
 		return $slider;
 	}
@@ -190,6 +190,17 @@ class WelcomeController extends Controller {
 		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->published()->getcat(55)->language()->where('title','LIKE','%'.$request->input('s').'%')->orWhere('body','LIKE','%'.$request->input('s').'%')->latest()->take(get_setting('pagination_num'))->get();
 		$count = Article::where('title','LIKE','%'.$request->input('s').'%')->orWhere('body','LIKE','%'.$request->input('s').'%')->published()->getcat(55)->language()->count();
 		return view('theme.pages.view.search',compact('items','article','count'));
+	}
+
+	public function newsDate($date){
+		$article = new Article();
+		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->whereBetween('published_at',[$date.' 00:00:00',$date.' 23:59:00'])->published()->getcat(55)->language()->latest()->take(get_setting('pagination_num'))->get();
+		$count = Article::whereBetween('published_at',[$date.' 00:00:00',$date.' 23:59:00'])->published()->getcat(55)->language()->count();
+		return view('theme.pages.view.date',compact('items','article','count','date'));
+	}
+
+	function loadNewsDate(Request $request,Article $articles){
+		return $articles->loadNewsDate($request->input('tag'),$request->input('start'),$request->input('num'));
 	}
 
 	function loadSearchArticles(Request $request,Article $articles){

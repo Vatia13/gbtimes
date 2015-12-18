@@ -107,3 +107,9 @@ $('ul.menu-list > li.more').hover(
         $('ul.menu-list > li.more ul').slideUp(200);
     }
 );
+
+$('#datetimepicker1').datetimepicker({
+    format:'yyyy-MM-dd',
+    inline: true,
+    sideBySide: true
+});

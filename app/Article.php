@@ -475,6 +475,11 @@ class Article extends Model {
         return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : 0;
     }
 
+    public function loadNewsDate($date = false, $start=0, $num=6){
+        $items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->whereBetween('published_at',[$date.' 00:00:00',$date.' 23:59:00'])->published()->getcat(55)->language()->latest()->skip($start)->take($num)->get();
+        return view('theme.pages.ajax.cat',compact('items','article','count'));
+    }
+
     public function getAuthorArticles($author,$num){
         return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang')->published()->language()->where('author',$author)->take($num)->get();
     }

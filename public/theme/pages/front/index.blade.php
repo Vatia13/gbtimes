@@ -62,7 +62,6 @@
 </div>
 
 <div class="fix"></div>
-
 <!-- 3 ITEMS HORIZONTAL -->
 <div class="horizontal-items-3">
     <div class="horizontal-items-3-place">

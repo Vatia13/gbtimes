@@ -248,6 +248,7 @@ Route::get('language/get','WelcomeController@language');
 Route::get('tags/{slug}','WelcomeController@showTags');
 Route::get('{cat}/{sid}','WelcomeController@showArticle');
 Route::get('{slug}','WelcomeController@showPage');
+Route::get('news/date/{date}','WelcomeController@newsDate');
 
 /*
  * AJAX
@@ -255,6 +256,7 @@ Route::get('{slug}','WelcomeController@showPage');
 Route::post('ajax/loadArticles','WelcomeController@loadArticles');
 Route::post('ajax/loadPartnerArticles','WelcomeController@loadPartnerArticles');
 Route::post('ajax/loadSearchArticles','WelcomeController@loadSearchArticles');
+Route::post('ajax/loadNewsDate','WelcomeController@loadNewsDate');
 /*
  * Articles
  */

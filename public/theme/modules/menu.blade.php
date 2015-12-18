@@ -96,6 +96,12 @@
                                 @endif
                             </ul>
                         </li>
+                        <li>
+                            <span>Audio</span>
+                        </li>
+                        <li id="datetimepicker1">
+
+                        </li>
                     </ul>
                 </li>
                 <li>

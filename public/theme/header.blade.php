@@ -15,6 +15,10 @@
     <script src="{{ asset('/js/jquery/jquery-migrate-1.2.1.min.js') }}"></script>
     <script src="{{ asset('/js/jquery/ui/jquery-ui.js') }}"></script>
     <script src="{{ asset('/js/jquery/jquery.nicescroll.min.js') }}"></script>
+    <link href="{{ asset('/css/bootstrap-datetimepicker.css')}}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('/js/bootstrap/moment-with-locales.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('/js/bootstrap/bootstrap-datetimepicker.js')}}"></script>
+
     <title>{{get_setting('site_title')}}</title>
     <meta name="description" content="{{get_setting('site_description')}}" />
     <meta name="keywords" content="{{get_setting('site_tags')}}" />
