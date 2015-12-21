@@ -2,8 +2,8 @@
     <div class="main-menu">
         <div class="menu-place">
             <ul class="menu-list">
-                <li class="active"><a href="/">Home</a></li>
-                <li>
+                <li @if(Request::path() == '/')class="active"@endif><a href="/">Home</a></li>
+                <li @if(Request::path() == 'china')class="active"@endif>
                     <a href="{{action('WelcomeController@showPage','china')}}">
                         All about China
                     </a>
@@ -104,7 +104,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li @if(Request::path() == 'study-chinese')class="active"@endif>
                     <a href="{{action('WelcomeController@showPage','study-chinese')}}">Study Chinese</a>
                     <ul class="outside">
                         <li>
@@ -244,7 +244,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="{{action('WelcomeController@showPage','travel')}}">All around China</a>
+                <li @if(Request::path() == 'travel')class="active"@endif><a href="{{action('WelcomeController@showPage','travel')}}">All around China</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
@@ -361,7 +361,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="{{action('WelcomeController@showPage','chinese-healthcare')}}">Chinese healthcare</a>
+                <li @if(Request::path() == 'chinese-healthcare')class="active"@endif><a href="{{action('WelcomeController@showPage','chinese-healthcare')}}">Chinese healthcare</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
@@ -478,7 +478,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="{{action('WelcomeController@showPage','easy-china')}}">Easy China</a>
+                <li @if(Request::path() == 'easy-china')class="active"@endif><a href="{{action('WelcomeController@showPage','easy-china')}}">Easy China</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
@@ -595,7 +595,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li @if(Request::path() == 'china-sensation')class="active"@endif>
                     <a href="{{action('WelcomeController@showPage','china-sensation')}}">China sensation</a>
                     <ul class="outside">
                         <li>

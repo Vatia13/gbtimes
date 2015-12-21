@@ -5,8 +5,14 @@
             <div>Article</div>
             <div>Photo Gallery</div>
             <div>Video</div>
+            <div>Audio</div>
+            @if(Request::path() == 'study-chinese')
+                <div>Study Online</div>
+            @endif
         </div>
+
         <div class="fix"></div>
+
         @if($items->getPickOfDay($slug))
             <div class="pick_of_the_day">
                 <a href="{{action('WelcomeController@showArticle',checkItem($items->getPickOfDay($slug)->translate_slug,$items->getPickOfDay($slug)->slug))}}">
@@ -280,6 +286,136 @@
                             <button onClick="loadItems('{{$slug}}','video','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
                         </div>
                     </div>
+                @endif
+            </div>
+            <div class="tab">
+                @if(count($items->getarticles($slug,'audio',6)) > 0)
+                    <div id="gbtimes_news">
+                        <h4>Gbtimes News</h4>
+                        <ul>
+                            @foreach($items->getarticles($slug,'audio',6) as $key=>$item)
+                                @if($key < 4)
+                                    <li>
+                                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                            <div class="image">
+                                                <img src="{{checkImage($item->img)}}"/>
+                                            </div>
+                                            <div class="desc">
+                                                <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body,20)}}
+                                            </span>
+                                                <br>
+                                            </div>
+                                            <div class="time-author">
+                                                <span>{{$item->author}}</span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                        <div class="show_more">
+                            <div class="gifLoader"></div>
+                            <button onClick="loadItems('{{$slug}}','audio','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                        </div>
+                    </div>
+                @endif
+                @if(count($items->getNewsFromPartners($slug,'audio',2)) > 0)
+                    <div id="partner_news">
+                        <h4>News from our partners</h4>
+                        <ul>
+                            @foreach($items->getNewsFromPartners($slug,'audio',2) as $item)
+                                <li>
+                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                        <div class="image">
+                                            <img src="{{checkImage($item->img)}}"/>
+                                        </div>
+                                        <div class="desc">
+                                            <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body,20)}}
+                                            </span>
+                                            <br>
+                                        </div>
+                                        <div class="time-author">
+                                            <span>{{$item->author}}</span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <div class="show_more">
+                            <div class="gifLoader"></div>
+                            <button onClick="loadItems('{{$slug}}','audio','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <div class="tab">
+                @if(count($items->getarticles($slug,'study-online',6)) > 0)
+                    <div id="gbtimes_news">
+                        <h4>Gbtimes News</h4>
+                        <ul>
+                            @foreach($items->getarticles($slug,'study-online',6) as $key=>$item)
+                                @if($key < 4)
+                                    <li>
+                                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                            <div class="image">
+                                                <img src="{{checkImage($item->img)}}"/>
+                                            </div>
+                                            <div class="desc">
+                                                <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body,20)}}
+                                            </span>
+                                                <br>
+                                            </div>
+                                            <div class="time-author">
+                                                <span>{{$item->author}}</span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                        <div class="show_more">
+                            <div class="gifLoader"></div>
+                            <button onClick="loadItems('{{$slug}}','study-online','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                        </div>
+                    </div>
+                @endif
+                @if(Request::path() == 'study-chinese')
+                    @if(count($items->getNewsFromPartners($slug,'study-online',2)) > 0)
+                        <div id="partner_news">
+                            <h4>News from our partners</h4>
+                            <ul>
+                                @foreach($items->getNewsFromPartners($slug,'study-online',2) as $item)
+                                    <li>
+                                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                            <div class="image">
+                                                <img src="{{checkImage($item->img)}}"/>
+                                            </div>
+                                            <div class="desc">
+                                                <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body,20)}}
+                                            </span>
+                                                <br>
+                                            </div>
+                                            <div class="time-author">
+                                                <span>{{$item->author}}</span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','study-online','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        </div>
+                    @endif
                 @endif
             </div>
         </div>
