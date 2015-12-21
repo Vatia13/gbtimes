@@ -196,11 +196,19 @@ class WelcomeController extends Controller {
 		$article = new Article();
 		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->whereBetween('published_at',[$date.' 00:00:00',$date.' 23:59:00'])->published()->getcat(55)->language()->latest()->take(get_setting('pagination_num'))->get();
 		$count = Article::whereBetween('published_at',[$date.' 00:00:00',$date.' 23:59:00'])->published()->getcat(55)->language()->count();
-		return view('theme.pages.view.date',compact('items','article','count','date'));
+		$cat = '';
+		return view('theme.pages.view.date',compact('items','article','count','date','cat'));
+	}
+
+	public function catDate($cat,$date){
+		$article = new Article();
+		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->whereBetween('published_at',[$date.' 00:00:00',$date.' 23:59:00'])->published()->bycatslug($cat)->language()->latest()->take(get_setting('pagination_num'))->get();
+		$count = Article::whereBetween('published_at',[$date.' 00:00:00',$date.' 23:59:00'])->published()->bycatslug($cat)->language()->count();
+		return view('theme.pages.view.date',compact('items','article','count','date','cat'));
 	}
 
 	function loadNewsDate(Request $request,Article $articles){
-		return $articles->loadNewsDate($request->input('tag'),$request->input('start'),$request->input('num'));
+		return $articles->loadNewsDate($request->input('cat'),$request->input('tag'),$request->input('start'),$request->input('num'));
 	}
 
 	function loadSearchArticles(Request $request,Article $articles){

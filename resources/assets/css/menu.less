@@ -76,7 +76,7 @@ ul.outside{
 
 ul.outside > li{
   width: 18%;
-  padding:22px 0;
+  padding:16px 0;
   text-align:center;
   cursor:pointer;
   font-size:16px;
@@ -192,8 +192,58 @@ ul.menu-list > li.more ul li a:hover{
   color:#FFF;
 }
 
-#datetimepicker1 ul{
+.gbtimesDatePicker{
+  padding:0 !important;
+}
+
+.gbtimesDatePicker ul{
   margin:0;
   padding:0;
   list-style:none;
+}
+.gbtimesDatePicker table td{
+  width:16px !important;
+  height:16px !important;
+  line-height:16px !important;
+}
+
+.gbtimesDatePicker .datepicker-days table td:hover,.gbtimesDatePicker .datepicker-days table th:hover,.gbtimesDatePicker .datepicker-decades table th:hover,.gbtimesDatePicker .datepicker-years table th:hover,.gbtimesDatePicker .datepicker-months table th:hover{
+  background-color:#e22219 !important;
+  color:#FFF;
+}
+
+
+.gbtimesDatePicker .datepicker-days table td.active{
+  background-color:#000 !important;
+  color:#FFF;
+}
+
+.gbtimesDatePicker .datepicker-decades span{
+  font-size:12px !important;
+  width: 80px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+}
+
+.gbtimesDatePicker .datepicker-months span,.gbtimesDatePicker .datepicker-years span{
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+}
+
+.gbtimesDatePicker .datepicker-months span:hover,.gbtimesDatePicker .datepicker-years span:hover,.gbtimesDatePicker .datepicker-decades span:hover{
+  background-color:#e22219 !important;
+  color:#FFF;
+}
+
+.gbtimesDatePicker .datepicker-months span.active,.gbtimesDatePicker .datepicker-years span.active{
+  background-color:#000 !important;
+  color:#FFF;
+}
+
+
+.gbtimesDatePicker li, .gbtimesDatePicker a, .gbtimesDatePicker td, .gbtimesDatePicker span, .gbtimesDatePicker i, .gbtimesDatePicker p{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+  font-weight: 300 !important;
+  font-size:14px;
 }

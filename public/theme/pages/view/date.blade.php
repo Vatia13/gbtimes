@@ -30,7 +30,7 @@
                 @endif
                 <div class="show_more">
                     <div class="gifLoader"></div>
-                    <button onClick="loadItems('','','{{$date}}',8,this)" data-route="{{action('WelcomeController@loadNewsDate')}}" data-token="{{csrf_token()}}">Show more</button>
+                    <button onClick="loadItems('{{$cat}}','','{{$date}}',8,this)" data-route="{{action('WelcomeController@loadNewsDate')}}" data-token="{{csrf_token()}}">Show more</button>
                 </div>
             </div>
         </div>

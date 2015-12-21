@@ -99,7 +99,7 @@
                         <li>
                             <span>Audio</span>
                         </li>
-                        <li id="datetimepicker1">
+                        <li id="datetimepicker1" class="gbtimesDatePicker" data-slug="china">
 
                         </li>
                     </ul>
@@ -195,9 +195,18 @@
                                 @endif
                             </ul>
                         </li>
+                        <li>
+                            <span>Audio</span>
+                        </li>
+                        <li>
+                            <span>Study Online</span>
+                        </li>
+                        <li id="datetimepicker2" class="gbtimesDatePicker"  data-slug="education">
+
+                        </li>
                     </ul>
                 </li>
-                <li><a href="{{action('WelcomeController@showTags','travel')}}">All around China</a>
+                <li><a href="{{action('WelcomeController@showPage','travel')}}">All around China</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
@@ -205,7 +214,7 @@
                                 @if(count($article->getarticles('travel',false,6)) > 0)
                                     @foreach($article->getarticles('travel',false,6) as $item)
                                         <li>
-                                            <a href="#">
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                                                 <div class="inside-image">
                                                     <img src="{{checkImage($item->img)}}"/>
                                                 </div>
@@ -227,7 +236,7 @@
                                 @if(count($article->getarticles('travel','article',6)) > 0)
                                     @foreach($article->getarticles('travel','article',6) as $item)
                                         <li>
-                                            <a href="#">
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                                                 <div class="inside-image">
                                                     <img src="{{checkImage($item->img)}}"/>
                                                 </div>
@@ -249,7 +258,7 @@
                                 @if(count($article->getarticles('travel','photogallery',6)) > 0)
                                     @foreach($article->getarticles('travel','photogallery',6) as $item)
                                         <li>
-                                            <a href="#">
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                                                 <div class="inside-image">
                                                     <img src="{{checkImage($item->img)}}"/>
                                                 </div>
@@ -271,7 +280,7 @@
                                 @if(count($article->getarticles('travel','video',6)) > 0)
                                     @foreach($article->getarticles('travel','video',6) as $item)
                                         <li>
-                                            <a href="#">
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                                                 <div class="inside-image">
                                                     <img src="{{checkImage($item->img)}}"/>
                                                 </div>
@@ -286,6 +295,12 @@
                                     @endforeach
                                 @endif
                             </ul>
+                        </li>
+                        <li>
+                            <span>Audio</span>
+                        </li>
+                        <li id="datetimepicker3" class="gbtimesDatePicker"  data-slug="travel">
+
                         </li>
                     </ul>
                 </li>
@@ -379,6 +394,12 @@
                                 @endif
                             </ul>
                         </li>
+                        <li>
+                            <span>Audio</span>
+                        </li>
+                        <li id="datetimepicker4" class="gbtimesDatePicker"  data-slug="health">
+
+                        </li>
                     </ul>
                 </li>
                 <li><a href="{{action('WelcomeController@showTags','sport')}}">Easy China</a>
@@ -470,6 +491,12 @@
                                     @endforeach
                                 @endif
                             </ul>
+                        </li>
+                        <li>
+                            <span>Audio</span>
+                        </li>
+                        <li id="datetimepicker5" class="gbtimesDatePicker" data-slug="sport">
+
                         </li>
                     </ul>
                 </li>

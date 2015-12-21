@@ -249,7 +249,7 @@ Route::get('tags/{slug}','WelcomeController@showTags');
 Route::get('{cat}/{sid}','WelcomeController@showArticle');
 Route::get('{slug}','WelcomeController@showPage');
 Route::get('news/date/{date}','WelcomeController@newsDate');
-
+Route::get('{cat}/date/{date}','WelcomeController@catDate');
 /*
  * AJAX
  */

@@ -108,8 +108,17 @@ $('ul.menu-list > li.more').hover(
     }
 );
 
-$('#datetimepicker1').datetimepicker({
+$('#datetimepicker1,#datetimepicker2,#datetimepicker3,#datetimepicker4,#datetimepicker5').datetimepicker({
     format:'yyyy-MM-dd',
     inline: true,
     sideBySide: true
+}).on('dp.change',function(e){
+    var date = new Date(e.date._d);
+    var dateFormat = moment(e.date._d).format('YYYY-MM-DD');
+    window.location.href = '/'+$(this).data('slug')+'/date/'+dateFormat+'/';
 });
+
+
+
+
+
