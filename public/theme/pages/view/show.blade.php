@@ -153,7 +153,7 @@
                                 <?php $similar_articles = $article->getSimilarArticles($cats,3,$item->author); ?>
                                 <div class="news_list">
                                     @if(count($similar_articles) > 0)
-                                        <a href="#">Similar stories</a>
+                                        <a href="{{action('WelcomeController@SimilarNews',''.join(',',$cats).'')}}">Similar stories</a>
                                         <ul>
                                             @foreach($similar_articles as $key=>$it)
                                                 <li>

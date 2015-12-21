@@ -20,7 +20,12 @@
                         <select id="main_cat" name="cat[]" class="form-control" style="margin-top:0;">
                             <option value="">---</option>
                             @foreach($parents as $p)
-                                <option value="{{$p['id']}}" {{($p['id'] == $parent || $p['id'] == $catid) ? 'selected' : ((($parent <= 0 and $catid <=0) && $p['id'] == 55) ? 'selected' : '')}} data-checked="{{$checked_cats}}" data-news="{{$news_id}}" data-route="{{ action('Admin\ArticlesController@getCats') }}" data-url="{{ action('Admin\ArticlesController@getFields') }}" data-extra="{{$json_extra}}" data-token="{{csrf_token()}}">{{trans('all.'.$p['name'])}}</option>
+                                @if(!Auth::user()->hasRole(['Super Admin','Administrator']) && $p['id'] == 83)
+                                    <?php $p['id'] = 0; ?>
+                                @endif
+                                @if($p['id'] > 0)
+                                    <option value="{{$p['id']}}" {{($p['id'] == $parent || $p['id'] == $catid) ? 'selected' : ((($parent <= 0 and $catid <=0) && $p['id'] == 55) ? 'selected' : '')}} data-checked="{{$checked_cats}}" data-news="{{$news_id}}" data-route="{{ action('Admin\ArticlesController@getCats') }}" data-url="{{ action('Admin\ArticlesController@getFields') }}" data-extra="{{$json_extra}}" data-token="{{csrf_token()}}">{{trans('all.'.$p['name'])}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>

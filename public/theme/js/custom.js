@@ -108,7 +108,7 @@ $('ul.menu-list > li.more').hover(
     }
 );
 
-$('#datetimepicker1,#datetimepicker2,#datetimepicker3,#datetimepicker4,#datetimepicker5').datetimepicker({
+$('#datetimepicker1,#datetimepicker2,#datetimepicker3,#datetimepicker4,#datetimepicker5,#datetimepicker6').datetimepicker({
     format:'yyyy-MM-dd',
     inline: true,
     sideBySide: true

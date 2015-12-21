@@ -254,6 +254,7 @@ Route::get('{slug}','WelcomeController@showPage');
 Route::get('news/date/{date}','WelcomeController@newsDate');
 Route::get('{cat}/date/{date}','WelcomeController@catDate');
 Route::get('show/{author}/news','WelcomeController@newsAuthor');
+Route::get('similar/news/{cats}','WelcomeController@SimilarNews');
 /*
  * AJAX
  */
@@ -262,6 +263,7 @@ Route::post('ajax/loadPartnerArticles','WelcomeController@loadPartnerArticles');
 Route::post('ajax/loadSearchArticles','WelcomeController@loadSearchArticles');
 Route::post('ajax/loadNewsDate','WelcomeController@loadNewsDate');
 Route::post('ajax/loadNewsAuthor','WelcomeController@loadNewsAuthor');
+Route::post('ajax/loadSimilarNews','WelcomeController@loadSimilarNews');
 /*
  * Articles
  */

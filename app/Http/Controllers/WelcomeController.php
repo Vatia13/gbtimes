@@ -207,11 +207,25 @@ class WelcomeController extends Controller {
 		return view('theme.pages.view.date',compact('items','article','count','date','cat'));
 	}
 
+	public function SimilarNews($cats){
+		$article = new Article();
+		if(!empty($cats)){
+          $cats_array = explode(',',$cats);
+		}
+		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->published()->orderall($cats_array)->language()->latest()->take(get_setting('pagination_num'))->get();
+		$count = Article::published()->orderall($cats_array)->language()->count();
+		return view('theme.pages.view.similar',compact('items','article','count','cats'));
+	}
+
 	public function newsAuthor($author){
 		$article = new Article();
 		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->where('author',$author)->published()->getcat(55)->language()->latest()->take(get_setting('pagination_num'))->get();
 		$count = Article::where('author',$author)->published()->getcat(55)->language()->count();
 		return view('theme.pages.view.author',compact('items','article','count','author'));
+	}
+
+	function loadSimilarNews(Request $request,Article $articles){
+		return $articles->loadSimilarNews($request->input('tag'),$request->input('start'),$request->input('num'));
 	}
 
 	function loadNewsAuthor(Request $request,Article $articles){

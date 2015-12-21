@@ -3,7 +3,7 @@
 @section('content')
     <div class="read">
         <div class="shortcode">
-            <h4>{{Input::get('s')}} : {{$count}}</h4>
+            <h4>{{Input::get('s')}} : ({{$count}}) results found.</h4>
             <div id="gbtimes_news">
                 @if(count($items) > 0)
                     <ul>

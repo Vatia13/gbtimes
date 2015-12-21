@@ -3,7 +3,7 @@
 @section('content')
     <div class="read">
         <div class="shortcode">
-            <h4>{{$author}} : ({{$count}}) results found.</h4>
+            <h4>Similar : ({{$count}}) results found.</h4>
             <div id="gbtimes_news">
                 @if(count($items) > 0)
                     <ul>
@@ -30,7 +30,7 @@
                 @endif
                 <div class="show_more">
                     <div class="gifLoader"></div>
-                    <button onClick="loadItems('','','{{$author}}',8,this)" data-route="{{action('WelcomeController@loadNewsAuthor')}}" data-token="{{csrf_token()}}">Show more</button>
+                    <button onClick="loadItems('','','{{$cats}}',8,this)" data-route="{{action('WelcomeController@loadSimilarNews')}}" data-token="{{csrf_token()}}">Show more</button>
                 </div>
             </div>
         </div>

@@ -489,6 +489,14 @@ class Article extends Model {
         return view('theme.pages.ajax.cat',compact('items','article','count'));
     }
 
+    public function loadSimilarNews($cats = '', $start=0, $num=6){
+        if(!empty($cats)){
+            $cats_array = explode(',',$cats);
+        }
+        $items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->published()->orderall($cats_array)->language()->latest()->skip($start)->take($num)->get();
+        return view('theme.pages.ajax.cat',compact('items','article','count'));
+    }
+
     public function getAuthorArticles($author,$num){
         return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang')->published()->language()->where('author',$author)->take($num)->get();
     }
