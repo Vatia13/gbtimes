@@ -240,6 +240,9 @@ Route::get('/error/{id}','ErrorsController@show');
 //Route::get('image/gallery','WelcomeController@images');
 //Route::get('rss/feed','WelcomeController@rss');
 //Route::get('currency/generator','WelcomeController@currency');
+
+Route::get('brightcove/videos','Admin\ArticlesController@brightCove');
+Route::post('brightcove/videos','Admin\ArticlesController@brightCove');
 Route::get('rss/feed','WelcomeController@rss');
 Route::get('search/news','WelcomeController@search');
 Route::get('/','WelcomeController@index');
@@ -250,6 +253,7 @@ Route::get('{cat}/{sid}','WelcomeController@showArticle');
 Route::get('{slug}','WelcomeController@showPage');
 Route::get('news/date/{date}','WelcomeController@newsDate');
 Route::get('{cat}/date/{date}','WelcomeController@catDate');
+Route::get('show/{author}/news','WelcomeController@newsAuthor');
 /*
  * AJAX
  */
@@ -257,12 +261,11 @@ Route::post('ajax/loadArticles','WelcomeController@loadArticles');
 Route::post('ajax/loadPartnerArticles','WelcomeController@loadPartnerArticles');
 Route::post('ajax/loadSearchArticles','WelcomeController@loadSearchArticles');
 Route::post('ajax/loadNewsDate','WelcomeController@loadNewsDate');
+Route::post('ajax/loadNewsAuthor','WelcomeController@loadNewsAuthor');
 /*
  * Articles
  */
 
-Route::get('brightcove/videos','Admin\ArticlesController@brightCove');
-Route::post('brightcove/videos','Admin\ArticlesController@brightCove');
 
 
 Route::post('ajax/tags','Admin\ArticlesController@getAjaxTags');

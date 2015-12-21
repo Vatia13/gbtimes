@@ -484,6 +484,11 @@ class Article extends Model {
         return view('theme.pages.ajax.cat',compact('items','article','count','cat'));
     }
 
+    public function loadNewsAuthor($author = '', $start=0, $num=6){
+        $items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->where('author',$author)->published()->getcat(55)->language()->latest()->skip($start)->take($num)->get();
+        return view('theme.pages.ajax.cat',compact('items','article','count'));
+    }
+
     public function getAuthorArticles($author,$num){
         return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang')->published()->language()->where('author',$author)->take($num)->get();
     }

@@ -124,7 +124,7 @@
                             <?php $author_articles = $article->getAuthorArticles($item->author,3); ?>
                             <div class="news_list">
                                 @if(count($author_articles) > 0)
-                                    <a href="#">More by author</a>
+                                    <a href="{{action('WelcomeController@newsAuthor',$item->author)}}">More by author</a>
                                     <ul>
                                         @foreach($author_articles as $key=>$it)
                                             <li>

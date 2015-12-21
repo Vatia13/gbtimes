@@ -207,8 +207,19 @@ class WelcomeController extends Controller {
 		return view('theme.pages.view.date',compact('items','article','count','date','cat'));
 	}
 
+	public function newsAuthor($author){
+		$article = new Article();
+		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->where('author',$author)->published()->getcat(55)->language()->latest()->take(get_setting('pagination_num'))->get();
+		$count = Article::where('author',$author)->published()->getcat(55)->language()->count();
+		return view('theme.pages.view.author',compact('items','article','count','author'));
+	}
+
+	function loadNewsAuthor(Request $request,Article $articles){
+		return $articles->loadNewsAuthor($request->input('tag'),$request->input('start'),$request->input('num'));
+	}
+
 	function loadNewsDate(Request $request,Article $articles){
-		return $articles->loadNewsDate($request->input('cat'),$request->input('tag'),$request->input('start'),$request->input('num'));
+		return $articles->loadNewsDate($request->input('tag'),$request->input('start'),$request->input('num'));
 	}
 
 	function loadSearchArticles(Request $request,Article $articles){
