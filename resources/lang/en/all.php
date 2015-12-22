@@ -258,5 +258,7 @@
        'reset'=>'Reset',
        'main_menu'=>'Main Menu',
        'footer_menu'=>'Footer Menu',
-       'Partners' => 'Partners'
+       'Partners' => 'Partners',
+       'article_type'=>'Article type',
+       'news_from_partner'=>'News from Partner'
    ];

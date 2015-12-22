@@ -1,6 +1,6 @@
 <div class="well well-sm filter">
 
-    {!! Form::open(['action'=>'Admin\ArticlesController@filter','method'=>'POST','class'=>'form-horizontal']) !!}
+    {!! Form::open(['action'=>['Admin\ArticlesController@filter',(Input::get('partner')) ? 'partner=1' : ''],'method'=>'POST','class'=>'form-horizontal']) !!}
 
         <div class="control-group" style="position:relative;">
             {!! Form::hidden('a_filter',filter_request($request,'a_filter',1)) !!}

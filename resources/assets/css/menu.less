@@ -15,7 +15,7 @@
 }
 
 .main-menu{
-  max-width:1200px;
+  //max-width:1200px;
   width:100%;
   margin:0 auto;
   border-top:3px solid #e22219;
@@ -32,6 +32,9 @@ ul.menu-list{
   padding:0;
   list-style:none;
   float:left;
+  position:relative;
+  width:100%;
+  max-width:1200px;
 }
 
 ul.menu-list > li{
@@ -61,6 +64,16 @@ ul.menu-list > li.active > a{
   background-color:#e22219;
 }
 
+ul.menu-list > li:last-child ul{
+  margin:0;
+  padding:10px;
+  list-style:none;
+}
+
+ul.menu-list > li:last-child ul li{
+  display:inline-block;
+}
+
 
 ul.outside{
   margin:0;
@@ -72,6 +85,7 @@ ul.outside{
   display:none;
   background-color:#d4dfe6;
   width:100%;
+  max-width:1200px;
 }
 
 ul.outside > li{

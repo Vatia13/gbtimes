@@ -18,7 +18,7 @@
          'embed'=>'',
          'lang'=>App::getLocale(),
          'type'=>'',
-         'translate_slug'=> (Input::get('translate')) ? Input::get('translate') : ''
+         'translate_slug'=> (Input::get('translate')) ? Input::get('translate') : '',
          ])
     {!! Form::close() !!}
 

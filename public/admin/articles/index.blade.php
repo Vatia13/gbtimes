@@ -1,6 +1,12 @@
 @extends('admin.app')
 
 @section('content')
+    <div class="article-tabs">
+        <ul>
+            <li @if(!Input::get('partner'))class="active"@endif><a href="{{action('Admin\ArticlesController@index')}}">GBTimes Articles</a></li>
+            <li @if(Input::get('partner'))class="active"@endif><a href="{{action('Admin\ArticlesController@index','partner=1')}}">Partners Articles</a></li>
+        </ul>
+    </div>
 <div class="panel panel-default">
     <div class="panel-heading">
         {{ trans('all.records') }}
@@ -16,7 +22,6 @@
             </tr>
             </thead>
             <tbody>
-
             @foreach($articles as $article)
             <tr>
                 <td>{{ $article->id }}</td>

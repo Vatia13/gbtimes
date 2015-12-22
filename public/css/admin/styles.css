@@ -402,3 +402,27 @@ a:focus,img:focus {
 }
 
 
+.article-tabs ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.article-tabs ul li{
+    display:inline-block;
+}
+
+.article-tabs ul li.active a{
+    background-color:#e22219;
+    color:#fff;
+}
+
+.article-tabs ul li a{
+    padding:10px 35px;
+    background-color:#f5f5f5;
+    display:block;
+    border-top:1px solid #dddddd;
+    border-left:1px solid #dddddd;
+    border-right:1px solid #dddddd;
+    color:#414141;
+}

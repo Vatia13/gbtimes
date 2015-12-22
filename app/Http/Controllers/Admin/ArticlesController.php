@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 
@@ -63,10 +64,11 @@ class ArticlesController extends Controller {
         foreach($cats as $c){
            $this->children[] = $c['id'];
         }
+        $partner = (Input::get('partner')) ? 1 : 0;
         $articles =
             (!filter_request($request,'a_filter'))
-                ? Article::orderBy('status','asc')->orderBy('published_at','desc')->where('lang',App::getLocale())->latest('status')->orderall($this->children)->paginate(get_setting('pagination_num'))
-                : Article::orderBy('status','asc')->orderBy('published_at','desc')->where('lang',App::getLocale())->orderall($this->children)->filter($request,'a_')->paginate(get_setting('pagination_num'));
+                ? Article::orderBy('status','asc')->orderBy('published_at','desc')->where('lang',App::getLocale())->partner($partner)->latest('status')->orderall($this->children)->paginate(get_setting('pagination_num'))
+                : Article::orderBy('status','asc')->orderBy('published_at','desc')->where('lang',App::getLocale())->partner($partner)->orderall($this->children)->filter($request,'a_')->paginate(get_setting('pagination_num'));
         return view('admin.articles.index',compact('articles','request','query','cats'));
 	}
 
@@ -296,7 +298,8 @@ class ArticlesController extends Controller {
 
     public function filter(Request $request){
             filter_cookies($request,'a_');
-            return redirect(action('Admin\ArticlesController@index'));
+            $partner = (Input::get('partner')) ? 'partner=1' : '';
+            return redirect(action('Admin\ArticlesController@index',$partner));
     }
 
     public function active($id,Article $article){

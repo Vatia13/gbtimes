@@ -25,13 +25,14 @@ class AuthController extends Controller {
 	use AuthenticatesAndRegistersUsers;
 
     protected $redirectTo = 'is-admin/articles';
-
+    protected $loginPath = 'is-admin/auth';
 
     /**
      * User role id
      * @var Registrar
      */
     protected $role_id;
+
 	/**
 	 * Create a new authentication controller instance.
 	 *

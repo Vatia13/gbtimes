@@ -725,15 +725,20 @@
                         <li><a href="/horoscope">Horoscope</a></li>
                     </ul>
                 </li>
+                <li>
+                    <ul>
+                        <li><a  class="facebook" href="https://www.facebook.com/gbtimes" target="_blank"></a></li>
+                        <li><a  class="twitter" href="https://twitter.com/gbtimesCom" target="_blank"></a></li>
+                        <li><a  class="google-plus" href="https://plus.google.com/+Gbtimes/posts" target="_blank"></a></li>
+                    </ul>
+                </li>
             </ul>
-            <ul class="social-icons">
-                <li><a  class="facebook" href="https://www.facebook.com/gbtimes" target="_blank"></a></li>
-                <li><a  class="twitter" href="https://twitter.com/gbtimesCom" target="_blank"></a></li>
-                <li><a  class="google-plus" href="https://plus.google.com/+Gbtimes/posts" target="_blank"></a></li>
+            {{--<ul class="social-icons">--}}
+               {{----}}
                 {{--<li class="vk"><a href="#" target="_blank"></a></li>--}}
                 {{--<li class="linked-in"><a href="#" target="_blank"></a></li>--}}
                 {{--<li class="youtube"><a href="#" target="_blank"></a></li>--}}
-            </ul>
+            {{--</ul>--}}
         </div>
         <div class="fix"></div>
     </div>

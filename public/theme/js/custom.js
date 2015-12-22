@@ -61,7 +61,7 @@ $('.slide-items ul').niceScroll({cursorcolor:"#e22219",cursorborder:'none'});
 
 $('ul.menu-list > li').hover(
     function(){
-        var height = ($('.slide-items').height()) ? $('.slide-items').height() + 10 : 490;
+        var height = ($('.slide-items').height()) ? $('.slide-items').height() + 15 : 490;
         $(this).find('ul.outside > li:first-child').addClass('active');
         $(this).find('ul.outside').css('height',height + 'px').stop(true,true).slideDown(200);
     },

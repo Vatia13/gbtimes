@@ -11,6 +11,7 @@ class Article extends Model {
 	protected $fillable = [
         'user_id',
         'type',
+        'partner',
         'title',
         'frontpage_title',
         'social_media_title',
@@ -40,6 +41,14 @@ class Article extends Model {
         $query->where('published_at','<=',Carbon::now())->where('status',1);
     }
 
+
+    /**
+     * @param $query
+     * @param $data
+     */
+    public function scopePartner($query, $data){
+        $query->where('partner',$data);
+    }
 
     /**
      * @param $query
@@ -451,7 +460,7 @@ class Article extends Model {
     public function getNewsFromPartners($cat=false, $type=false, $num=1, $tag = false){
         $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag;
         return \Cache::rememberForever(App::getLocale().'_article_'.$cat.'_'.$type.'_'.$num.'_'.$tag,function(){
-            return Article::select('id','frontpage_title','head','title','body','published_at','author','meta_desc','slug','translate_slug','img')->published()->where('extra_fields','LIKE','%s:22:"news_from_our_partners";a:1:{s:3:"Yes";s:1:"1";}%')->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->take($this->num)->get();
+            return Article::select('id','frontpage_title','head','title','body','published_at','author','meta_desc','slug','translate_slug','img')->published()->where('partner',1)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->take($this->num)->get();
         });
     }
 
@@ -465,7 +474,7 @@ class Article extends Model {
      */
     public function loadPartnerArticles($cat=false, $type=false, $tag = false, $start=0, $num=6){
         $this->cat = $cat; $this->type = $type; $this->num = $num; $this->tag = $tag; $this->start=$start;
-        $items = Article::select('id','frontpage_title','head','title','body','published_at','author','meta_desc','slug','translate_slug','img')->published()->where('extra_fields','LIKE','%s:22:"news_from_our_partners";a:1:{s:3:"Yes";s:1:"1";}%')->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->skip($this->start)->take($this->num)->get();
+        $items = Article::select('id','frontpage_title','head','title','body','published_at','author','meta_desc','slug','translate_slug','img')->published()->where('partner',1)->language()->articletype($this->type)->articletag($this->tag)->bycatslug($this->cat)->latest()->skip($this->start)->take($this->num)->get();
         return (count($items) > 0) ? view('theme.pages.ajax.cat',compact('items')) : 0;
     }
 

@@ -1,6 +1,6 @@
 {{--*/ $parents = get_cat_by_parent(2) /*--}}
 
-{!! Form::hidden('type',$type) !!}
+
 {!! Form::hidden('translate_slug',$translate_slug) !!}
 <div class="row">
     <div class="col-xs-5">
@@ -13,7 +13,7 @@
             </div>
         </div>
         @if(count($parents) > 0)
-            <div class="row">
+            <div class="row" style="@if(!Auth::user()->hasRole(['Super Admin','Administrator']) && $p['id'] == 83) display:none; @endif">
                 <div class="col-sm-12">
                     <div class="form-group">
                         {!! Form::label('cat',trans('all.main_category')) !!}<i class="required">*</i>
@@ -32,6 +32,14 @@
                 </div>
             </div>
         @endif
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {!! Form::label('type',trans('all.article_type'))  !!}
+                    {!! Form::select('type',['article'=>'---','photogallery'=>'Photo Gallery','video'=>'Video','audio'=>'Audio','study-online'=>'Study Online'],null,['class'=>'form-control'])  !!}
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
@@ -186,8 +194,15 @@
 
 
 <div class="row">
-
     <div class="col-xs-6">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-group">
+                    {!! Form::checkbox('partner',1,null) !!}
+                    {!! Form::label('partner',trans('all.news_from_partner')) !!}
+                </div>
+            </div>
+        </div>
         {!! $fields !!}
         <div id="extra_parent_fields"></div>
         <div id="extra_child_fields"></div>

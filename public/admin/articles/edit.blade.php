@@ -14,7 +14,7 @@
 'brightcove'=>validate_extra_field($extra_fields,'brightcove'),
 'embed'=>validate_extra_field($extra_fields,'embed_video'),
 'type'=>$item->type,
-'translate_slug'=>$item->translate_slug
+'translate_slug'=>$item->translate_slug,
 ])
 {!! Form::close() !!}
 
