@@ -164,38 +164,52 @@
   color:#263238;
 }
 
-.slide-items ul li a div{
+.slide-items ul li > div{
   display:inline-block;
   vertical-align:top;
 }
 
-.slide-items ul li a div.slide-image-small{
+.slide-items ul li > div.slide-image-small{
   width:46%;
   overflow:hidden;
   position:relative;
   height:140px;
 }
 
-.slide-items ul li a div.slide-image-small img{
+.slide-items ul li > div.slide-image-small img{
   width:100%;
 }
 
-.slide-items ul li a div.slide-text-small{
-  width:52%;
-  overflow:hidden;
-  position:relative;
-  height:140px;
+.slide-items ul li > div.slide-text-small{
+  width: 51%;
+  overflow: hidden;
+  position: relative;
+  height: 140px;
+  margin-left: 5px;
 }
 
-.slide-items ul li a div.slide-text-small div{
+.slide-items ul li > div.slide-text-small div{
   max-height:72px;
   overflow:hidden;
+  margin-top:5px;
 }
 
-.slide-items ul li a div.slide-text-small span{
+.slide-items ul li > div.slide-text-small .author-date{
   position:absolute;
   bottom:0;
   left:0;
+}
+
+.slide-items ul li > div.slide-text-small .author-date span{
+  display:inline-block;
+}
+
+.slide-items ul li > div.slide-text-small .author-date span:first-child{
+  margin-right:20px;
+}
+
+.slide-items ul li > div.slide-text-small .author-date a:hover{
+  color:#e22219;
 }
 
 .slide-title{

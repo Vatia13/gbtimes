@@ -16,7 +16,7 @@
          'catid'=>'',
          'brightcove'=>'',
          'embed'=>'',
-         'lang'=>App::getLocale(),
+         'lang'=>\App::getLocale(),
          'type'=>'',
          'translate_slug'=> (Input::get('translate')) ? Input::get('translate') : '',
          ])

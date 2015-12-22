@@ -9,21 +9,23 @@
                     <ul>
                         @foreach($items as $key=>$item)
                             <li>
-                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                    <div class="image">
+                                <div class="image">
+                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                                         <img src="{{checkImage($item->img)}}"/>
-                                    </div>
-                                    <div class="desc">
-                                        <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <h4>
+                                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
+                                    </h4>
                                             <span>
-                                                {{recordDesc($item->head,$item->body,20)}}
+                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
                                             </span>
-                                        <br>
-                                    </div>
+                                    <br>
                                     <div class="time-author">
-                                        <span>{{$item->author}}</span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+                                        <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
                                     </div>
-                                </a>
+                                </div>
                             </li>
                         @endforeach
                     </ul>

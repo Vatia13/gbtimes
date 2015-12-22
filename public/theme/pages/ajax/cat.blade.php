@@ -1,21 +1,23 @@
 @if(count($items) > 0)
     @foreach($items as $key=>$item)
-            <li>
+        <li>
+            <div class="image">
                 <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                    <div class="image">
-                        <img src="{{checkImage($item->img)}}"/>
-                    </div>
-                    <div class="desc">
-                        <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body,20)}}
-                                            </span>
-                        <br>
-                    </div>
-                    <div class="time-author">
-                        <span>{{$item->author}}</span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                    </div>
+                    <img src="{{checkImage($item->img)}}"/>
                 </a>
-            </li>
+            </div>
+            <div class="desc">
+                <h4>
+                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
+                </h4>
+                                            <span>
+                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
+                                            </span>
+                <br>
+                <div class="time-author">
+                    <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+                </div>
+            </div>
+        </li>
     @endforeach
 @endif

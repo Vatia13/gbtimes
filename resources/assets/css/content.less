@@ -224,41 +224,43 @@
 .shortcode,.news{
   position:relative;
 }
+
 .shortcode ul li,.news ul li{
   width:48%;
   max-height:150px;
   margin:10px 4px !important;
-  padding:0 !important;
+  padding:5px !important;
   display:inline-block;
   vertical-align:top;
   text-align:left;
   position:relative;
-
 }
 
 .shortcode ul li a,.news ul li a{
   display:block;
   color:#263238;
   text-decoration:none;
-  padding:5px;
 }
 
-.shortcode ul li a:hover,.news ul li a:hover{
+.shortcode ul li:hover,.news ul li:hover{
   background-color:#d4dfe6;
   transition:all 0.5s ease;
   -moz-transition:all 0.5s ease;
   -webkit-transition:all 0.5s ease;
 }
 
-.shortcode ul li div,.news ul li div{
+.shortcode ul li > div,.news ul li > div{
   display:inline-block;
   vertical-align:top;
+  height:140px;
 }
 
 .shortcode ul .image,.news ul .image{
   width:46%;
-  max-height:150px;
+  max-height:140px;
   overflow:hidden;
+  display:inline-block;
+  vertical-align:top;
 }
 
 .shortcode ul .image img,.news ul .image img{
@@ -267,16 +269,31 @@
 }
 
 .shortcode ul .desc,.news ul .desc{
-  width:53%;
+  width:52%;
   text-align:left;
+  position:relative;
+  display:inline-block;
+  vertical-align:top;
+  height:140px;
+  margin-left:5px;
+}
+
+.shortcode ul .desc span,.news ul .desc span{
+  display:block;
+  margin-top:5px;
 }
 
 .shortcode ul .time-author,.news ul .time-author{
   position:absolute;
   bottom:0;
-  left:47%;
 }
 
+.shortcode ul .time-author span,.news ul .time-author span {
+  display:inline-block;
+}
+.shortcode ul .time-author a:hover,.news ul .time-author a:hover{
+  color:#e22219;
+}
 .shortcode ul .time-author span:first-child,.news ul .time-author span:first-child{
   margin-right:20px;
 }
@@ -341,15 +358,23 @@
 
 .news_list ul .desc{
   width:53%;
-  height:113px;
-  overflow:hidden;
   text-align:left;
+  margin-left:5px;
+}
+
+.news_list ul .desc span{
+  position:relative;
+  margin-top:5px;
+  display:block;
 }
 
 .news_list ul .time-author{
   position:absolute;
   bottom:5px;
-  left:42%;
+  left:42.5%;
+}
+.news_list ul .time-author span:first-child:hover{
+  color: #e22219;
 }
 
 .news_list ul .time-author span:first-child{
@@ -403,11 +428,15 @@
   left:0;
 }
 
-.pick_of_the_day .time-author span:first-child{
+.pick_of_the_day .time-author span{
+  display:inline-block;
+}
+
+.pick_of_the_day .time-author span:first-child a{
   color:#e22219;
 }
 
-.time-author span{
+.pick_of_the_day .time-author span:first-child{
   margin-right:20px;
 }
 

@@ -7,6 +7,12 @@
  */
 @include('functions.php');
 $drupal = mysqli_connect('localhost','root','','gb_old');
+if (!mysqli_set_charset($drupal, "utf8")) {
+    printf("Error loading character set utf8: %s\n", mysqli_error($drupal));
+    exit();
+} else {
+    printf("Current character set: %s\n", mysqli_character_set_name($drupal));
+}
 $laravel = mysqli_connect('localhost','root','','gb');
 
 /*

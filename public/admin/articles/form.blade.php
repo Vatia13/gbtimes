@@ -13,7 +13,7 @@
             </div>
         </div>
         @if(count($parents) > 0)
-            <div class="row" style="@if(!Auth::user()->hasRole(['Super Admin','Administrator']) && $p['id'] == 83) display:none; @endif">
+            <div class="row" style="@if(!Auth::user()->hasRole(['Super Admin','Administrator'])) display:none; @endif">
                 <div class="col-sm-12">
                     <div class="form-group">
                         {!! Form::label('cat',trans('all.main_category')) !!}<i class="required">*</i>

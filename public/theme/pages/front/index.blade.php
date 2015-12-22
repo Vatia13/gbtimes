@@ -40,19 +40,22 @@
                 <ul>
                     @foreach($lastRecords as $item)
                         <li>
-                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
                                 <div class="slide-image-small">
-                                    <img src="{{checkImage($item->img)}}"/>
+                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                        <img src="{{checkImage($item->img)}}"/>
+                                    </a>
                                 </div>
-                                <div class="slide-text-small">
-                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                    <div>
-                                        {{recordDesc($item->head,$item->meta_desc)}}
-                                    </div>
-                                    <br>
-                                    <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+
+                            <div class="slide-text-small">
+                                <h4><a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a></h4>
+                                <div>
+                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->meta_desc)}}</a>
                                 </div>
-                            </a>
+                                <br>
+                                <div class="author-date">
+                                    <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span><span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+                                </div>
+                            </div>
                         </li>
                     @endforeach
                 </ul>
@@ -60,7 +63,6 @@
         </div>
     </div>
 </div>
-
 <div class="fix"></div>
 <!-- 3 ITEMS HORIZONTAL -->
 <div class="horizontal-items-3">

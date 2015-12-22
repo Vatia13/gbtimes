@@ -120,7 +120,7 @@ class WelcomeController extends Controller {
      */
 	public function lastRecords(){
 		$records = Cache::rememberForever('lastRecords_'.App::getLocale(), function() {
-			return Article::select('id','frontpage_title','head','title','published_at','meta_desc','slug','img','translate_slug')->published()->getcat(55)->language()->where('type','<>','page')->latest()->take(10)->get();
+			return Article::select('id','frontpage_title','head','title','published_at','meta_desc','slug','img','author','translate_slug')->published()->getcat(55)->language()->where('type','<>','page')->latest()->take(10)->get();
 		});
 		return $records;
 	}
