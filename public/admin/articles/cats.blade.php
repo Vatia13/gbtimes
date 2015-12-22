@@ -36,18 +36,17 @@
             }
 
         }
-        $("#rubrics label").click(function(){
-            if($('#rubrics input:checked').val() == 82){
-                $('input[name="type"]').val("horoscope");
-            }else if($('.video_type:eq(1)').val() != "" || $('.video_type:eq(0)').val() != ""){
-                $('input[name="type"]').val("video");
-            }else if($('.image_buttons > div').length > 1){
-                $('input[name="type"]').val("photogallery");
-            }else{
-                $('input[name="type"]').val("article");
-            }
-
-
-        });
+//        $("#rubrics label").click(function(){
+//            if($('#rubrics input:checked').val() == 82){
+//                $('input[name="type"]').val("horoscope");
+//            }else if($('.video_type:eq(1)').val() != "" || $('.video_type:eq(0)').val() != ""){
+//                $('input[name="type"]').val("video");
+//            }else if($('.image_buttons > div').length > 1){
+//                $('input[name="type"]').val("photogallery");
+//            }else{
+//                $('input[name="type"]').val("article");
+//            }
+//
+//        });
     </script>
 @endif

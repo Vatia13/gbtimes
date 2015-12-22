@@ -184,13 +184,13 @@ function escapeHtml(text) {
     return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
 
-$('.video_type').bind('input',function(){
-    if($(this).val() != ""){
-        $('input[name="type"]').val("video");
-    }else{
-        $('input[name="type"]').val("article");
-    }
-});
+//$('.video_type').bind('input',function(){
+//    if($(this).val() != ""){
+//        $('input[name="type"]').val("video");
+//    }else{
+//        $('input[name="type"]').val("article");
+//    }
+//});
 
 
 

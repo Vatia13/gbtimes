@@ -287,9 +287,9 @@ $('.add_photo').click(function(){
     var num = imageLength++;
     var url = $(this).data('url');
     var token = $(this).data('token');
-    if(num > 1){
-        $('input[name="type"]').val('photogallery');
-    }
+    //if(num > 1){
+    //    $('input[name="type"]').val('photogallery');
+    //}
     if(num > 0){
         $.ajax({
             url:url,
