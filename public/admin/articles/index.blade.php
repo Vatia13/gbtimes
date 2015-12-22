@@ -41,7 +41,8 @@
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="6" align="center">{!! str_replace('/?', '?', $articles->render()) !!}</td>
+                <?php $get_partner = (Input::get('partner')) ? ['partner'=>1] : [];?>
+                <td colspan="6" align="center">{!! str_replace('/?', '?', $articles->appends($get_partner)->render()) !!}</td>
             </tr>
             </tfoot>
         </table>
