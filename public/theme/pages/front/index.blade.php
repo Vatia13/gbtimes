@@ -49,7 +49,7 @@
                             <div class="slide-text-small">
                                 <h4><a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a></h4>
                                 <div>
-                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->meta_desc)}}</a>
+                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,122,recordTitle($item->frontpage_title,$item->title),56)}}...</a>
                                 </div>
                                 <br>
                                 <div class="author-date">

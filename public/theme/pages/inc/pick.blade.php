@@ -7,7 +7,7 @@
     <div class="info">
         <div class="title"><h4>{{recordTitle($items->getPickOfDay($slug)->frontpage_title,$items->getPickOfDay($slug)->title)}}</h4></div>
         <div class="details">
-            <a href="{{action('WelcomeController@showArticle',checkItem($items->getPickOfDay($slug)->translate_slug,$items->getPickOfDay($slug)->slug))}}">{!! recordDesc('',$items->getPickOfDay($slug)->body,1300,recordTitle($items->getPickOfDay($slug)->frontpage_title,$items->getPickOfDay($slug)->title),170) !!}...</a>
+            <a href="{{action('WelcomeController@showArticle',checkItem($items->getPickOfDay($slug)->translate_slug,$items->getPickOfDay($slug)->slug))}}">{!! recordDesc('',$items->getPickOfDay($slug)->body,1000,recordTitle($items->getPickOfDay($slug)->frontpage_title,$items->getPickOfDay($slug)->title),170) !!}...</a>
         </div>
         <div class="time-author">
             @if($items->getPickOfDay($slug)->author)

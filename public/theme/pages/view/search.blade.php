@@ -12,10 +12,13 @@
                         @endforeach
                     </ul>
                 @endif
-                <div class="show_more">
-                    <div class="gifLoader"></div>
-                    <button onClick="loadItems('','','{{Input::get('s')}}',8,this)" data-route="{{action('WelcomeController@loadSearchArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                </div>
+
+                @if($count > 14)
+                    <div class="show_more">
+                        <div class="gifLoader"></div>
+                        <button onClick="loadItems('','','{{Input::get('s')}}',8,this)" data-route="{{action('WelcomeController@loadSearchArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

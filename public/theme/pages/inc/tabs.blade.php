@@ -29,10 +29,12 @@
                                 @endif
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getarticles($slug,false,6)) > 5)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
                 @if(count($items->getNewsFromPartners($slug,false,4)) > 0)
@@ -43,10 +45,12 @@
                                 @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getNewsFromPartners($slug,false,4)) > 3)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
             </div>
@@ -61,10 +65,12 @@
                                 @endif
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','article','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getarticles($slug,'article',6)) > 5)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','article','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
                 @if(count($items->getNewsFromPartners($slug,'article',4)) > 0)
@@ -75,10 +81,12 @@
                                 @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','article','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getNewsFromPartners($slug,'article',4)) > 3)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','article','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
             </div>
@@ -93,10 +101,12 @@
                                 @endif
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','photogallery','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getarticles($slug,'photogallery',6)) > 5)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','photogallery','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
                 @if(count($items->getNewsFromPartners($slug,'photogallery',4)) > 0)
@@ -107,10 +117,12 @@
                                 @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','photogallery','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getNewsFromPartners($slug,'photogallery',4)) > 3)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','photogallery','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
             </div>
@@ -125,10 +137,12 @@
                                 @endif
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','video','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getarticles($slug,'video',6)) > 5)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','video','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
                 @if(count($items->getNewsFromPartners($slug,'video',4)) > 0)
@@ -139,10 +153,12 @@
                                 @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','video','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getNewsFromPartners($slug,'video',4)) > 3)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','video','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
             </div>
@@ -157,13 +173,15 @@
                                 @endif
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','audio','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getarticles($slug,'audio',6)) > 5)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','audio','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
-                @if(count($items->getNewsFromPartners($slug,'audio',2)) > 0)
+                @if(count($items->getNewsFromPartners($slug,'audio',4)) > 0)
                     <div id="partner_news">
                         <h4>News from our partners</h4>
                         <ul>
@@ -171,10 +189,12 @@
                                 @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','audio','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getNewsFromPartners($slug,'audio',4)) > 3)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','audio','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
             </div>
@@ -189,10 +209,12 @@
                                 @endif
                             @endforeach
                         </ul>
-                        <div class="show_more">
-                            <div class="gifLoader"></div>
-                            <button onClick="loadItems('{{$slug}}','study-online','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
-                        </div>
+                        @if(count($items->getarticles($slug,'study-online',6)) > 5)
+                            <div class="show_more">
+                                <div class="gifLoader"></div>
+                                <button onClick="loadItems('{{$slug}}','study-online','',4,this)" data-route="{{action('WelcomeController@loadArticles')}}" data-token="{{csrf_token()}}">Show more</button>
+                            </div>
+                        @endif
                     </div>
                 @endif
                 @if(Request::path() == 'study-chinese')
@@ -204,10 +226,12 @@
                                     @include('theme.pages.inc.list')
                                 @endforeach
                             </ul>
+                            @if(count($items->getNewsFromPartners($slug,'study-online',4)) > 3)
                             <div class="show_more">
                                 <div class="gifLoader"></div>
                                 <button onClick="loadItems('{{$slug}}','study-online','',4,this)" data-route="{{action('WelcomeController@loadPartnerArticles')}}" data-token="{{csrf_token()}}">Show more</button>
                             </div>
+                            @endif
                         </div>
                     @endif
                 @endif

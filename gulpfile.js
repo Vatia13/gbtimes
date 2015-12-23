@@ -13,5 +13,5 @@ var elixir = require('laravel-elixir');
 elixir.config.sourcemaps = false;
 elixir(function(mix) {
     //mix.styles(["fonts.less","style.less","errors.less","forms.less","responsive.less"],'public/theme/css/all.css').version("theme/css/all.css");
-    mix.styles(["main.less","header.less","menu.less","slider.less","content.less","view.less","footer.less","radioplayer.less","responsive.less"],'public/theme/css/all.css');
+    mix.styles(["fonts.less","main.less","header.less","menu.less","slider.less","content.less","view.less","footer.less","radioplayer.less","responsive.less"],'public/theme/css/all.css');
 });
