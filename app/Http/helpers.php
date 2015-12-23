@@ -676,10 +676,10 @@ if(!function_exists('recordDesc')){
                 $chars = strlen($title) - $chars;
                 $words = $words - $chars;
             }
-            return ($first) ? Str::substr(htmlspecialchars(strip_tags($first)),0,$words) : Str::substr(htmlspecialchars(strip_tags($second)),0,$words);
+            return ($first) ? Str::substr(trim(strip_tags($first)),0,$words) : Str::substr(trim(strip_tags($second)),0,$words);
 
         }else{
-            return ($first) ? Str::words(strip_tags($first), $words) : Str::words(strip_tags($second),$words);
+            return ($first) ? Str::words(trim(strip_tags($first)), $words) : Str::words(trim(strip_tags($second)),$words);
         }
     }
 }
