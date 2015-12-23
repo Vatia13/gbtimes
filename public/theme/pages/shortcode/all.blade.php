@@ -8,20 +8,7 @@
         </div>
         <div class="fix"></div>
         @if($items->getPickOfDay(false))
-            <div class="pick_of_the_day">
-                <a href="{{action('WelcomeController@showArticle',checkItem($items->getPickOfDay(false)->translate_slug,$items->getPickOfDay(false)->slug))}}">
-                    <div class="image">
-                        <img src="{{checkImage($items->getPickOfDay(false)->img)}}" height="100%"/>
-                    </div>
-                    <div class="info">
-                        <div class="title"><h4>{{recordTitle($items->getPickOfDay(false)->frontpage_title,$items->getPickOfDay(false)->title)}}</h4></div>
-                        <div class="details">{{recordDesc($items->getPickOfDay(false)->body,$items->getPickOfDay(false)->head,100)}}</div>
-                        <div class="time-author">
-                            <span>{{$items->getPickOfDay(false)->author}}</span> <span>{{date('m.d.Y',strtotime($items->getPickOfDay(false)->published_at))}}</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            @include('theme.pages.inc.pick')
         @endif
         <div class="fix"></div>
 
@@ -33,25 +20,7 @@
                         <ul>
                             @foreach($items->getarticles(false,false,6) as $key=>$item)
                                 @if($key < 4)
-                                    <li>
-                                        <div class="image">
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <img src="{{checkImage($item->img)}}"/>
-                                            </a>
-                                        </div>
-                                        <div class="desc">
-                                            <h4>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
-                                            </h4>
-                                            <span>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
-                                            </span>
-                                            <br>
-                                            <div class="time-author">
-                                                <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @include('theme.pages.inc.list')
                                 @endif
                             @endforeach
                         </ul>
@@ -61,30 +30,12 @@
                         </div>
                     </div>
                 @endif
-                @if(count($items->getNewsFromPartners(false,false,2)) > 0)
+                @if(count($items->getNewsFromPartners(false,false,4)) > 0)
                     <div id="partner_news">
                         <h4>News from our partners</h4>
                         <ul>
-                            @foreach($items->getNewsFromPartners(false,false,2) as $item)
-                                <li>
-                                    <div class="image">
-                                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                            <img src="{{checkImage($item->img)}}"/>
-                                        </a>
-                                    </div>
-                                    <div class="desc">
-                                        <h4>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
-                                        </h4>
-                                            <span>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
-                                            </span>
-                                        <br>
-                                        <div class="time-author">
-                                            <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                                        </div>
-                                    </div>
-                                </li>
+                            @foreach($items->getNewsFromPartners(false,false,4) as $item)
+                                @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
                         <div class="show_more">
@@ -101,25 +52,7 @@
                         <ul>
                             @foreach($items->getarticles(false,'article',6) as $key=>$item)
                                 @if($key < 4)
-                                    <li>
-                                        <div class="image">
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <img src="{{checkImage($item->img)}}"/>
-                                            </a>
-                                        </div>
-                                        <div class="desc">
-                                            <h4>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
-                                            </h4>
-                                            <span>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
-                                            </span>
-                                            <br>
-                                            <div class="time-author">
-                                                <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @include('theme.pages.inc.list')
                                 @endif
                             @endforeach
                         </ul>
@@ -129,30 +62,12 @@
                         </div>
                     </div>
                 @endif
-                @if(count($items->getNewsFromPartners(false,'article',2)) > 0)
+                @if(count($items->getNewsFromPartners(false,'article',4)) > 0)
                     <div id="partner_news">
                         <h4>News from our partners</h4>
                         <ul>
-                            @foreach($items->getNewsFromPartners($slug,'article',2) as $item)
-                                <li>
-                                    <div class="image">
-                                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                            <img src="{{checkImage($item->img)}}"/>
-                                        </a>
-                                    </div>
-                                    <div class="desc">
-                                        <h4>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
-                                        </h4>
-                                            <span>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
-                                            </span>
-                                        <br>
-                                        <div class="time-author">
-                                            <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                                        </div>
-                                    </div>
-                                </li>
+                            @foreach($items->getNewsFromPartners($slug,'article',4) as $item)
+                                @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
                         <div class="show_more">
@@ -169,25 +84,7 @@
                         <ul>
                             @foreach($items->getarticles(false,'photogallery',6) as $key=>$item)
                                 @if($key < 4)
-                                    <li>
-                                        <div class="image">
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <img src="{{checkImage($item->img)}}"/>
-                                            </a>
-                                        </div>
-                                        <div class="desc">
-                                            <h4>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
-                                            </h4>
-                                            <span>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
-                                            </span>
-                                            <br>
-                                            <div class="time-author">
-                                                <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @include('theme.pages.inc.list')
                                 @endif
                             @endforeach
                         </ul>
@@ -197,30 +94,12 @@
                         </div>
                     </div>
                 @endif
-                @if(count($items->getNewsFromPartners(false,'photogallery',2)) > 0)
+                @if(count($items->getNewsFromPartners(false,'photogallery',4)) > 0)
                     <div id="partner_news">
                         <h4>News from our partners</h4>
                         <ul>
-                            @foreach($items->getNewsFromPartners(false,'photogallery',2) as $item)
-                                <li>
-                                    <div class="image">
-                                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                            <img src="{{checkImage($item->img)}}"/>
-                                        </a>
-                                    </div>
-                                    <div class="desc">
-                                        <h4>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
-                                        </h4>
-                                            <span>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
-                                            </span>
-                                        <br>
-                                        <div class="time-author">
-                                            <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                                        </div>
-                                    </div>
-                                </li>
+                            @foreach($items->getNewsFromPartners(false,'photogallery',4) as $item)
+                                @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
                         <div class="show_more">
@@ -237,25 +116,7 @@
                         <ul>
                             @foreach($items->getarticles(false,'video',6) as $key=>$item)
                                 @if($key < 4)
-                                    <li>
-                                        <div class="image">
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <img src="{{checkImage($item->img)}}"/>
-                                            </a>
-                                        </div>
-                                        <div class="desc">
-                                            <h4>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
-                                            </h4>
-                                            <span>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
-                                            </span>
-                                            <br>
-                                            <div class="time-author">
-                                                <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @include('theme.pages.inc.list')
                                 @endif
                             @endforeach
                         </ul>
@@ -265,30 +126,12 @@
                         </div>
                     </div>
                 @endif
-                @if(count($items->getNewsFromPartners(false,'video',2)) > 0)
+                @if(count($items->getNewsFromPartners(false,'video',4)) > 0)
                     <div id="partner_news">
                         <h4>News from our partners</h4>
                         <ul>
-                            @foreach($items->getNewsFromPartners(false,'video',2) as $item)
-                                <li>
-                                    <div class="image">
-                                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                            <img src="{{checkImage($item->img)}}"/>
-                                        </a>
-                                    </div>
-                                    <div class="desc">
-                                        <h4>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a>
-                                        </h4>
-                                            <span>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,20)}}</a>
-                                            </span>
-                                        <br>
-                                        <div class="time-author">
-                                            <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span> <span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
-                                        </div>
-                                    </div>
-                                </li>
+                            @foreach($items->getNewsFromPartners(false,'video',4) as $item)
+                                @include('theme.pages.inc.list')
                             @endforeach
                         </ul>
                         <div class="show_more">

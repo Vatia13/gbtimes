@@ -670,8 +670,17 @@ if(!function_exists('recordTitle')){
 }
 
 if(!function_exists('recordDesc')){
-    function recordDesc($first,$second,$words = 20){
-        return ($first) ? Str::words(strip_tags($first), $words) : Str::words(strip_tags($second),$words);
+    function recordDesc($first='',$second='',$words = 20,$title='',$chars = 60){
+        if(!empty($title)){
+            if(strlen($title) > $chars){
+                $chars = strlen($title) - $chars;
+                $words = $words - $chars;
+            }
+            return ($first) ? Str::substr(htmlspecialchars(strip_tags($first)),0,$words) : Str::substr(htmlspecialchars(strip_tags($second)),0,$words);
+
+        }else{
+            return ($first) ? Str::words(strip_tags($first), $words) : Str::words(strip_tags($second),$words);
+        }
     }
 }
 

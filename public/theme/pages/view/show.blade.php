@@ -127,23 +127,7 @@
                                     <a href="{{action('WelcomeController@newsAuthor',$item->author)}}">More by author</a>
                                     <ul>
                                         @foreach($author_articles as $key=>$it)
-                                            <li>
-                                                <a href="{{action('WelcomeController@showArticle',checkItem($it->translate_slug,$it->slug))}}">
-                                                    <div class="image">
-                                                        <img src="{{checkImage($it->img)}}"/>
-                                                    </div>
-                                                    <div class="desc">
-                                                        <h4>{{recordTitle($it->frontpage_title,$it->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($it->head,$it->body,20)}}
-                                            </span>
-                                                        <br>
-                                                    </div>
-                                                    <div class="time-author">
-                                                        <span>{{$it->author}}</span> <span>{{date('m.d.Y',strtotime($it->published_at))}}</span>
-                                                    </div>
-                                                </a>
-                                            </li>
+                                            @include('theme.pages.inc.vlist')
                                         @endforeach
                                     </ul>
                                 @endif
@@ -156,23 +140,7 @@
                                         <a href="{{action('WelcomeController@SimilarNews',''.join(',',$cats).'')}}">Similar stories</a>
                                         <ul>
                                             @foreach($similar_articles as $key=>$it)
-                                                <li>
-                                                    <a href="{{action('WelcomeController@showArticle',checkItem($it->translate_slug,$it->slug))}}">
-                                                        <div class="image">
-                                                            <img src="{{checkImage($it->img)}}"/>
-                                                        </div>
-                                                        <div class="desc">
-                                                            <h4>{{recordTitle($it->frontpage_title,$it->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($it->head,$it->body,20)}}
-                                            </span>
-                                                            <br>
-                                                        </div>
-                                                        <div class="time-author">
-                                                            <span>{{$it->author}}</span> <span>{{date('m.d.Y',strtotime($it->published_at))}}</span>
-                                                        </div>
-                                                    </a>
-                                                </li>
+                                                @include('theme.pages.inc.vlist')
                                             @endforeach
                                         </ul>
                                     @endif
