@@ -12,13 +12,13 @@
         </div>
 
         <div class="fix"></div>
-        @if($items->getPickOfDay($slug))
-            @include('theme.pages.inc.pick')
-        @endif
-        <div class="fix"></div>
 
         <div class="tab_content">
             <div class="tab active">
+                @if($items->getPickOfDay($slug,false))
+                    @include('theme.pages.inc.pick',['type'=>false])
+                @endif
+                <div class="fix"></div>
                 @if(count($items->getarticles($slug,false,6)) > 0)
                     <div id="gbtimes_news">
                         <h4>Gbtimes News</h4>
@@ -55,6 +55,10 @@
                 @endif
             </div>
             <div class="tab">
+                @if($items->getPickOfDay($slug,'article'))
+                    @include('theme.pages.inc.pick',['type'=>'article'])
+                @endif
+                    <div class="fix"></div>
                 @if(count($items->getarticles($slug,'article',6)) > 0)
                     <div id="gbtimes_news">
                         <h4>Gbtimes News</h4>
@@ -91,6 +95,10 @@
                 @endif
             </div>
             <div class="tab">
+                @if($items->getPickOfDay($slug,'photogallery'))
+                    @include('theme.pages.inc.pick',['type'=>'photogallery'])
+                @endif
+                <div class="fix"></div>
                 @if(count($items->getarticles($slug,'photogallery',6)) > 0)
                     <div id="gbtimes_news">
                         <h4>Gbtimes News</h4>
@@ -127,6 +135,10 @@
                 @endif
             </div>
             <div class="tab">
+                @if($items->getPickOfDay($slug,'video'))
+                    @include('theme.pages.inc.pick',['type'=>'video'])
+                @endif
+                <div class="fix"></div>
                 @if(count($items->getarticles($slug,'video',6)) > 0)
                     <div id="gbtimes_news">
                         <h4>Gbtimes News</h4>
@@ -163,6 +175,10 @@
                 @endif
             </div>
             <div class="tab">
+                @if($items->getPickOfDay($slug,'audio'))
+                    @include('theme.pages.inc.pick',['type'=>'audio'])
+                @endif
+                <div class="fix"></div>
                 @if(count($items->getarticles($slug,'audio',6)) > 0)
                     <div id="gbtimes_news">
                         <h4>Gbtimes News</h4>
@@ -199,6 +215,10 @@
                 @endif
             </div>
             <div class="tab">
+                @if($items->getPickOfDay($slug,'study-online'))
+                    @include('theme.pages.inc.pick',['type'=>'study-online'])
+                @endif
+                <div class="fix"></div>
                 @if(count($items->getarticles($slug,'study-online',6)) > 0)
                     <div id="gbtimes_news">
                         <h4>Gbtimes News</h4>

@@ -671,15 +671,17 @@ if(!function_exists('recordTitle')){
 
 if(!function_exists('recordDesc')){
     function recordDesc($first='',$second='',$words = 20,$title='',$chars = 60){
+        $first = strip_tags($first);
+        $second = strip_tags($second);
         if(!empty($title)){
             if(strlen($title) > $chars){
                 $chars = strlen($title) - $chars;
                 $words = $words - $chars;
             }
-            return ($first) ? Str::substr(trim(strip_tags($first)),0,$words) : Str::substr(trim(strip_tags($second)),0,$words);
+            return ($first) ? Str::limit($first,$words) : Str::limit($second,$words);
 
         }else{
-            return ($first) ? Str::words(trim(strip_tags($first)), $words) : Str::words(trim(strip_tags($second)),$words);
+            return ($first) ? Str::words($first, $words) : Str::words($second,$words);
         }
     }
 }
