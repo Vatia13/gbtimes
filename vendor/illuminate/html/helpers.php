@@ -67,3 +67,5 @@ if ( ! function_exists('link_to_action'))
         return app('html')->linkAction($action, $title, $parameters, $attributes);
     }
 }
+
+

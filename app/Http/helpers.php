@@ -699,4 +699,14 @@ function generateBrightcoveVideo($id){
   return json_decode($content,true);
 }
 
+
+function parseSimpleContentData($url){
+    $data = @simplexml_load_file($url, "SimpleXMLElement", LIBXML_NOCDATA);
+    $json = json_encode($data);
+    $array = json_decode($json,TRUE);
+    $output = '';
+    $newarray = array_pluck($array,'item');
+    dump($newarray);
+}
+
 ?>

@@ -141,7 +141,6 @@ return [
         'Illuminate\Html\HtmlServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
-        'Orchestra\Parser\XmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -157,7 +156,6 @@ return [
          */
         'App\Providers\FooServiceProvider',
         'Torann\GeoIP\GeoIPServiceProvider',
-		'SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider'
 	],
 
 	/*
@@ -214,7 +212,6 @@ return [
          * Dev Facade
          */
         'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
-		'Facebook' => 'SammyK\LaravelFacebookSdk\FacebookFacade',
         'Foo'      => 'App\Dev\Facades\Foo',
 
 	],

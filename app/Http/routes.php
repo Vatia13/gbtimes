@@ -101,7 +101,10 @@
 //	return $token;//redirect('/')->with('message', 'Successfully logged in with Facebook');
 //});
 
-
+Route::get('/test/xml/parse',function(){
+    $url = 'https://news.google.com/news?cf=all&hl=en&pz=1&ned=us&csid=c68abdab5e4f18cf&output=rss';
+    parseSimpleContentData($url);
+});
 
 
 /*

@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Cache;
 
-use Orchestra\Parser\Xml\Document;
-use Orchestra\Parser\Xml\Reader;
+
 
 use Response;
 use Torann\GeoIP\GeoIP;
