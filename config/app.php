@@ -156,6 +156,8 @@ return [
          */
         'App\Providers\FooServiceProvider',
         'Torann\GeoIP\GeoIPServiceProvider',
+		'Yangqi\Htmldom\HtmldomServiceProvider',
+
 	],
 
 	/*
@@ -213,7 +215,7 @@ return [
          */
         'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
         'Foo'      => 'App\Dev\Facades\Foo',
-
+		'Htmldom' => 'Yangqi\Htmldom\Htmldom',
 	],
 
 ];

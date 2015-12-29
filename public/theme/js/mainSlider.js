@@ -85,7 +85,7 @@ $.fn.mainSlider = function(options){
     slider.find('div.slider-dots ul li').click(function(){
         //console.log($(this).index()+'-'+activeNum);
         if(activeNum != $(this).index()){
-            activeNum = $(this).index() - 1;
+            activeNum = $(this).index();
             effect();
         }
     });

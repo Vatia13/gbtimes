@@ -247,7 +247,7 @@ if(! function_exists('get_image_from_array')){
 
 if(! function_exists('checkImage')){
     function checkImage($url){
-        return ($url) ? $url : asset('theme/images/no_image.jpg');
+        return ($url) ? get_img_url($url) : asset('theme/images/no_image.jpg');
     }
 }
 
@@ -706,7 +706,19 @@ function parseSimpleContentData($url){
     $array = json_decode($json,TRUE);
     $output = '';
     $newarray = array_pluck($array,'item');
+    $html = new \Htmldom();
+    $html->load($newarray[1][0]['description']);
+    echo $newarray[1][0]['description'];
+     #$newarray[1][0]['description'];
     dump($newarray);
+    foreach($html->find('font') as $font){
+        foreach($font->find('font') as $k=>$f){
+            if($k == 2){
+                echo $f->plaintext.'<br><br>';
+            }
+        }
+    }
+    #dump($descriptions[0]->plaintext);
 }
 
 ?>

@@ -5,15 +5,21 @@
  * Date: 10/22/15
  * Time: 12:35 PM
  */
-@include('functions.php');
-$drupal = mysqli_connect('localhost','root','','gb_old');
+@include('migrations_functions.php');
+$drupal = mysqli_connect('localhost','root','root','gbtimes_old');
 if (!mysqli_set_charset($drupal, "utf8")) {
     printf("Error loading character set utf8: %s\n", mysqli_error($drupal));
     exit();
 } else {
     printf("Current character set: %s\n", mysqli_character_set_name($drupal));
 }
-$laravel = mysqli_connect('localhost','root','','gb');
+$laravel = mysqli_connect('localhost','root','root','gbtimes');
+if (!mysqli_set_charset($laravel, "utf8")) {
+    printf("Error loading character set utf8: %s\n", mysqli_error($drupal));
+    exit();
+} else {
+    printf("Current character set: %s\n", mysqli_character_set_name($drupal));
+}
 
 /*
 $drupal_articles_body = $drupal->query('SELECT nid FROM field_data_body WHERE id > 0');
@@ -36,6 +42,7 @@ $drupal->query("DELETE FROM file_managed WHERE fid NOT IN (".join(',',$drupal_ar
 */
 /**
  * Insert Articles From drupal to Laravel
+ * PLEASE INDEX field_data_body.entity_id,node.nid,field_data_field_author.entity_id,alias.source,field_data_field_full_name.entity_id
  */
 if(isset($_GET['insert_articles']) == true):
     if(isset($_GET['start'])){$start = $_GET['start'];}
@@ -45,15 +52,13 @@ if(isset($_GET['insert_articles']) == true):
     }else{
         $limit = "";
     }
-    echo $limit;
-$drupal_articles =
-$drupal->query('SELECT a.*,b.body_value,b.body_summary,c.field_author_target_id
+$drupal_articles = $drupal->query('SELECT a.*,b.body_value,b.body_summary,c.field_author_target_id
 FROM node as a
 LEFT JOIN field_data_body as b ON b.entity_id = a.nid
 LEFT JOIN field_data_field_author as c ON c.entity_id = a.nid
 WHERE a.nid > 0 ORDER BY a.nid DESC '.$limit);
-print_r($drupal_articles);
 $laravel_articles = array();
+
 
 while($row = $drupal_articles->fetch_array()) {
     $laravel_articles['node'] = $row['nid'];
@@ -69,18 +74,16 @@ while($row = $drupal_articles->fetch_array()) {
     $check_if_exists = $laravel->query("SELECT count(id) FROM is_articles WHERE node='" . $laravel_articles['node'] . "'");
     $check_num = $check_if_exists->fetch_row();
 
-    print_r($check_num[0] . '-' . $laravel_articles['node'] . '<br>');
+    #print_r($check_num[0] . '-' . $laravel_articles['node'] . '<br>');
     if ($check_num[0] <= 0) {
     $slug = $drupal->query("SELECT alias FROM url_alias WHERE `source`='node/".$laravel_articles['node']."'");
     $user = $drupal->query("SELECT field_full_name_value FROM field_data_field_full_name WHERE entity_id=".$row['field_author_target_id']);
     //$user = $drupal->query("SELECT name FROM users WHERE uid=".$row['field_author_target_id']);
-    $username = '';
+    $username = array();
+        var_dump($user);
     if($user){
         $i=0;foreach($user->fetch_all() as $item){ $i++;
-            $username .= $item[0];
-            if($i<$user->num_rows){
-                $username .= ', ';
-            }
+            $username[] = $item[0];
         }
     }else{
         $username = '';
@@ -92,12 +95,12 @@ while($row = $drupal_articles->fetch_array()) {
 ('" . $laravel_articles['node'] . "',
 1,
 '".$laravel_articles['type']."',
-'" . $laravel_articles['lang'] . "',
-'" . mysql_real_escape_string($laravel_articles['title']) . "',
-'" . mysql_real_escape_string($laravel_articles['head']) . "',
-'" . mysql_real_escape_string($laravel_articles['body']). "',
+'" .$laravel_articles['lang']. "',
+'" .stripslashes_deep($laravel_articles['title']). "',
+'" .stripslashes_deep($laravel_articles['head']). "',
+'" .stripslashes_deep($laravel_articles['body']). "',
 '".$slug->fetch_row()[0]."',
-'".$username."',
+'".join(',',array_unique($username))."',
 '".$laravel_articles['status']."',
 '" . date('Y-m-d H:i:s',$laravel_articles['created_at']) . "',
 '" . date('Y-m-d H:i:s',$laravel_articles['updated_at']) . "',
@@ -105,7 +108,7 @@ while($row = $drupal_articles->fetch_array()) {
 ");
     }
 }
-
+    $username = '';
 endif;
 
 
@@ -158,7 +161,7 @@ if(isset($_GET['brightcove_insert']) == true){
     $videos = $drupal->query("SELECT field_video_brightcove_id,entity_id FROM field_data_field_video WHERE 1");
     while($row = $videos->fetch_array()){
         $larray['extra_fields']['brightcove'] = $row['field_video_brightcove_id'];
-        $field = base64_encode(serialize($larray['extra_fields']));
+        $field = serialize($larray['extra_fields']);
         $laravel->query("UPDATE is_articles set extra_fields='{$field}',type='video' WHERE node='".$row['entity_id']."'");
         echo $row['entity_id'].'<br>';
     }
@@ -172,7 +175,7 @@ if(isset($_GET['embed_insert']) == true){
     while($row = $videos->fetch_array()){
        // $exv = $laravel->query("SELECT extra_fields FROM is_articles WHERE node=".$row['entity_id']);
         $larray['extra_fields']['embed_video'] = $row['field_embed_video_value'];
-        $field = base64_encode(serialize($larray['extra_fields']));
+        $field = serialize($larray['extra_fields']);
         $laravel->query("UPDATE is_articles set extra_fields='{$field}',type='video' WHERE node='".$row['entity_id']."'");
         echo $row['entity_id'].'<br>';
     }
@@ -332,12 +335,12 @@ if(isset($_GET['insert_main_image']) == true){
         $lara_article = $laravel->query("SELECT id FROM is_articles WHERE node=".$row['entity_id']);
         $lara_article_id = $lara_article->fetch_row()[0];
         $laravel->query("INSERT INTO is_images (article_id,title,alt,img,source,author,meta_key,meta_desc) VALUES
-     ({$lara_article_id},'".mysql_real_escape_string($row['field_file_image_title_text_value'])."',
-        '".mysql_real_escape_string($row['field_file_image_alt_text_value'])."','".mysql_real_escape_string($image_url)."',
-        '".mysql_real_escape_string($row['field_photo_source_value']).' '.mysql_real_escape_string($row['field_external_content_from_value'])."',
+     ({$lara_article_id},'".stripslashes_deep($row['field_file_image_title_text_value'])."',
+        '".stripslashes_deep($row['field_file_image_alt_text_value'])."','".stripslashes_deep($image_url)."',
+        '".stripslashes_deep($row['field_photo_source_value']).' '.stripslashes_deep($row['field_external_content_from_value'])."',
         '".$image_auth."',
         '".$image_keys."',
-        '".mysql_real_escape_string($row['field_caption_value'])."')");
+        '".stripslashes_deep($row['field_caption_value'])."')");
         $laravel->query("INSERT INTO is_article_image(article_id,image_id) VALUES ({$lara_article_id},$laravel->insert_id)");
 
     }
@@ -374,37 +377,36 @@ if(isset($_GET['insert_gallery_image']) == true){
     //LEFT JOIN field_data_field_photo_authors as i ON i.entity_id = a.field_main_image_fid
 
     while($row = $drupal_images->fetch_array()){
-        $image_keys = '';
+        $image_keys = array();
         $image_auth = '';
         $image_keywords = $drupal->query("SELECT b.name FROM field_data_field_photo_keywords as a
         LEFT JOIN taxonomy_term_data as b ON b.tid=a.field_photo_keywords_tid
-        WHERE entity_id=".$row['field_slideshow_images_fid']."");
+        WHERE entity_id='".$row['field_slideshow_images_fid']."'");
 
         if($image_keywords){
             //echo $row['entity_id'].'-';
             $i=0;foreach($image_keywords->fetch_all() as $item){ $i++;
-                $image_keys .= $item[0];
-                if($i<$image_keywords->num_rows){
-                    $image_keys .= ', ';
-                }
+                $image_keys[] = $item[0];
             }
         }
-        echo $row['uri'].'<br>';
 
 
 
         $lara_article = $laravel->query("SELECT id FROM is_articles WHERE node=".$row['entity_id']);
         $lara_article_id = $lara_article->fetch_row()[0];
         echo $lara_article_id.'<br>';
-        $laravel->query("INSERT INTO is_images (article_id,title,alt,img,source,author,status,meta_key,meta_desc) VALUES
-     ({$lara_article_id},'".mysql_real_escape_string($row['field_shared_title_value'])."',
-        '".mysql_real_escape_string($row['field_shared_alt_value'])."','".mysql_real_escape_string(str_replace('public://','',$row['uri']))."',
-        '".mysql_real_escape_string($row['field_shared_photo_source_value'])."',
-        '".$row['field_shared_photo_authors_value']."',
-        '1',
-        '".$image_keys."',
-        '".mysql_real_escape_string($row['field_shared_caption_value'])."')");
-        $laravel->query("INSERT INTO is_article_image(article_id,image_id) VALUES ({$lara_article_id},$laravel->insert_id)");
+
+         if($lara_article_id > 0):
+         $laravel->query("INSERT INTO is_images (article_id,title,alt,img,source,author,status,meta_key,meta_desc) VALUES
+        ({$lara_article_id},'".mysqli_real_escape_string($row['field_shared_title_value'])."',
+         '".mysqli_real_escape_string($row['field_shared_alt_value'])."','".str_replace('public://','',$row['uri'])."',
+         '".mysqli_real_escape_string($row['field_shared_photo_source_value'])."',
+         '".$row['field_shared_photo_authors_value']."',
+         '1',
+         '".join(',',array_unique($image_keys))."',
+        '".mysqli_real_escape_string($row['field_shared_caption_value'])."')");
+         $laravel->query("INSERT INTO is_article_image(article_id,image_id) VALUES ({$lara_article_id},$laravel->insert_id)");
+        endif;
 
     }
 

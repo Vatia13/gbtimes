@@ -15,17 +15,20 @@
                         <h1>{{$item->title}}</h1>
                         @if(count($item->images) > 0)
                             <div class="view_slider">
-                                @foreach($item->images as $key=>$img)
-                                    @if($key <= 0)
-                                        <div class="main_image">
-                                            <a href="{{checkImage($img->img)}}" rel="prettyPhoto[view]" title="{{checkItem($img->title,$img->alt)}}"><span class="zoom"></span><img src="{{checkImage($img->img)}}" alt="{{checkItem($img->alt,$img->title)}}"/></a>
-                                            @if(!empty($img->title))
-                                                <div class="image_title"><span>{{$img->title}}</span></div>
-                                            @endif
+                                @if((validate_extra_field(get_fields($item->extra_fields),'brightcove') || validate_extra_field(get_fields($item->extra_fields),'embed_video')) && count($item->images) <= 1)
+                                @else
+                                    @foreach($item->images as $key=>$img)
+                                        @if($key <= 0)
+                                            <div class="main_image">
+                                                <a href="{{checkImage($img->img)}}" rel="prettyPhoto[view]" title="{{checkItem($img->title,$img->alt)}}"><span class="zoom"></span><img src="{{checkImage($img->img)}}" alt="{{checkItem($img->alt,$img->title)}}"/></a>
+                                                @if(!empty($img->title))
+                                                    <div class="image_title"><span>{{$img->title}}</span></div>
+                                                @endif
 
-                                        </div>
-                                    @endif
-                                @endforeach
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
                                 @if(count($item->images) > 1)
                                     <div class="other_images">
                                         <ul>

@@ -101,11 +101,34 @@
 //	return $token;//redirect('/')->with('message', 'Successfully logged in with Facebook');
 //});
 
+use App\Article;
+use Illuminate\Support\Facades\DB;
+
 Route::get('/test/xml/parse',function(){
     $url = 'https://news.google.com/news?cf=all&hl=en&pz=1&ned=us&csid=c68abdab5e4f18cf&output=rss';
     parseSimpleContentData($url);
 });
 
+
+Route::get('import/main/images',function(Article $article){
+    $main_images = DB::table('images')->select('img','article_id')->where('status',0)->get();
+    foreach($main_images as $item):
+        $art = $article->findOrFail($item->article_id);
+        $art->update(['img'=>$item->img]);
+    echo $art->article_id.'<br>';
+    endforeach;
+});
+
+
+Route::get('update/extra/base64',function(Article $article){
+    $main_images = DB::table('articles')->select('extra_fields','id')->where('status',0)->get();
+    foreach($main_images as $item):
+        $extra_fields = base64_decode($item->extra_fields);
+        #$art = $article->findOrFail($item->id);
+        #$art->update(['extra_fields'=>$extra_fields]);
+        echo $extra_fields.'<br>';
+    endforeach;
+});
 
 /*
  * Admin Home

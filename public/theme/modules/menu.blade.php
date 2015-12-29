@@ -100,7 +100,25 @@
                             <span>Audio</span>
                         </li>
                         <li id="datetimepicker1" class="gbtimesDatePicker" data-slug="china">
-
+                            <ul class="inside">
+                                @if(count($article->getarticles('china',false,6)) > 0)
+                                    @foreach($article->getarticles('china',false,6) as $item)
+                                        <li>
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                                <div class="inside-image">
+                                                    <img src="{{checkImage($item->img)}}"/>
+                                                </div>
+                                                <div class="inside-desc">
+                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body)}}
+                                            </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -240,7 +258,25 @@
                             </ul>
                         </li>
                         <li id="datetimepicker2" class="gbtimesDatePicker"  data-slug="study-chinese">
-
+                            <ul class="inside">
+                                @if(count($article->getarticles('study-chinese',false,6)) > 0)
+                                    @foreach($article->getarticles('study-chinese',false,6) as $item)
+                                        <li>
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                                <div class="inside-image">
+                                                    <img src="{{checkImage($item->img)}}"/>
+                                                </div>
+                                                <div class="inside-desc">
+                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body)}}
+                                            </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -357,7 +393,25 @@
                             </ul>
                         </li>
                         <li id="datetimepicker3" class="gbtimesDatePicker"  data-slug="travel">
-
+                            <ul class="inside">
+                                @if(count($article->getarticles('travel',false,6)) > 0)
+                                    @foreach($article->getarticles('travel',false,6) as $item)
+                                        <li>
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                                <div class="inside-image">
+                                                    <img src="{{checkImage($item->img)}}"/>
+                                                </div>
+                                                <div class="inside-desc">
+                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body)}}
+                                            </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -474,7 +528,25 @@
                             </ul>
                         </li>
                         <li id="datetimepicker4" class="gbtimesDatePicker"  data-slug="chinese-healthcare">
-
+                            <ul class="inside">
+                                @if(count($article->getarticles('chinese-healthcare',false,6)) > 0)
+                                    @foreach($article->getarticles('chinese-healthcare',false,6) as $item)
+                                        <li>
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                                <div class="inside-image">
+                                                    <img src="{{checkImage($item->img)}}"/>
+                                                </div>
+                                                <div class="inside-desc">
+                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body)}}
+                                            </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -591,7 +663,25 @@
                             </ul>
                         </li>
                         <li id="datetimepicker5" class="gbtimesDatePicker"  data-slug="easy-china">
-
+                            <ul class="inside">
+                                @if(count($article->getarticles('easy-china',false,6)) > 0)
+                                    @foreach($article->getarticles('easy-china',false,6) as $item)
+                                        <li>
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                                <div class="inside-image">
+                                                    <img src="{{checkImage($item->img)}}"/>
+                                                </div>
+                                                <div class="inside-desc">
+                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body)}}
+                                            </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -709,7 +799,25 @@
                             </ul>
                         </li>
                         <li id="datetimepicker6" class="gbtimesDatePicker"  data-slug="china-sensation">
-
+                            <ul class="inside">
+                                @if(count($article->getarticles('china-sensation',false,6)) > 0)
+                                    @foreach($article->getarticles('china-sensation',false,6) as $item)
+                                        <li>
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                                <div class="inside-image">
+                                                    <img src="{{checkImage($item->img)}}"/>
+                                                </div>
+                                                <div class="inside-desc">
+                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
+                                            <span>
+                                                {{recordDesc($item->head,$item->body)}}
+                                            </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </li>
                     </ul>
                 </li>

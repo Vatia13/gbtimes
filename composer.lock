@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "37c4135a6e4d9b91b3036e435b2bad4f",
-    "content-hash": "30d4f026ec0975f06e708d097e3c200a",
+    "hash": "4acaeb0d0b0aaddada94a4a6cc4bfb51",
+    "content-hash": "b64f0e664bdc73f5b2095a9fb06b6e0d",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2075,6 +2075,46 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
+        },
+        {
+            "name": "yangqi/htmldom",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yangqi/Htmldom.git",
+                "reference": "eee67c01f0a82c6c5e6252880d382e586e331da7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yangqi/Htmldom/zipball/eee67c01f0a82c6c5e6252880d382e586e331da7",
+                "reference": "eee67c01f0a82c6c5e6252880d382e586e331da7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Yangqi\\Htmldom": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yangqi",
+                    "email": "i@yangqi.me"
+                }
+            ],
+            "description": "Simple Html Dom Parser for Laravel 4",
+            "keywords": [
+                "HTML Parser",
+                "laravel"
+            ],
+            "time": "2015-09-10 13:45:37"
         }
     ],
     "packages-dev": [
@@ -3344,6 +3384,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "yangqi/htmldom": 20,
         "torann/geoip": 20
     },
     "prefer-stable": false,
