@@ -31,6 +31,9 @@
                                 @endif
                                 @if(count($item->images) > 1)
                                     <div class="other_images">
+                                        @if(count($item->images) > 6)
+                                            <i class="fa fa-angle-left slide-left" style="display:none"></i><i class="fa fa-angle-right slide-right"></i>
+                                        @endif
                                         <div>
                                             <ul>
                                                 @foreach($item->images as $key=>$img)

@@ -118,7 +118,65 @@ $('#datetimepicker1,#datetimepicker2,#datetimepicker3,#datetimepicker4,#datetime
     window.location.href = '/'+$(this).data('slug')+'/date/'+dateFormat+'/';
 });
 
+var frameWidth = $('.other_images').width();
+var slideLength = $('.other_images ul li').length;
+var liWidth = $('.other_images ul li').width();
+var finishWidth = (slideLength * (liWidth + 5));
 
+$('.slide-right').click(function(obj,ev){
+    smallSlideRight($(this),ev);
+});
 
+function smallSlideRight(obj,ev){
+    obj.unbind("click");
+    var items = slideLength - 6;
+    var left = 0;
+    if(items > 6){
+        left = 6 * (liWidth + 5) + 6;
+    }else{
+        left = items * (liWidth + 5) + 6;
+    }
+    finishWidth = finishWidth - left;
+
+    $('.other_images ul').animate({'left':'-='+left+'px'},300,function(){
+        $('.slide-left').show();
+        obj.click(function(){
+            smallSlideRight(obj,ev);
+        });
+
+        if(finishWidth <= frameWidth){
+            $('.slide-right').hide();
+        }
+    });
+    console.log(finishWidth);
+}
+
+$('.slide-left').click(function(obj,ev){
+    smallSlideLeft($(this),ev);
+});
+
+function smallSlideLeft(obj,ev){
+    obj.unbind("click");
+    var items = slideLength - 6;
+    var left = 0;
+    var fullWidth = items * (liWidth + 5) + 6;
+    if(items > 6){
+        left = 6 * (liWidth + 5) + 6;
+    }else{
+        left = items * (liWidth + 5) + 6;
+    }
+    finishWidth = finishWidth + left;
+
+    $('.other_images ul').animate({'left':'+='+left+'px'},300,function(){
+        obj.click(function(){
+            smallSlideLeft(obj,ev);
+        });
+        $('.slide-right').show();
+         if(finishWidth > fullWidth){
+            $('.slide-left').hide();
+        }
+    });
+    // console.log(finishWidth + '-' +fullWidth);
+}
 
 
