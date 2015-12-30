@@ -1151,7 +1151,7 @@ ul.menu-list > li.more ul li a:hover{
 }
 
 
-.gbtimesDatePicker .bootstrap-datetimepicker-widget li, .gbtimesDatePicker .bootstrap-datetimepicker-widget a, .gbtimesDatePicker .bootstrap-datetimepicker-widget td, .gbtimesDatePicker .bootstrap-datetimepicker-widget span, .gbtimesDatePicker .bootstrap-datetimepicker-widget i, .gbtimesDatePicker .bootstrap-datetimepicker-widget p{
+.gbtimesDatePicker .bootstrap-datetimepicker-widget li, .gbtimesDatePicker .bootstrap-datetimepicker-widget a, .gbtimesDatePicker .bootstrap-datetimepicker-widget td, .gbtimesDatePicker .bootstrap-datetimepicker-widget i, .gbtimesDatePicker .bootstrap-datetimepicker-widget p{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
   font-weight: 300 !important;
   font-size:14px;

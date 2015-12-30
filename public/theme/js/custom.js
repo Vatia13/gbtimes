@@ -179,4 +179,6 @@ function smallSlideLeft(obj,ev){
     // console.log(finishWidth + '-' +fullWidth);
 }
 
+$('.gbtimesDatePicker .glyphicon.glyphicon-chevron-left ').addClass('fa').addClass('fa-angle-left').css('font-size','25px').removeClass('glyphicon');
+$('.gbtimesDatePicker .glyphicon.glyphicon-chevron-right').addClass('fa').addClass('fa-angle-right').css('font-size','25px').removeClass('glyphicon');
 
