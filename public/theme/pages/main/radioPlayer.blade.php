@@ -59,13 +59,13 @@
                         </div>
                     </div>
                 </li>
-                <li class="frequencies">
-                    <div class="button">
-                        <a><span>Online Radios</span></a>
-                    </div>
-                </li>
-            </ul>
 
+            </ul>
+            <div class="frequencies">
+                <div class="button">
+                    <a><span>Online Radios</span></a>
+                </div>
+            </div>
             <div class="online-radios">
                 <ul>
                     <li>

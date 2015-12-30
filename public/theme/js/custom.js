@@ -63,7 +63,7 @@ $('ul.menu-list > li').hover(
     function(){
         var height = ($('.slide-items').height()) ? $('.slide-items').height() + 15 : 490;
         $(this).find('ul.outside > li:first-child').addClass('active');
-        $(this).find('ul.outside').css('height',height + 'px').stop(true,true).slideDown(200);
+        $(this).find('ul.outside').css('height',height + 'px').stop(true,true).slideDown(100);
     },
     function(){
         $(this).find('ul.outside').stop(true,true).hide();

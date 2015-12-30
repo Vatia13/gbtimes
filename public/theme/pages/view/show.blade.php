@@ -31,12 +31,14 @@
                                 @endif
                                 @if(count($item->images) > 1)
                                     <div class="other_images">
-                                        <ul>
-                                            @foreach($item->images as $key=>$img)
-                                                <li><a @if($key <> 0)href="{{checkImage($img->img)}}"  rel="prettyPhoto[view]"@endif  title="{{checkItem($img->title,$img->alt)}}"><img src="{{checkImage($img->img)}}" alt="{{checkItem($img->alt,$img->title)}}"/></a></li>
-                                                <?php  $string_tags .= ','.$img->meta_key; ?>
-                                            @endforeach
-                                        </ul>
+                                        <div>
+                                            <ul>
+                                                @foreach($item->images as $key=>$img)
+                                                    <li><a @if($key <> 0)href="{{checkImage($img->img)}}"  rel="prettyPhoto[view]"@endif  title="{{checkItem($img->title,$img->alt)}}"><img src="{{checkImage($img->img)}}" alt="{{checkItem($img->alt,$img->title)}}"/></a></li>
+                                                    <?php  $string_tags .= ','.$img->meta_key; ?>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                         <div class="fix"></div>
                                     </div>
                                 @endif

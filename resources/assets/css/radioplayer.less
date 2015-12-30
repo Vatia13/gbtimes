@@ -60,12 +60,24 @@
 
 
 
-.radio-player-playlist ul li.frequencies{
+.radio-player-playlist .frequencies{
   position:absolute;
-  right:20px;
+  z-index:999;
+  right:0;
+  width:150px;
+  height:65px;
 }
 
-.radio-player-playlist ul li.frequencies .button a:hover{
+.radio-player-playlist .frequencies .button{
+  height:65px;
+  display:block;
+  width:150px;
+  text-align:center;
+  line-height:65px;
+  text-transform:uppercase;
+}
+
+.radio-player-playlist .frequencies .button:hover{
   background-color:#ee3c23;
   color:#FFF;
 }

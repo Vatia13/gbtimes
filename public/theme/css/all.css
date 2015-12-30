@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('/theme/css/fonts/glyphicons-halflings-regular.eot');
-  src: url('/theme/css/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-  url('/theme/css/fonts/glyphicons-halflings-regular.woff') format('woff'),
-  url('/theme/css/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
-  url('/theme/css/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../theme/css/fonts/glyphicons-halflings-regular.eot');
+  src: url('../theme/css/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('../theme/css/fonts/glyphicons-halflings-regular.woff') format('woff'),
+  url('../theme/css/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('../theme/css/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -1179,7 +1179,7 @@ ul.menu-list > li.more ul li a:hover{
    position:absolute;
    display:none;
    left:0;top:0;
-  height:480px;
+   height:480px;
 }
 
 .slider .active-item .slide-image ul li.active{
@@ -1994,6 +1994,10 @@ ul.menu-list > li.more ul li a:hover{
   display: block;
 }
 
+.read .news_side .other_images > div{
+  width:20000em;
+  overflow:hidden;
+}
 .read .news_side .other_images ul{
   margin: 0;
   padding: 0;
@@ -2207,12 +2211,24 @@ ul.menu-list > li.more ul li a:hover{
 
 
 
-.radio-player-playlist ul li.frequencies{
+.radio-player-playlist .frequencies{
   position:absolute;
-  right:20px;
+  z-index:999;
+  right:0;
+  width:150px;
+  height:65px;
 }
 
-.radio-player-playlist ul li.frequencies .button a:hover{
+.radio-player-playlist .frequencies .button{
+  height:65px;
+  display:block;
+  width:150px;
+  text-align:center;
+  line-height:65px;
+  text-transform:uppercase;
+}
+
+.radio-player-playlist .frequencies .button:hover{
   background-color:#ee3c23;
   color:#FFF;
 }
