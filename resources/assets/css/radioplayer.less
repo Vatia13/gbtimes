@@ -47,14 +47,14 @@
   margin-left:300px;
 }
 
-.radio-player-playlist ul{
+.radio-player-playlist > ul{
   list-style:none;
   margin:0;
   padding:0;
 }
 
 
-.radio-player-playlist ul li div{
+.radio-player-playlist > ul > li div{
   float:left;
 }
 
@@ -82,12 +82,12 @@
   color:#FFF;
 }
 
-.radio-player-playlist ul li .desc h3,.radio-player-playlist ul li .desc h5{
+.radio-player-playlist > ul > li .desc h3,.radio-player-playlist > ul > li .desc h5{
   font-weight:500;
 }
 
 
-.radio-player-playlist ul li{
+.radio-player-playlist > ul > li{
   float:left;
   position:relative;
   width:120px;
@@ -95,28 +95,15 @@
   height:64px;
 }
 
-.radio-player-playlist ul li:last-child{
+.radio-player-playlist > ul > li:last-child{
   overflow:initial;
 }
 
-.radio-player-playlist ul li .play-content{
+.radio-player-playlist > ul > li.radio-list{
   width:750px;
 }
-.radio-player-playlist ul li .desc{
-  color:#4f4d4d;
-  padding:15px 5px;
-  border-right:2px solid #ee3c23;
-  text-align:center;
-  display:block;
-  position:relative;
-  top:0;
-  left:0;
-}
 
-
-
-
-.radio-player-playlist ul li .button a{
+.radio-player-playlist > ul > li .button a{
   text-decoration:none;
   color:#ee3c23;
   height:65px;
@@ -129,7 +116,7 @@
 
 
 
-.radio-player-playlist ul li.active .button a{
+.radio-player-playlist > ul > li.active .button a{
   text-decoration:none;
   color:#FFF;
   background-color:#ee3c23;
@@ -139,11 +126,43 @@
   width:120px;
 }
 
-.radio-player-playlist ul li .button a span{
+.radio-player-playlist > ul > li .button a span{
   line-height:70px;
   text-transform:uppercase;
 }
 
+.radio-player-playlist > ul > li > ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+  width:100%;
+}
+
+.radio-player-playlist > ul > li > ul > li{
+  float:left;
+  width:200px;
+  margin-right:0 !important;
+}
+.radio-player-playlist > ul > li > ul > li a{
+  padding:10px 25px;
+  text-decoration:none;
+  display:block;
+  color:#263238;
+}
+
+.radio-player-playlist > ul > li > ul > li a:hover {
+  background-color: #ee3c23;
+  color: #FFF;
+}
+.radio-player-playlist > ul > li > ul > li a strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.radio-player-playlist > ul > li > ul > li a.active{
+  background-color:#ee3c23;
+  color:#FFF;
+}
 .radio-stations{
   position:fixed;
   display:none;
@@ -260,7 +279,6 @@
   top:-66px;
   width:100%;
   display:none;
-  text-align:center;
 }
 
 .online-radios ul{
@@ -268,7 +286,6 @@
   margin:0 auto;
   padding:0;
   list-style:none;
-  text-align:center;
   position:relative;
   background:#FFF;
   height:65px;

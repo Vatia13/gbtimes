@@ -24,74 +24,42 @@
         </div>
         <div class="radio-player-playlist">
             <ul>
-                <li class="accordion" style="visibility:hidden">
-                    <div class="play-content">
-                        <div class="button">
-                            <a><span>{{trans('all.previous')}}</span></a>
-                        </div>
-                        <div class="desc">
-                            <h3>test</h3>
-                            <h5>test</h5>
-                        </div>
-                    </div>
+                <li class="radio-list radios">
+                    <ul>
+                        <li>
+                            <a onClick="setRadio('http://stream.radioclassic.fi:8080/classic','audio_player',this)" class="active">
+                                <strong>Radio Classic</strong>
+                                <span>Finland</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a onClick="setRadio('http://tx.sharp-stream.com/icecast.php?i=spectrum2.mp3','audio_player',this)">
+                                <strong>Radio Sino</strong>
+                                <span>United Kingdom</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a onClick="setRadio('http://80.241.252.132:8000/jako.fm','audio_player',this)">
+                                <strong>Radio Jako</strong>
+                                <span>Georgia</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="accordion active" style="visibility:hidden">
-                    <div class="play-content">
-                        <div class="button">
-                            <a><span>{{trans('all.now_playing')}}</span></a>
-                        </div>
-                        <div class="desc">
-                            <h3>test</h3>
-                            <h5>test</h5>
-                        </div>
-                    </div>
-                </li>
-                <li class="accordion" style="visibility:hidden">
-                    <div class="play-content">
-                        <div class="button">
-                            <a><span>{{trans('all.next')}}</span></a>
-                        </div>
-                        <div class="desc">
-
-                                <h3>test</h3>
-                                <h5>test</h5>
-
-                        </div>
-                    </div>
-                </li>
-
             </ul>
-            <div class="frequencies">
+            <div class="frequencies" style="display:none;">
                 <div class="button">
-                    <a><span>Online Radios</span></a>
+                    <a><span>More Radios</span></a>
                 </div>
             </div>
-            <div class="online-radios">
+            <div class="online-radios radios">
                 <ul>
-                    <li>
-                        <a onClick="setRadio('http://stream.radioclassic.fi:8080/classic','audio_player',this)" class="active">
-                            <strong>Radio Classic</strong>
-                            <span>Finland</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a onClick="setRadio('http://tx.sharp-stream.com/icecast.php?i=spectrum2.mp3','audio_player',this)">
-                            <strong>Radio Sino</strong>
-                            <span>United Kingdom</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a onClick="setRadio('http://80.241.252.132:8000/jako.fm','audio_player',this)">
-                            <strong>Radio Jako</strong>
-                            <span>Georgia</span>
-                        </a>
-                    </li>
+                  <!-- MORE RADIOS -->
                 </ul>
             </div>
         </div>
     </div>
 </div>
-
 <audio id="audio_player" style="display:none;">
     <source src="http://stream.radioclassic.fi:8080/classic">
 </audio>

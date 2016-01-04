@@ -16,7 +16,7 @@ class RedirectManagerLogin
     public function handle($request, Closure $next)
     {
         if($request->user()){
-            return redirect(action('Admin\HomeController@index'));
+            return redirect(action('Admin\ArticlesController@index'));
         }
         return $next($request);
     }

@@ -27,9 +27,8 @@ class RoleManager {
                     return response('You don`t have permissions.');
                 }else{
                     flash()->error('You don`t have permissions.');
-                    return redirect('is-admin/home');
+                    return redirect('is-admin/articles');
                 }
-
             }
         }else{
             return redirect(action('ErrorsController@show',404));

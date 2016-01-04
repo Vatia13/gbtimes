@@ -182,3 +182,24 @@ function smallSlideLeft(obj,ev){
 $('.gbtimesDatePicker .glyphicon.glyphicon-chevron-left ').addClass('fa').addClass('fa-angle-left').css('font-size','25px').removeClass('glyphicon');
 $('.gbtimesDatePicker .glyphicon.glyphicon-chevron-right').addClass('fa').addClass('fa-angle-right').css('font-size','25px').removeClass('glyphicon');
 
+
+
+$(document).ready(function(){
+    var widthLeft = $('.player-buttons').width();
+    var widthRight = $('.frequencies').width();
+    var width = $(window).width();
+    var radiosWidth = width - (widthLeft + widthRight) - 65;
+    $('.radio-list').width(radiosWidth);
+    var frontRadios = radiosWidth / 200;
+    var allRadios = $('.radio-list ul li').length;
+    var b = (frontRadios < frontRadios.toFixed(0)) ? parseInt(frontRadios.toFixed(0)) : parseInt(frontRadios.toFixed(0)) + 1;
+    if(allRadios > frontRadios){
+       $('.frequencies').show();
+    }
+    //console.log(b + ' - ' + allRadios);
+    for(var i=0; i <= allRadios; i++){
+        if(i > frontRadios.toFixed(0)){
+            $('.radio-list ul li:nth-child('+b+')').appendTo($('.online-radios ul'));
+        }
+    }
+});
