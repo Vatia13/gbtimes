@@ -33,3 +33,30 @@ function loadItems(cat,type,tag,num,e){
     }
 
 }
+
+
+function ajaxRoute(url,hash){
+    $.ajax({
+        url:url,
+        type:'GET',
+        data:{_method:'get',_token:$("#token").text(),slug:hash},
+        beforeSend:function(){
+            var totalTime = new Date().getMilliseconds();
+            $("#load_screen").show();
+            $("#load_screen div").animate({width:'100%'},(totalTime * 3));
+        },
+        success:function(response){
+            $('<div>',{html:response}).find('.wrapper').each(function(){
+                $(".wrapper").html($(this).html());
+            });
+            //console.log(html);
+            //$(".wrapper").html(response);
+            history.pushState(1, url, hash);
+            $(window).scrollTop(0);
+            $("#load_screen div").css('width','100%');
+            $("#load_screen").fadeOut(100);
+            $("#load_screen div").animate({width:'0%'},10);
+        }
+    });
+    return false;
+}

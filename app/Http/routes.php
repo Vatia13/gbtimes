@@ -288,6 +288,11 @@ Route::post('ajax/loadSearchArticles','WelcomeController@loadSearchArticles');
 Route::post('ajax/loadNewsDate','WelcomeController@loadNewsDate');
 Route::post('ajax/loadNewsAuthor','WelcomeController@loadNewsAuthor');
 Route::post('ajax/loadSimilarNews','WelcomeController@loadSimilarNews');
+Route::get('ajax/load/index','WelcomeController@ajaxIndex');
+Route::get('ajax/load/page/','WelcomeController@ajaxPage');
+Route::get('ajax/load/article/','WelcomeController@ajaxArticle');
+
+
 /*
  * Articles
  */

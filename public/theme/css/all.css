@@ -1290,6 +1290,22 @@ ul.menu-list > li.more ul li a:hover{
   display:block;
 }
 
+#load_screen{
+  width:100%;
+  display:none;
+  position:fixed;
+  left:0;
+  top:0;
+  z-index:999;
+}
+
+#load_screen div{
+  position:relative;
+  height:3px;
+  background-color:#a52125;
+  width:0;
+}
+
 .read{
   margin:2% auto;
   width:90%;

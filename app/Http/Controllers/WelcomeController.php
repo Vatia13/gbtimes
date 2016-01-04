@@ -245,7 +245,17 @@ class WelcomeController extends Controller {
 	}
 
 
+	function ajaxIndex(Article $article){
+		return $this->index($article);
+	}
 
+	function ajaxPage(Request $request){
+		return $this->showPage($request->input('slug'));
+	}
+
+	function ajaxArticle(Request $request){
+		return $this->showArticle($request->input('slug'));
+	}
 }
 
 

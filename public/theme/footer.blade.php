@@ -48,12 +48,11 @@
     </div>
 </div>
 <!--// END FOOTER -->
-
-</div>
-<!-- //END WRAPPER -->
 <script src="{{ asset('/theme/js/custom.js') }}"></script>
 <script src="{{ asset('/theme/js/mainSlider.js') }}"></script>
 <script src="{{ asset('/theme/js/radioplayer.js') }}"></script>
+</div>
+<!-- //END WRAPPER -->
 <script src="{{ asset('/theme/js/ajax.js') }}"></script>
 <script id="dsq-count-scr" src="//newgbtimes.disqus.com/count.js" async></script>
 </body>

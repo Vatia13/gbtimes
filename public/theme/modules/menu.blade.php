@@ -2,9 +2,9 @@
     <div class="main-menu">
         <div class="menu-place">
             <ul class="menu-list">
-                <li @if(Request::path() == '/')class="active"@endif><a href="/">Home</a></li>
+                <li @if(Request::path() == '/')class="active"@endif><a href="/" onClick="return ajaxRoute('{{action("WelcomeController@ajaxIndex")}}','/')">Home</a></li>
                 <li @if(Request::path() == 'china')class="active"@endif>
-                    <a href="{{action('WelcomeController@showPage','china')}}">
+                    <a href="{{action('WelcomeController@showPage','china')}}" onClick="return ajaxRoute('{{action("WelcomeController@ajaxPage")}}','china')">
                         All about China
                     </a>
                     <ul class="outside">
@@ -14,7 +14,7 @@
                                 @if(count($article->getarticles('china',false,6)) > 0)
                                     @foreach($article->getarticles('china',false,6) as $item)
                                         <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action("WelcomeController@ajaxArticle",checkItem($item->translate_slug,$item->slug))}}','china')">
                                                 <div class="inside-image">
                                                     <img src="{{checkImage($item->img)}}"/>
                                                 </div>

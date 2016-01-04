@@ -31,6 +31,10 @@
         data-width="450"
         data-show-faces="true">
 </div>
+<div id="load_screen">
+    <div></div>
+</div>
+<div id="token" style="display:none;">{{csrf_token()}}</div>
 @include('theme.pages.main.radioPlayer')
 <div class="wrapper">
     @include('theme.pages.main.header')
