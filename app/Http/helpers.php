@@ -515,7 +515,7 @@ if(!function_exists('get_nav_menu')){
                 $title = (get_arg('title',$args)) ? get_arg('title',$args) : 'title';
                 $active = (Route::getCurrentRoute()->id == $list->slug) ? 'class="active"' : '';
                 $out .= '<li '.$active.'>
-                              <a class="'.get_arg('a.class'.$i,$args).'" href="'.action(get_arg('route',$args),$list->slug).'" >
+                              <a class="'.get_arg('a.class'.$i,$args).'" href="'.action(get_arg('route',$args),$list->slug).'" onClick="return ajaxRoute(\''.action("WelcomeController@showArticle",$list->slug).'\',\''.$list->slug.'\')" >
                                 '.$list->$title.'
                               </a>
                         </li>';

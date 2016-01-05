@@ -81,7 +81,7 @@
                                             <ul>
                                                 @foreach($tags as $tag)
                                                     <li rel="dc:subject">
-                                                        <a href="{{url('tags/'.Illuminate\Support\Str::slug_utf8($tag))}}" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype>{{$tag}}</a>
+                                                        <a href="{{url('tags/'.Illuminate\Support\Str::slug_utf8($tag))}}" onClick="return ajaxRoute('{{action("WelcomeController@showTags",Illuminate\Support\Str::slug_utf8($tag))}}','{{Illuminate\Support\Str::slug_utf8($tag)}}')" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype>{{$tag}}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>

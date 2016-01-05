@@ -11,7 +11,7 @@
                     @if(count($slider) > 0)
                         @foreach($slider as $key=>$item)
                             <li @if($key == 0)class="active"@endif>
-                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">
                                     <div class="slide-title">
                                         {{recordTitle($item->frontpage_title,$item->title)}}
                                     </div>
@@ -35,25 +35,25 @@
             </div>
         </div>
         <div class="slide-items">
-            <div><a href="{{action('WelcomeController@showPage','news-from-china')}}">Latest news</a></div>
+            <div><a href="{{action('WelcomeController@showPage','news-from-china')}}" onClick="return ajaxRoute('{{action('WelcomeController@showPage','news-from-china')}}','news-from-china')">Latest news</a></div>
             @if(count($lastRecords) > 0)
                 <ul>
                     @foreach($lastRecords as $item)
                         <li>
                                 <div class="slide-image-small">
-                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">
                                         <img src="{{checkImage($item->img)}}"/>
                                     </a>
                                 </div>
 
                             <div class="slide-text-small">
-                                <h4><a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordTitle($item->frontpage_title,$item->title)}}</a></h4>
+                                <h4><a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">{{recordTitle($item->frontpage_title,$item->title)}}</a></h4>
                                 <div>
-                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">{{recordDesc($item->head,$item->body,122,recordTitle($item->frontpage_title,$item->title),56)}}...</a>
+                                    <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">{{recordDesc($item->head,$item->body,122,recordTitle($item->frontpage_title,$item->title),56)}}...</a>
                                 </div>
                                 <br>
                                 <div class="author-date">
-                                    <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a></span><span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
+                                    <span><a href="{{action('WelcomeController@newsAuthor',$item->author)}}" onClick="return ajaxRoute('{{action('WelcomeController@newsAuthor',$item->author)}}','{{$item->author}}')">{{$item->author}}</a></span><span>{{date('m.d.Y',strtotime($item->published_at))}}</span>
                                 </div>
                             </div>
                         </li>
@@ -67,13 +67,13 @@
 <!-- 3 ITEMS HORIZONTAL -->
 <div class="horizontal-items-3">
     <div class="horizontal-items-3-place">
-        <h4><a href="{{action('WelcomeController@showPage','china')}}">All about China</a></h4>
+        <h4><a href="{{action('WelcomeController@showPage','china')}}" onClick="return ajaxRoute('{{action('WelcomeController@showPage','china')}}','china')">All about China</a></h4>
         <ul>
             @if(count($article->getarticles('china',false,6)) > 0)
                 @foreach($article->getarticles('china',false,6) as $key=>$item)
                     @if($key < 3)
                     <li>
-                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                        <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">
                             <div class="horizontal-items-3-image"><img src="{{checkImage($item->img)}}"/></div>
                             <div class="horizontal-items-3-title">
                                 <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
@@ -93,13 +93,13 @@
 <!-- 3 ITEMS HORIZONTAL -->
 <div class="horizontal-items-3">
     <div class="horizontal-items-3-place">
-        <h4><a href="{{action('WelcomeController@showPage','travel')}}">All around China</a></h4>
+        <h4><a href="{{action('WelcomeController@showPage','travel')}}" onClick="return ajaxRoute('{{action('WelcomeController@showPage','travel')}}','travel')">All around China</a></h4>
         <ul>
             @if(count($article->getarticles('travel',false,6)) > 0)
                 @foreach($article->getarticles('travel',false,6) as $key=>$item)
                     @if($key < 3)
                         <li>
-                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">
                                 <div class="horizontal-items-3-image"><img src="{{checkImage($item->img)}}"/></div>
                                 <div class="horizontal-items-3-title">
                                     <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
@@ -122,11 +122,11 @@
     <div class="horizontal-items-4-place">
         <ul>
             <li>
-                <h4><a href="{{action('WelcomeController@showPage','education')}}">Study Chinese</a></h4>
-                @if(count($article->getarticles(false,false,6,trans('front.education'))) > 0)
-                    @foreach($article->getarticles(false,false,6,trans('front.education')) as $key=>$item)
+                <h4><a href="{{action('WelcomeController@showPage','study-chinese')}}" onClick="return ajaxRoute('{{action('WelcomeController@showPage','study-chinese')}}','study-chinese')">Study Chinese</a></h4>
+                @if(count($article->getarticles('study-chinese',false,6)) > 0)
+                    @foreach($article->getarticles('study-chinese',false,6) as $key=>$item)
                         @if($key < 1)
-                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">
                                 <div class="horizontal-items-4-image"><img src="{{checkImage($item->img)}}"/></div>
                                 <div class="horizontal-items-4-title">
                                     <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
@@ -140,11 +140,11 @@
                 @endif
             </li>
             <li>
-                <h4><a href="{{action('WelcomeController@showPage','healthcare')}}">Chinese healthcare</a></h4>
-                @if(count($article->getarticles(false,false,6,trans('front.health'))) > 0)
-                    @foreach($article->getarticles(false,false,6,trans('front.health')) as $key=>$item)
+                <h4><a href="{{action('WelcomeController@showPage','chinese-healthcare')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'chinese-healthcare')}}','chinese-healthcare')">Chinese healthcare</a></h4>
+                @if(count($article->getarticles('chinese-healthcare',false,6)) > 0)
+                    @foreach($article->getarticles('chinese-healthcare',false,6) as $key=>$item)
                         @if($key < 1)
-                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">
                                 <div class="horizontal-items-4-image"><img src="{{checkImage($item->img)}}"/></div>
                                 <div class="horizontal-items-4-title">
                                     <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
@@ -158,11 +158,11 @@
                 @endif
             </li>
             <li>
-                <h4><a href="{{action('WelcomeController@showPage','china-sport')}}">Easy China</a></h4>
-                @if(count($article->getarticles(false,false,6,trans('front.sport'))) > 0)
-                    @foreach($article->getarticles(false,false,6,trans('front.sport')) as $key=>$item)
+                <h4><a href="{{action('WelcomeController@showPage','easy-china')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'easy-china')}}','easy-china')">Easy China</a></h4>
+                @if(count($article->getarticles('easy-china',false,6)) > 0)
+                    @foreach($article->getarticles('easy-china',false,6) as $key=>$item)
                         @if($key < 1)
-                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
+                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">
                                 <div class="horizontal-items-4-image"><img src="{{checkImage($item->img)}}"/></div>
                                 <div class="horizontal-items-4-title">
                                     <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>

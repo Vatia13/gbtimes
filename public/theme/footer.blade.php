@@ -51,6 +51,7 @@
 <script src="{{ asset('/theme/js/custom.js') }}"></script>
 <script src="{{ asset('/theme/js/mainSlider.js') }}"></script>
 <script src="{{ asset('/theme/js/radioplayer.js') }}"></script>
+
 </div>
 <!-- //END WRAPPER -->
 <script src="{{ asset('/theme/js/ajax.js') }}"></script>

@@ -115,7 +115,8 @@ $('#datetimepicker1,#datetimepicker2,#datetimepicker3,#datetimepicker4,#datetime
 }).on('dp.change',function(e){
     var date = new Date(e.date._d);
     var dateFormat = moment(e.date._d).format('YYYY-MM-DD');
-    window.location.href = '/'+$(this).data('slug')+'/date/'+dateFormat+'/';
+    ajaxCalendar('/'+$(this).data('slug')+'/date/'+dateFormat+'/',dateFormat);
+    //window.location.href = '/'+$(this).data('slug')+'/date/'+dateFormat+'/';
 });
 
 var frameWidth = $('.other_images').width();

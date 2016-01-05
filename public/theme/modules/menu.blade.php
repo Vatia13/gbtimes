@@ -2,9 +2,9 @@
     <div class="main-menu">
         <div class="menu-place">
             <ul class="menu-list">
-                <li @if(Request::path() == '/')class="active"@endif><a href="/" onClick="return ajaxRoute('{{action("WelcomeController@ajaxIndex")}}','/')">Home</a></li>
+                <li @if(Request::path() == '/')class="active"@endif><a href="/" onClick="return ajaxRoute('{{action("WelcomeController@index")}}','/')">Home</a></li>
                 <li @if(Request::path() == 'china')class="active"@endif>
-                    <a href="{{action('WelcomeController@showPage','china')}}" onClick="return ajaxRoute('{{action("WelcomeController@ajaxPage")}}','china')">
+                    <a href="{{action('WelcomeController@showPage','china')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'china')}}','china')">
                         All about China
                     </a>
                     <ul class="outside">
@@ -13,19 +13,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china',false,6)) > 0)
                                     @foreach($article->getarticles('china',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action("WelcomeController@ajaxArticle",checkItem($item->translate_slug,$item->slug))}}','china')">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                      @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -35,19 +23,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china','article',6)) > 0)
                                     @foreach($article->getarticles('china','article',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -57,19 +33,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china','photogallery',6)) > 0)
                                     @foreach($article->getarticles('china','photogallery',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -79,19 +43,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china','video',6)) > 0)
                                     @foreach($article->getarticles('china','video',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -103,19 +55,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china',false,6)) > 0)
                                     @foreach($article->getarticles('china',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -123,26 +63,14 @@
                     </ul>
                 </li>
                 <li @if(Request::path() == 'study-chinese')class="active"@endif>
-                    <a href="{{action('WelcomeController@showPage','study-chinese')}}">Study Chinese</a>
+                    <a href="{{action('WelcomeController@showPage','study-chinese')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'study-chinese')}}','study-chinese')">Study Chinese</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
                             <ul class="inside">
                                 @if(count($article->getarticles('study-chinese',false,6)) > 0)
                                     @foreach($article->getarticles('study-chinese',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -152,19 +80,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('study-chinese','article',6)) > 0)
                                 @foreach($article->getarticles('study-chinese','article',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -174,19 +90,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('study-chinese','photogallery',6)) > 0)
                                     @foreach($article->getarticles('study-chinese','photogallery',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -196,19 +100,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('study-chinese','video',6)) > 0)
                                     @foreach($article->getarticles('study-chinese','video',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -218,19 +110,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('study-chinese','audio',6)) > 0)
                                     @foreach($article->getarticles('study-chinese','audio',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -240,19 +120,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('study-chinese','study-online',6)) > 0)
                                     @foreach($article->getarticles('study-chinese','study-online',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -261,45 +129,21 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('study-chinese',false,6)) > 0)
                                     @foreach($article->getarticles('study-chinese',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li @if(Request::path() == 'travel')class="active"@endif><a href="{{action('WelcomeController@showPage','travel')}}">All around China</a>
+                <li @if(Request::path() == 'travel')class="active"@endif><a href="{{action('WelcomeController@showPage','travel')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'travel')}}','travel')">All around China</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
                             <ul class="inside">
                                 @if(count($article->getarticles('travel',false,6)) > 0)
                                     @foreach($article->getarticles('travel',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -309,19 +153,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('travel','article',6)) > 0)
                                     @foreach($article->getarticles('travel','article',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -331,19 +163,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('travel','photogallery',6)) > 0)
                                     @foreach($article->getarticles('travel','photogallery',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -353,19 +173,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('travel','video',6)) > 0)
                                     @foreach($article->getarticles('travel','video',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -375,19 +183,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('travel','audio',6)) > 0)
                                     @foreach($article->getarticles('travel','audio',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -396,45 +192,21 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('travel',false,6)) > 0)
                                     @foreach($article->getarticles('travel',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li @if(Request::path() == 'chinese-healthcare')class="active"@endif><a href="{{action('WelcomeController@showPage','chinese-healthcare')}}">Chinese healthcare</a>
+                <li @if(Request::path() == 'chinese-healthcare')class="active"@endif><a href="{{action('WelcomeController@showPage','chinese-healthcare')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'chinese-healthcare')}}','chinese-healthcare')">Chinese healthcare</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
                             <ul class="inside">
                                 @if(count($article->getarticles('chinese-healthcare',false,6)) > 0)
                                     @foreach($article->getarticles('chinese-healthcare',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -444,19 +216,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('chinese-healthcare','article',6)) > 0)
                                     @foreach($article->getarticles('chinese-healthcare','article',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -466,19 +226,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('chinese-healthcare','photogallery',6)) > 0)
                                     @foreach($article->getarticles('chinese-healthcare','photogallery',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -488,19 +236,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('chinese-healthcare','video',6)) > 0)
                                     @foreach($article->getarticles('chinese-healthcare','video',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -510,19 +246,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('chinese-healthcare','audio',6)) > 0)
                                     @foreach($article->getarticles('chinese-healthcare','audio',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -531,45 +255,21 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('chinese-healthcare',false,6)) > 0)
                                     @foreach($article->getarticles('chinese-healthcare',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li @if(Request::path() == 'easy-china')class="active"@endif><a href="{{action('WelcomeController@showPage','easy-china')}}">Easy China</a>
+                <li @if(Request::path() == 'easy-china')class="active"@endif><a href="{{action('WelcomeController@showPage','easy-china')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'easy-china')}}','easy-china')">Easy China</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
                             <ul class="inside">
                                 @if(count($article->getarticles('easy-china',false,6)) > 0)
                                     @foreach($article->getarticles('easy-china',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -579,19 +279,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('easy-china','article',6)) > 0)
                                     @foreach($article->getarticles('easy-china','article',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -601,19 +289,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('easy-china','photogallery',6)) > 0)
                                     @foreach($article->getarticles('easy-china','photogallery',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -623,19 +299,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('easy-china','video',6)) > 0)
                                     @foreach($article->getarticles('easy-china','video',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -645,19 +309,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('easy-china','audio',6)) > 0)
                                     @foreach($article->getarticles('easy-china','audio',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -666,19 +318,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('easy-china',false,6)) > 0)
                                     @foreach($article->getarticles('easy-china',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -686,26 +326,14 @@
                     </ul>
                 </li>
                 <li @if(Request::path() == 'china-sensation')class="active"@endif>
-                    <a href="{{action('WelcomeController@showPage','china-sensation')}}">China sensation</a>
+                    <a href="{{action('WelcomeController@showPage','china-sensation')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'china-sensation')}}','china-sensation')">China sensation</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
                             <ul class="inside">
                                 @if(count($article->getarticles('china-sensation',false,6)) > 0)
                                     @foreach($article->getarticles('china-sensation',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -715,19 +343,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china-sensation','article',6)) > 0)
                                     @foreach($article->getarticles('china-sensation','article',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -737,19 +353,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china-sensation','photogallery',6)) > 0)
                                     @foreach($article->getarticles('china-sensation','photogallery',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -759,19 +363,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china-sensation','video',6)) > 0)
                                     @foreach($article->getarticles('china-sensation','video',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -781,19 +373,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china-sensation','audio',6)) > 0)
                                     @foreach($article->getarticles('china-sensation','audio',6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -802,19 +382,7 @@
                             <ul class="inside">
                                 @if(count($article->getarticles('china-sensation',false,6)) > 0)
                                     @foreach($article->getarticles('china-sensation',false,6) as $item)
-                                        <li>
-                                            <a href="{{action('WelcomeController@showArticle',checkItem($item->translate_slug,$item->slug))}}">
-                                                <div class="inside-image">
-                                                    <img src="{{checkImage($item->img)}}"/>
-                                                </div>
-                                                <div class="inside-desc">
-                                                    <h4>{{recordTitle($item->frontpage_title,$item->title)}}</h4>
-                                            <span>
-                                                {{recordDesc($item->head,$item->body)}}
-                                            </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                        @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
                             </ul>
@@ -824,13 +392,13 @@
                 <li class="more">
                     <a href="#" class="arrow_down">More</a>
                     <ul>
-                        <li><a href="/world">World</a></li>
-                        <li><a href="/opinion">Oponion</a></li>
-                        <li><a href="/business">Business</a></li>
-                        <li><a href="/life">Life</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/chinema">Chinema</a></li>
-                        <li><a href="/horoscope">Horoscope</a></li>
+                        <li><a href="/world" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'world')}}','world')">World</a></li>
+                        <li><a href="/opinion" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'opinion')}}','opinion')">Oponion</a></li>
+                        <li><a href="/business" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'Business')}}','Business')">Business</a></li>
+                        <li><a href="/life" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'life')}}','life')">Life</a></li>
+                        <li><a href="/blog" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'blog')}}','blog')">Blog</a></li>
+                        <li><a href="/chinema" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'chinema')}}','chinema')">Chinema</a></li>
+                        <li><a href="/horoscope" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'horoscope')}}','horoscope')">Horoscope</a></li>
                     </ul>
                 </li>
                 <li>

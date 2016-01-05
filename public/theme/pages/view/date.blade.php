@@ -12,10 +12,12 @@
                         @endforeach
                     </ul>
                 @endif
-                <div class="show_more">
-                    <div class="gifLoader"></div>
-                    <button onClick="loadItems('{{$cat}}','','{{$date}}',8,this)" data-route="{{action('WelcomeController@loadNewsDate')}}" data-token="{{csrf_token()}}">Show more</button>
-                </div>
+                    @if(count($items) > get_setting('pagination_num'))
+                        <div class="show_more">
+                            <div class="gifLoader"></div>
+                            <button onClick="loadItems('{{$cat}}','','{{$date}}',8,this)" data-route="{{action('WelcomeController@loadNewsDate')}}" data-token="{{csrf_token()}}">Show more</button>
+                        </div>
+                    @endif
             </div>
         </div>
     </div>

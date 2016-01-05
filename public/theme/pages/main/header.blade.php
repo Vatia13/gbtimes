@@ -7,10 +7,10 @@
                 </ul>
             </div>
             <div class="header-bot">
-                <div class="logo"><a href="/"></a></div>
+                <div class="logo"><a href="/" onClick="return ajaxRoute('{{action("WelcomeController@index")}}','/')"></a></div>
                 <div class="search-lang-login">
                     <div class="search">
-                        {!! Form::open(['method'=>'GET','action'=>'WelcomeController@search']) !!}
+                        {!! Form::open(['method'=>'GET','action'=>'WelcomeController@search','onSubmit'=>'return formRoute("'.action("WelcomeController@search").'","s",this)']) !!}
                             {!! Form::text('s','Search...',['onClick'=>'inputPlaceholder(this,"Search...")']) !!}
                             {!! Form::submit('submit',['class'=>'hidden','id'=>'search']) !!}
                             <a href="javascript:void('')" onClick="clickSubmit('search')"></a>

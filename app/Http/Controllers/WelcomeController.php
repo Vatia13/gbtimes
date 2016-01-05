@@ -186,8 +186,8 @@ class WelcomeController extends Controller {
 
 	function search(Request $request){
 		$article = new Article();
-		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->published()->getcat(55)->language()->where('title','LIKE','%'.$request->input('s').'%')->orWhere('body','LIKE','%'.$request->input('s').'%')->latest()->take(get_setting('pagination_num'))->get();
-		$count = Article::where('title','LIKE','%'.$request->input('s').'%')->orWhere('body','LIKE','%'.$request->input('s').'%')->published()->getcat(55)->language()->count();
+		$items = Article::select('id','body','title','head','published_at','slug','author','translate_slug','img','lang')->published()->getcat(55)->language()->where('body','LIKE','%'.$request->input('s').'%')->latest()->take(get_setting('pagination_num'))->get();
+		$count = Article::where('body','LIKE','%'.$request->input('s').'%')->published()->getcat(55)->language()->count();
 		return view('theme.pages.view.search',compact('items','article','count'));
 	}
 
@@ -245,17 +245,7 @@ class WelcomeController extends Controller {
 	}
 
 
-	function ajaxIndex(Article $article){
-		return $this->index($article);
-	}
 
-	function ajaxPage(Request $request){
-		return $this->showPage($request->input('slug'));
-	}
-
-	function ajaxArticle(Request $request){
-		return $this->showArticle($request->input('slug'));
-	}
 }
 
 
