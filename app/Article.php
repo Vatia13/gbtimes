@@ -507,11 +507,11 @@ class Article extends Model {
     }
 
     public function getAuthorArticles($author,$num){
-        return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang')->published()->language()->where('author',$author)->take($num)->get();
+        return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang','img')->published()->language()->where('author',$author)->take($num)->get();
     }
 
     public function getSimilarArticles($cat,$num,$author=''){
-        return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang')->published()->language()->orderall($cat)->where('author','<>',$author)->take($num)->get();
+        return Article::select('title','slug','translate_slug','head','body','published_at','author','frontpage_title','lang','img')->published()->language()->orderall($cat)->where('author','<>',$author)->take($num)->get();
     }
 
 }

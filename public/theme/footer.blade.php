@@ -17,17 +17,17 @@
                         @endforeach
                     @endif
                 <ul>
-                    <li><a href="http://company.gbtimes.com/">About Us</a></li>
-                    <li><a href="http://company.gbtimes.com/career">Careers</a></li>
+                    <li><a href="http://company.gbtimes.com/" target="_blank">About Us</a></li>
+                    <li><a href="http://company.gbtimes.com/career" target="_blank">Careers</a></li>
                     @if(isset($new_footer_menu['contact-us']->translate_slug))
-                        <li><a href="{{action('WelcomeController@showPage',$new_footer_menu['contact-us']->translate_slug)}}">{{$new_footer_menu['contact-us']->title}}</a></li>
+                        <li><a href="{{action('WelcomeController@showPage',$new_footer_menu['contact-us']->translate_slug)}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",$new_footer_menu['contact-us']->translate_slug)}}','{{$new_footer_menu['contact-us']->translate_slug}}')">{{$new_footer_menu['contact-us']->title}}</a></li>
                     @endif
                 </ul>
                     <ul>
                         @if(count($footer_menu))
                             @foreach($footer_menu as $key=>$item)
                                 @if($item->translate_slug != "contact-us")
-                                <li><a href="{{action('WelcomeController@showPage',checkItem($item->translate_slug,$item->slug))}}">{{$item->title}}</a></li>
+                                <li><a href="{{action('WelcomeController@showPage',checkItem($item->translate_slug,$item->slug))}}" onClick="return ajaxRoute('{{action('WelcomeController@showPage',checkItem($item->translate_slug,$item->slug))}}','{{checkItem($item->translate_slug,$item->slug)}}')">{{$item->title}}</a></li>
                                 @endif
                             @endforeach
                         @endif

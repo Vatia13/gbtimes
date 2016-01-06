@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="slide-items">
-            <div><a href="{{action('WelcomeController@showPage','news-from-china')}}" onClick="return ajaxRoute('{{action('WelcomeController@showPage','news-from-china')}}','news-from-china')">Latest news</a></div>
+            <div><a href="{{action('WelcomeController@showPage','all-news')}}" onClick="return ajaxRoute('{{action('WelcomeController@showPage','all-news')}}','all-news')">Latest news</a></div>
             @if(count($lastRecords) > 0)
                 <ul>
                     @foreach($lastRecords as $item)

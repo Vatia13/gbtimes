@@ -3,7 +3,7 @@
         <div class="header-place">
             <div class="header-top">
                 <ul>
-                {!! get_nav_menu(get_pages(72),['route'=>'WelcomeController@showPage','list'=>[['url'=>'http://company.gbtimes.com/','name'=>'About Us']]]) !!}
+                {!! get_nav_menu(get_pages(72),['route'=>'WelcomeController@showPage','list'=>[['url'=>'http://company.gbtimes.com/','name'=>'About Us','target'=>'_blank']]]) !!}
                 </ul>
             </div>
             <div class="header-bot">

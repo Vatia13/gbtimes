@@ -132,7 +132,7 @@
                             <?php $author_articles = $article->getAuthorArticles($item->author,3); ?>
                             <div class="news_list">
                                 @if(count($author_articles) > 0)
-                                    <a href="{{action('WelcomeController@newsAuthor',$item->author)}}">More by author</a>
+                                    <a href="{{action('WelcomeController@newsAuthor',$item->author)}}" onClick="return ajaxRoute('{{action("WelcomeController@newsAuthor",$item->author)}}','{{$item->author}}')">More by author</a>
                                     <ul>
                                         @foreach($author_articles as $key=>$it)
                                             @include('theme.pages.inc.vlist')
@@ -145,7 +145,7 @@
                                 <?php $similar_articles = $article->getSimilarArticles($cats,3,$item->author); ?>
                                 <div class="news_list">
                                     @if(count($similar_articles) > 0)
-                                        <a href="{{action('WelcomeController@SimilarNews',''.join(',',$cats).'')}}">Similar stories</a>
+                                        <a href="{{action('WelcomeController@SimilarNews',''.join(',',$cats).'')}}" onClick="return ajaxRoute('{{action("WelcomeController@SimilarNews",''.join(',',$cats).'')}}','{{join(',',$cats)}}')">Similar stories</a>
                                         <ul>
                                             @foreach($similar_articles as $key=>$it)
                                                 @include('theme.pages.inc.vlist')
