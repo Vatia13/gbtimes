@@ -71,6 +71,12 @@
                             {!! do_shortcode($item->body,$article,$item->slug) !!}
                         </div>
                         <div class="fix"></div>
+                        @if(!empty($item->author))
+                            <div class="view_author">
+                                <a href="{{action('WelcomeController@newsAuthor',$item->author)}}">{{$item->author}}</a>
+                            </div>
+                        @endif
+                        <div class="fix"></div>
                         <div class="social-tags">
                             @if(!empty($item->meta_key))
                                 <?php $string_tags .= $item->meta_key;?>
