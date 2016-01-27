@@ -60,16 +60,21 @@ class ArticlesController extends Controller {
 	 */
 	public function index(Cat $cats,Request $request)
     {
-        $cats = $cats->select('id','name','parent')->postextra(['parent'=>[2,55],'id'=>[2]])->orderBy('name')->get();//get_cat_by_parents([55,56]);
+        $record_items = $cats->select('id')->post(2)->get();
+        //dump(array_pluck($record_items,'id'));
+        $cats = $cats->select('id','name','parent')->posts(array_pluck($record_items,'id'))->orderBy('name')->get();//get_cat_by_parents([55,56]);
         foreach($cats as $c){
-           $this->children[] = $c['id'];
+            $this->children[] = $c['id'];
         }
-        $partner = (Input::get('partner')) ? 1 : 0;
+        //partners
+        $partner_list = Article::select('partner_name')->where('partner_name','<>','')->distinct()->get();
+        $partner_list = array_name(array_pluck($partner_list,'partner_name'));
+        $partner = (Input::get('partner')) ? Input::get('partner') : 0;
         $articles =
             (!filter_request($request,'a_filter'))
                 ? Article::orderBy('status','asc')->orderBy('published_at','desc')->where('lang',App::getLocale())->partner($partner)->latest('status')->orderall($this->children)->paginate(get_setting('pagination_num'))
                 : Article::orderBy('status','asc')->orderBy('published_at','desc')->where('lang',App::getLocale())->partner($partner)->orderall($this->children)->filter($request,'a_')->paginate(get_setting('pagination_num'));
-        return view('admin.articles.index',compact('articles','request','query','cats'));
+        return view('admin.articles.index',compact('articles','request','query','cats','partner_list'));
 	}
 
 

@@ -67,8 +67,12 @@ class Cat extends Model {
         $query->whereNotIn('slug',['articles','pages','categories']);
     }
 
-    public function scopePosts($query,$id){
+    public function scopePost($query,$id){
         $query->where('parent','=',$id);
+    }
+
+    public function scopePosts($query,$id){
+        $query->whereIn('parent',$id)->orWhereIn('id',$id);
     }
 
     public function scopeSlug($query,$slug){

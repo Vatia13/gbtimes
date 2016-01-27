@@ -105,7 +105,7 @@ FormBuilder::macro('selectCat',
     // all together into one single HTML element that can be put on the form.
     $html = array();
 
-    $html[] = $this->OptionCat($list,$selected,$root=0,$i=0);
+    $html[] = $this->OptionCat($list,$selected,(isset($options['data-root']) ? $options['data-root'] : 0),$i=0);
 
     // Once we have all of this HTML, we can join this into a single element after
     // formatting the attributes into an HTML "attributes" string, then we will

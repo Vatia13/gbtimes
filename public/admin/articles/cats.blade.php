@@ -5,7 +5,7 @@
 
         {{--*/ $checked_array = array_pluck($in_array,'cat_id') /*--}}
     @endif
-    @foreach($cats as $cat)
+    @foreach($cats as $key=>$cat)
         <label class="checkbox-inline" >
             @if(count($item) > 0)
                 @if(in_array($cat['id'],$checked_array))
@@ -13,12 +13,19 @@
                 @else
                     {{--*/ $checked = false /*--}}
                 @endif
-            @endif
-            @if(count($checked_cats) > 0)
+                @if(count($checked_cats) > 0)
+                    @if(in_array($cat['id'],$checked_cats))
+                        {{--*/ $checked = true /*--}}
+                    @endif
+                @endif
+            @elseif(count($checked_cats) > 0)
                 @if(in_array($cat['id'],$checked_cats))
                     {{--*/ $checked = true /*--}}
+                @else
+                    {{--*/ $checked = false /*--}}
                 @endif
             @endif
+
             {!! Form::checkbox('cat[]',$cat['id'],$checked,['data-url'=>action('Admin\\ArticlesController@getFields'),'data-token'=>csrf_token(),'data-news'=>$news_id,'class'=>'child_cat','onClick'=>'getFields("'.$cat["id"].'","'.action('Admin\\ArticlesController@getFields').'","'.csrf_token().'","'.$news_id.'",$("#main_cat option:selected").data("extra"),this)']) !!}  {{get_trans($cat['name'])}}
         </label>
 

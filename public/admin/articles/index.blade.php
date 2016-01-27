@@ -1,10 +1,16 @@
 @extends('admin.app')
-
 @section('content')
     <div class="article-tabs">
         <ul>
-            <li @if(!Input::get('partner'))class="active"@endif><a href="{{action('Admin\ArticlesController@index')}}">GBTimes Articles</a></li>
-            <li @if(Input::get('partner'))class="active"@endif><a href="{{action('Admin\ArticlesController@index','partner=1')}}">Partners Articles</a></li>
+            <li @if(!Input::get('partner'))class="active"@endif>
+                <a href="{{action('Admin\ArticlesController@index')}}">GBTimes Articles</a>
+            </li>
+            <li @if(Input::get('partner') == 1)class="active"@endif>
+                <a href="{{action('Admin\ArticlesController@index','partner=1')}}">Curated Content</a>
+            </li>
+            <li @if(Input::get('partner') == 2)class="active"@endif>
+                <a href="{{action('Admin\ArticlesController@index','partner=2')}}">User Generated Content</a>
+            </li>
         </ul>
     </div>
 <div class="panel panel-default">
@@ -12,7 +18,6 @@
         {{ trans('all.records') }}
         <a href="{{ action('Admin\ArticlesController@create') }}" class="btn btn-success right"><i class="fa fa-plus"></i> {{trans('all.add')}}</a><div class="fix"></div>
     </div>
-
     <div class="panel-body">
         @include('admin.articles.filter')
         <table class="table table-hover">
@@ -37,7 +42,6 @@
                 </td>
             </tr>
             @endforeach
-
             </tbody>
             <tfoot>
             <tr>

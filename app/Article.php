@@ -246,6 +246,11 @@ class Article extends Model {
             $query->where('author','like',filter_request($this->request,$this->prefix.'author').'%');
         }
 
+        //filter by partner
+        if(filter_request($this->request,$this->prefix.'partner_name') <> null){
+            $query->where('partner_name','=',filter_request($this->request,$this->prefix.'partner_name'));
+        }
+
         //filter by date
         if(filter_request($this->request,$this->prefix.'from') <> null or filter_request($this->request,$this->prefix.'to') <> null){
             if(filter_request($this->request,$this->prefix.'from') <> null){
