@@ -260,5 +260,6 @@
        'footer_menu'=>'Footer Menu',
        'Partners' => 'Partners',
        'article_type'=>'Article type',
-       'news_from_partner'=>'News from Partner'
+       'news_from_partner'=>'News from Partner',
+       'source'=>'Source'
    ];

@@ -176,7 +176,7 @@
                 @endif
             </li>
             <li>
-                <h4><a href="{{action('WelcomeController@showPage','china-sensation')}}">China sensation</a></h4>
+                <h4><a href="{{action('WelcomeController@showPage','entertainment')}}">Entertainment</a></h4>
                 <a href="#">
                     <div class="horizontal-items-4-image"><img src="{{asset('theme/images/6.png')}}"/></div>
                     <div class="horizontal-items-4-title">

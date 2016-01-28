@@ -326,13 +326,13 @@
                     </ul>
                 </li>
                 <li @if(Request::path() == 'china-sensation')class="active"@endif>
-                    <a href="{{action('WelcomeController@showPage','china-sensation')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'china-sensation')}}','china-sensation')">China sensation</a>
+                    <a href="{{action('WelcomeController@showPage','entertainment')}}" onClick="return ajaxRoute('{{action("WelcomeController@showPage",'entertainment')}}','entertainment')">Entertainment</a>
                     <ul class="outside">
                         <li>
                             <span>All Results</span>
                             <ul class="inside">
-                                @if(count($article->getarticles('china-sensation',false,6)) > 0)
-                                    @foreach($article->getarticles('china-sensation',false,6) as $item)
+                                @if(count($article->getarticles('entertainment',false,6)) > 0)
+                                    @foreach($article->getarticles('entertainment',false,6) as $item)
                                         @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
@@ -351,8 +351,8 @@
                         <li>
                             <span>Photo Gallery</span>
                             <ul class="inside">
-                                @if(count($article->getarticles('china-sensation','photogallery',6)) > 0)
-                                    @foreach($article->getarticles('china-sensation','photogallery',6) as $item)
+                                @if(count($article->getarticles('entertainment','photogallery',6)) > 0)
+                                    @foreach($article->getarticles('entertainment','photogallery',6) as $item)
                                         @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
@@ -361,8 +361,8 @@
                         <li>
                             <span>Video</span>
                             <ul class="inside">
-                                @if(count($article->getarticles('china-sensation','video',6)) > 0)
-                                    @foreach($article->getarticles('china-sensation','video',6) as $item)
+                                @if(count($article->getarticles('entertainment','video',6)) > 0)
+                                    @foreach($article->getarticles('entertainment','video',6) as $item)
                                         @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
@@ -371,8 +371,8 @@
                         <li>
                             <span>Audio</span>
                             <ul class="inside">
-                                @if(count($article->getarticles('china-sensation','audio',6)) > 0)
-                                    @foreach($article->getarticles('china-sensation','audio',6) as $item)
+                                @if(count($article->getarticles('entertainment','audio',6)) > 0)
+                                    @foreach($article->getarticles('entertainment','audio',6) as $item)
                                         @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif
@@ -380,8 +380,8 @@
                         </li>
                         <li id="datetimepicker6" class="gbtimesDatePicker"  data-slug="china-sensation">
                             <ul class="inside">
-                                @if(count($article->getarticles('china-sensation',false,6)) > 0)
-                                    @foreach($article->getarticles('china-sensation',false,6) as $item)
+                                @if(count($article->getarticles('entertainment',false,6)) > 0)
+                                    @foreach($article->getarticles('entertainment',false,6) as $item)
                                         @include('theme.pages.inc.mlist')
                                     @endforeach
                                 @endif

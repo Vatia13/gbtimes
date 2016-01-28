@@ -108,3 +108,7 @@
 .image_gallery li b{
     position:absolute;
 }
+
+.valign-bottom{
+    vertical-align:bottom !important;
+}
